@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: web.dockerfile
+    volumes:
+      - ./web:/app
+    ports:
+      - "8000:8000"
+      - "6006:6006"
+
+  api:
+    build:
+      context: ./api
+      dockerfile: api.dockerfile
+    volumes:
+      - ./api:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15.3
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
