@@ -1,22 +1,13 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React from 'react';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+interface ButtonProps {
+  inText: string;
+}
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  innerClassName,
-  ...rest
-}) => {
+const Button = ({ inText }: ButtonProps) => {
   return (
-    // <button className= [innerClassName, ' px-4 py-2 text-gray-800 bg-white rounded-sm hover:bg-blue-400 hover:text-white focus:bg-blue-500']>
-    <button
-      className={classNames([
-        innerClassName,
-        'bg-custom-blue rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500',
-      ])}
-      {...rest}
-    >
-      {children}
+    <button className='px-10 py-2 w-36 flex-auto text-gray-800 bg-white border-t border-b border-gray-500  rounded-sm hover:text-white hover:bg-blue-500 hover:border-none'>
+      {inText}
     </button>
   );
 };

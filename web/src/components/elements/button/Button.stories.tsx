@@ -1,24 +1,30 @@
 import { Meta, StoryObj } from '@storybook/react';
 import Button from './Button';
-import { JSX } from 'react';
 
-const meta = {
-  title: 'Button',
+const meta: Meta = {
+  title: 'Elements/Button',
   component: Button,
-  tags: ['autodocs'],
   argTypes: {
-    innerClassName: {
-      control: {
-        type: 'text',
-      },
-    },
+    inText: { control: 'text' },
   },
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+export const Default: StoryObj = {
+  args: {
+    inText: 'button',
+  },
+};
 
-export const Default = {
-  render: (arg: JSX.IntrinsicAttributes) => <Button {...arg}>Button</Button>,
+export const imageButton: StoryObj = {
+  args: {
+    inText: 'images',
+  },
+};
+
+export const titleButton: StoryObj = {
+  args: {
+    inText: 'title',
+  },
 };
