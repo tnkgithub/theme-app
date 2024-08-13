@@ -6,15 +6,13 @@ interface SearchBerProps {
 
 const SearchBox = ({ defalutText }: SearchBerProps) => {
   return (
-    <form className='mx-auto max-w-md'>
-      <label
+    <form className='w-60'>
+      {/* <label
         htmlFor='search'
         className='sr-only mb-2 text-sm font-medium  text-gray-900'
-      >
-        Search
-      </label>
-      <div className='relative'>
-        <div className='pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3'>
+      /> */}
+      <div className='flex items-center rounded-lg bg-gray-800 px-2'>
+        <div className='px-1'>
           <svg
             className='size-4 text-gray-400'
             aria-hidden='true'
@@ -34,16 +32,16 @@ const SearchBox = ({ defalutText }: SearchBerProps) => {
         <input
           type='search'
           id='default-search'
-          className='block w-full rounded-lg border border-gray-800 bg-gray-800 p-4 ps-10 text-sm text-gray-400 focus:border-blue-500 focus:ring-blue-500'
+          className='w-48 bg-gray-800 py-2 ps-2 text-sm text-gray-400 focus:outline-none'
           placeholder={defalutText}
           required
         />
-        <button
+        {/* <button
           type='submit'
-          className='absolute bottom-2.5 end-2.5 rounded-lg bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
+          className='rounded-lg bg-blue-500 px-2 py-0.5 text-sm text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
         >
           Search
-        </button>
+        </button> */}
       </div>
     </form>
   );

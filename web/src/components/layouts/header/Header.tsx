@@ -1,18 +1,20 @@
 import React from 'react';
 import SearchBer from '@/components/elements/searchBer/SearchBer';
 
-const Header = () => {
+interface HeaderProps {
+  logoText: string;
+}
+
+const Header = ({ logoText }: HeaderProps) => {
   return (
-    <header className='bg-gray-800'>
-      <div className='container mx-auto px-4 py-6'>
-        <div className='flex items-center justify-between'>
-          <div className='flex items-center'>
-            <a href='#' className='text-xl font-medium text-white'>
-              Logo
-            </a>
-          </div>
-          <SearchBer defalutText='Search' />
+    <header className='bg-blue-500'>
+      <div className='flex items-center justify-between px-8 py-2'>
+        <div className='flex items-center'>
+          <a href='#' className='text-xl font-medium text-white'>
+            {logoText}
+          </a>
         </div>
+        <SearchBer defalutText='検索' />
       </div>
     </header>
   );
