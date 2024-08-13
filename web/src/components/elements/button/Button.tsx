@@ -6,7 +6,7 @@ interface ButtonProps {
 
 const Button = ({ inText }: ButtonProps) => {
   return (
-    <button className='px-10 py-2 w-36 flex-auto text-gray-800 bg-white border-t border-b border-gray-500  rounded-sm hover:text-white hover:bg-blue-500 hover:border-none'>
+    <button className='w-36 flex-auto rounded-sm border-y border-gray-500 bg-white px-10 py-2 text-gray-800  hover:border-none hover:bg-blue-500 hover:text-white'>
       {inText}
     </button>
   );
