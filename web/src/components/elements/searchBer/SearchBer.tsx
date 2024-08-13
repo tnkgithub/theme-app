@@ -11,7 +11,7 @@ const SearchBox = ({ defalutText }: SearchBerProps) => {
         htmlFor='search'
         className='sr-only mb-2 text-sm font-medium  text-gray-900'
       /> */}
-      <div className='flex items-center rounded-md bg-gray-300 px-2 text-gray-700'>
+      <div className='flex items-center rounded-md bg-gray-300 px-2 text-gray-600'>
         <div className='px-1'>
           <svg
             className='size-4'
