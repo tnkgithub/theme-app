@@ -11,10 +11,10 @@ const SearchBox = ({ defalutText }: SearchBerProps) => {
         htmlFor='search'
         className='sr-only mb-2 text-sm font-medium  text-gray-900'
       /> */}
-      <div className='flex items-center rounded-lg bg-gray-800 px-2'>
+      <div className='flex items-center rounded-md bg-gray-300 px-2 text-gray-700'>
         <div className='px-1'>
           <svg
-            className='size-4 text-gray-400'
+            className='size-4'
             aria-hidden='true'
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -32,7 +32,7 @@ const SearchBox = ({ defalutText }: SearchBerProps) => {
         <input
           type='search'
           id='default-search'
-          className='w-48 bg-gray-800 py-2 ps-2 text-sm text-gray-400 focus:outline-none'
+          className='w-48 bg-inherit py-2 ps-2 text-sm font-medium focus:outline-none'
           placeholder={defalutText}
           required
         />
