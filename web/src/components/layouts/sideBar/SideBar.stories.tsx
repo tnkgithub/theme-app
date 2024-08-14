@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
-import SearchBer from './SearchBer';
+import SideBar from './SideBar';
 
 const meta: Meta = {
-  title: 'Elements/SearchBer',
-  component: SearchBer,
+  title: 'Layouts/SideBar',
+  component: SideBar,
   argTypes: {
-    defalutText: { control: 'text' },
+    buttonText: { control: 'select' },
   },
 };
 
@@ -13,6 +13,6 @@ export default meta;
 
 export const Default: StoryObj = {
   args: {
-    defalutText: '検索',
+    buttonText: 'Button',
   },
 };

@@ -1,17 +1,17 @@
 import React from 'react';
 
-type SearchBerProps = {
+type SearchBoxProps = {
   defalutText: string;
 };
 
-const SearchBox = ({ defalutText }: SearchBerProps) => {
+const SearchBox = ({ defalutText }: SearchBoxProps) => {
   return (
     <form className='w-72'>
       {/* <label
         htmlFor='search'
         className='sr-only mb-2 text-sm font-medium  text-gray-900'
       /> */}
-      <div className='flex items-center  rounded-md bg-gray-300 p-1 text-gray-600'>
+      <div className='flex items-center rounded-md bg-gray-300 p-1 text-gray-600'>
         <div className='mx-1 '>
           <svg
             className='size-4'
@@ -32,7 +32,7 @@ const SearchBox = ({ defalutText }: SearchBerProps) => {
         <input
           type='search'
           id='default-search'
-          className=' flex-auto bg-inherit py-1 ps-2 text-sm font-medium focus:outline-none'
+          className=' flex-auto bg-inherit py-1 pr-1 ps-2 text-sm font-medium focus:outline-none'
           placeholder={defalutText}
           required
         />
