@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface ButtonProps {
+type ButtonProps = {
   inText: string;
-}
+};
 
 const Button = ({ inText }: ButtonProps) => {
   return (
-    <button className='w-36 flex-auto rounded-sm border-y border-gray-500 bg-white px-10 py-2 text-gray-800  hover:border-none hover:bg-blue-500 hover:text-white'>
+    <button className='w-36 rounded-lg bg-white px-10 py-2 text-sm font-medium text-gray-800 hover:bg-blue-500 hover:text-white focus:bg-blue-600 focus:text-white'>
       {inText}
     </button>
   );

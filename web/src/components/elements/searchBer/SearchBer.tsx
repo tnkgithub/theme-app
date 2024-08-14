@@ -1,18 +1,18 @@
 import React from 'react';
 
-interface SearchBerProps {
+type SearchBerProps = {
   defalutText: string;
-}
+};
 
 const SearchBox = ({ defalutText }: SearchBerProps) => {
   return (
-    <form className='w-60'>
+    <form className='w-72'>
       {/* <label
         htmlFor='search'
         className='sr-only mb-2 text-sm font-medium  text-gray-900'
       /> */}
-      <div className='flex items-center rounded-md bg-gray-300 px-2 text-gray-600'>
-        <div className='px-1'>
+      <div className='flex items-center  rounded-md bg-gray-300 p-1 text-gray-600'>
+        <div className='mx-1 '>
           <svg
             className='size-4'
             aria-hidden='true'
@@ -32,16 +32,16 @@ const SearchBox = ({ defalutText }: SearchBerProps) => {
         <input
           type='search'
           id='default-search'
-          className='w-48 bg-inherit py-2 ps-2 text-sm font-medium focus:outline-none'
+          className=' flex-auto bg-inherit py-1 ps-2 text-sm font-medium focus:outline-none'
           placeholder={defalutText}
           required
         />
-        {/* <button
+        <button
           type='submit'
-          className='rounded-lg bg-blue-500 px-2 py-0.5 text-sm text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
+          className='ml-auto rounded-md bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
         >
-          Search
-        </button> */}
+          検索
+        </button>
       </div>
     </form>
   );

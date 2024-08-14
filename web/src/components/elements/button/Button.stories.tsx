@@ -16,15 +16,3 @@ export const Default: StoryObj = {
     inText: 'button',
   },
 };
-
-export const imageButton: StoryObj = {
-  args: {
-    inText: 'images',
-  },
-};
-
-export const titleButton: StoryObj = {
-  args: {
-    inText: 'title',
-  },
-};
