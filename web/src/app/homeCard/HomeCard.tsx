@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 type HomeCardProps = {
   title: string;
-  text: string;
+  description: string;
   imagePath: string;
 };
 
-const HomeCard = ({ title, text, imagePath }: HomeCardProps) => {
+const HomeCard = ({ title, description, imagePath }: HomeCardProps) => {
   return (
-    <div className='max-w-sm rounded-sm shadow-lg'>
+    <div className='my-6 max-w-sm rounded-sm border shadow-lg'>
       <Image
         src={imagePath}
         alt='image'
@@ -19,7 +19,7 @@ const HomeCard = ({ title, text, imagePath }: HomeCardProps) => {
       />
       <div className='px-6 py-4'>
         <div className='mb-2 text-xl font-bold'>{title}</div>
-        <p className='text-base text-gray-700'>{text}</p>
+        <p className='text-base text-gray-700'>{description}</p>
       </div>
     </div>
   );

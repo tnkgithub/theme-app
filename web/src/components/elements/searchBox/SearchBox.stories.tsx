@@ -4,15 +4,13 @@ import SearchBox from './SearchBox';
 const meta: Meta = {
   title: 'Elements/SearchBox',
   component: SearchBox,
-  argTypes: {
-    defalutText: { control: 'text' },
-  },
 };
 
 export default meta;
 
-export const Default: StoryObj = {
-  args: {
-    defalutText: '検索',
-  },
+const Template = (args: any) => <SearchBox {...args} />;
+export const SearchBoxStory = (Template as any).bind({});
+
+SearchBoxStory.args = {
+  placeholder: '検索',
 };

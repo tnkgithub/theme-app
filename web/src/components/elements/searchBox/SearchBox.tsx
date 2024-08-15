@@ -1,10 +1,10 @@
 import React from 'react';
 
 type SearchBoxProps = {
-  defalutText: string;
+  placeholder: string;
 };
 
-const SearchBox = ({ defalutText }: SearchBoxProps) => {
+const SearchBox = ({ placeholder }: SearchBoxProps) => {
   return (
     <form className='w-72'>
       {/* <label
@@ -33,7 +33,7 @@ const SearchBox = ({ defalutText }: SearchBoxProps) => {
           type='search'
           id='default-search'
           className=' flex-auto bg-inherit py-1 pr-1 ps-2 text-sm font-medium focus:outline-none'
-          placeholder={defalutText}
+          placeholder={placeholder}
           required
         />
         <button

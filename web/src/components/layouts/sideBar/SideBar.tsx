@@ -9,9 +9,9 @@ type SideBarProps = {
 const SideBar = ({ buttonText }: SideBarProps) => {
   return (
     <div className='flex flex-col justify-center p-3'>
-      <Button inText={buttonText[0]} />
-      <Button inText={buttonText[1]} />
-      <Button inText={buttonText[2]} />
+      {buttonText.map((text, index) => (
+        <Button inText={text} key={index} />
+      ))}
     </div>
   );
 };

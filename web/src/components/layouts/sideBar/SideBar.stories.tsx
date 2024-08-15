@@ -4,15 +4,17 @@ import SideBar from './SideBar';
 const meta: Meta = {
   title: 'Layouts/SideBar',
   component: SideBar,
-  argTypes: {
-    buttonText: { control: 'select' },
-  },
 };
 
 export default meta;
 
-export const Default: StoryObj = {
-  args: {
-    buttonText: 'Button',
-  },
+type SideBarProps = {
+  buttonText: string[];
+};
+
+const Template = (args: SideBarProps) => <SideBar {...args} />;
+export const SideBarStory = (Template as any).bind({});
+
+SideBarStory.args = {
+  buttonText: ['Button1', 'Button2', 'Button3'],
 };

@@ -1,39 +1,46 @@
 import Header from '@/components/layouts/header/Header';
-import SideBer from '@/components/layouts/sideBar/SideBar';
 import HomeCard from './homeCard/HomeCard';
 
-export default function Home() {
+type HomeProps = {
+  logoText: string;
+  pageTitle: string[];
+  cardText: string[];
+  cardImagePath: string[];
+};
+
+const Home = ({ logoText, pageTitle, cardText, cardImagePath }: HomeProps) => {
   return (
     <>
       <header className='sticky top-0 w-full'>
-        <Header logoText='Archive App' />
+        <Header logoText={logoText} buttonText={pageTitle} />
       </header>
       <main>
-        <div className='flex max-h-screen'>
-          <div className='sticky left-0 top-0 border-r'>
-            <SideBer
-              buttonText={['画像一覧', 'タイトル一覧', 'オブジェクト一覧']}
-            />
-          </div>
-          <div className='flex flex-col p-4'>
+        {/* <div className='container mx-auto my-0 flex h-full flex-col items-center justify-between space-y-8 p-10 xl:my-6 xl:flex-row xl:space-y-0'> */}
+        <div className='container mx-auto flex h-full flex-wrap items-center justify-center p-10 lg:justify-between'>
+          {pageTitle.map((title, index) => (
             <HomeCard
-              title='画像一覧'
-              text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
-              imagePath=''
+              title={title}
+              description={cardText[index]}
+              imagePath={cardImagePath[index]}
+              key={index}
             />
-            <HomeCard
-              title='タイトル一覧'
-              text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
-              imagePath=''
-            />
-            <HomeCard
-              title='タイトル一覧'
-              text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
-              imagePath=''
-            />
-          </div>
+          ))}
         </div>
       </main>
     </>
   );
-}
+};
+
+export default Home;
+
+// 初期値を設定
+Home.defaultProps = {
+  logoText: 'Archive App',
+  pageTitle: ['画像一覧', 'タイトル一覧', '物体名一覧'],
+  cardText: [
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.',
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.',
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.',
+  ],
+  cardImagePath: ['', '', ''],
+};

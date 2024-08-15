@@ -4,15 +4,12 @@ import Button from './Button';
 const meta: Meta = {
   title: 'Elements/Button',
   component: Button,
-  argTypes: {
-    inText: { control: 'text' },
-  },
 };
 
 export default meta;
 
-export const Default: StoryObj = {
-  args: {
-    inText: 'button',
-  },
+const Template = (args: any) => <Button {...args} />;
+export const ButtonStory = (Template as any).bind({});
+ButtonStory.args = {
+  inText: 'Button',
 };
