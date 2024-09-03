@@ -1,10 +1,6 @@
 import React from 'react';
 
-type SearchBoxProps = {
-  placeholder: string;
-};
-
-const SearchBox = ({ placeholder }: SearchBoxProps) => {
+const SearchBox = ({ placeholder }: { placeholder: string }) => {
   return (
     <form className='w-72'>
       {/* <label

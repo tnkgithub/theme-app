@@ -1,16 +1,17 @@
 import React from 'react';
 import Button from '@/components/elements/button/Button';
 
-// ボタンのテキストを配列で受け取る
-type SideBarProps = {
+const SideBar = ({
+  buttonText,
+  buttonLink,
+}: {
   buttonText: string[];
-};
-
-const SideBar = ({ buttonText }: SideBarProps) => {
+  buttonLink: string[];
+}) => {
   return (
     <div className='flex flex-col justify-center p-3'>
       {buttonText.map((text, index) => (
-        <Button inText={text} key={index} />
+        <Button inText={text} key={index} pageLink={buttonLink[index]} />
       ))}
     </div>
   );
