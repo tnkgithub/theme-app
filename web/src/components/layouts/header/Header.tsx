@@ -19,7 +19,7 @@ const Header = ({ logoText, buttonText }: HeaderProps) => {
             {logoText}
           </a>
         </div>
-        <div className='container mr-6 hidden flex-col justify-center py-1 md:flex md:flex-row lg:justify-end lg:py-0'>
+        <div className='container mr-6 hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
           <div className='mr-2 flex py-1 lg:py-0'>
             {buttonText.map((text, index) => (
               <Button inText={text} key={index} />
