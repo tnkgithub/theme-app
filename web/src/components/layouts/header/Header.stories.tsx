@@ -9,6 +9,7 @@ const meta: Meta = {
 type HeaderProps = {
   logoText: string;
   buttonText: string[];
+  buttonLink: string[];
 };
 
 export default meta;
@@ -21,4 +22,5 @@ export const HeaderStory = (Template as any).bind({});
 HeaderStory.args = {
   logoText: 'Logo',
   buttonText: ['Button1', 'Button2', 'Button3'],
+  buttonLink: ['/', '/', '/'],
 };
