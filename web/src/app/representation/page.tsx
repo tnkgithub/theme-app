@@ -2,19 +2,20 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ImagesPage() {
+export default function RepresentationPage() {
   return (
-    <div className='no-scrollbar'>
+    <main>
       <div className='m-2 grid grid-cols-26 gap-1'>
         <div className='bg-blue-400'>
           <Link
-            href='https://archives.c.fun.ac.jp/posters/po000001/0001'
-            rel='noreferrer noopener'
-            target='_blank'
+            // href='https://archives.c.fun.ac.jp/posters/po000001/0001'
+            href='/representation/imagesList?imageId=1126'
+            // rel='noreferrer noopener'
+            // target='_blank'
           >
             <Image
-              src='/posters/trimmedPoster/po000001.jpg'
-              alt='1'
+              src='/posters/trimmedPoster/po001126.jpg'
+              alt='1126'
               width={100}
               height={100}
             />
@@ -405,6 +406,6 @@ export default function ImagesPage() {
         <div className='bg-blue-400'>5th col</div>
         <div className='bg-blue-400'>6th col</div>
       </div>
-    </div>
+    </main>
   );
 }

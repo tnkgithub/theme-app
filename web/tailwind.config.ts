@@ -17,6 +17,7 @@ const config: Config = {
 
       gridTemplateColumns: {
         '26': 'repeat(26, minmax(100px, 1fr))',
+        '78': 'repeat(78, minmax(100px, 1fr))',
       },
     },
   },
