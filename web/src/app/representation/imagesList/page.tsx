@@ -9,61 +9,69 @@ export default function ImagesListPage() {
   // URLからクエリパラメータを取得
   const searchParams = useSearchParams();
 
-  useLayoutEffect(() => {
-    const imageId = searchParams.get('imageId');
-    console.log('imageId:', imageId);
-
-    const monitorHeightHalf = window.innerHeight / 2;
-
-    if (imageId) {
-      scroller.scrollTo(imageId, {
-        duration: 800,
-        delay: 0,
-        smooth: 'easeInOutQuint',
-        offset: -monitorHeightHalf,
-        horizontal: false,
-      });
-    }
-  }, [searchParams]);
-
   useEffect(() => {
     const imageId = searchParams.get('imageId');
-    console.log('imageId:', imageId);
 
-    const monitorWidthHalf = window.innerWidth / 2;
-
-    if (imageId) {
-      scroller.scrollTo(imageId, {
-        duration: 800,
-        delay: 0,
-        smooth: 'easeInOutQuint',
-        offset: -monitorWidthHalf,
-        horizontal: true,
-      });
-    }
-
-    // // 画像IDが指定されている場合は、その画像までスクロール
-    // if (imageId) {
-    //   scroller.scrollTo(imageId, {
-    //     duration: 800,
-    //     delay: 0,
-    //     smooth: 'easeInOutQuint',
-    //     offset: -monitor_height_harf,
-    //     horizontal: false,
-    //   });
-    // }
-    // if (imageId) {
-    //   scroller.scrollTo(imageId, {
-    //     duration: 800,
-    //     delay: 0,
-    //     smooth: 'easeInOutQuint',
-    //     offset: -monitor_width_harf,
-    //     horizontal: true,
-    //   });
-    // }
-    // 画像IDが指定されている場合は、その画像までスクロール
-    // 画像IDが指定されている場合は、その画像までスクロール
+    const posterUrl = `https://archives.c.fun.ac.jp/posters/${imageId}/0001`;
+    // 別タブでurlを開く
+    window.open(posterUrl, '_blank', 'width=1000, height=800');
   }, [searchParams]);
+
+  // useLayoutEffect(() => {
+  //   const imageId = searchParams.get('imageId');
+  //   console.log('imageId:', imageId);
+
+  //   const monitorHeightHalf = window.innerHeight / 2;
+
+  //   if (imageId) {
+  //     scroller.scrollTo(imageId, {
+  //       duration: 800,
+  //       delay: 0,
+  //       smooth: 'easeInOutQuint',
+  //       offset: -monitorHeightHalf,
+  //       horizontal: false,
+  //     });
+  //   }
+  // }, [searchParams]);
+
+  // useEffect(() => {
+  //   const imageId = searchParams.get('imageId');
+  //   console.log('imageId:', imageId);
+
+  //   const monitorWidthHalf = window.innerWidth / 2;
+
+  //   if (imageId) {
+  //     scroller.scrollTo(imageId, {
+  //       duration: 800,
+  //       delay: 0,
+  //       smooth: 'easeInOutQuint',
+  //       offset: -monitorWidthHalf,
+  //       horizontal: true,
+  //     });
+  //   }
+
+  //   // // 画像IDが指定されている場合は、その画像までスクロール
+  //   // if (imageId) {
+  //   //   scroller.scrollTo(imageId, {
+  //   //     duration: 800,
+  //   //     delay: 0,
+  //   //     smooth: 'easeInOutQuint',
+  //   //     offset: -monitor_height_harf,
+  //   //     horizontal: false,
+  //   //   });
+  //   // }
+  //   // if (imageId) {
+  //   //   scroller.scrollTo(imageId, {
+  //   //     duration: 800,
+  //   //     delay: 0,
+  //   //     smooth: 'easeInOutQuint',
+  //   //     offset: -monitor_width_harf,
+  //   //     horizontal: true,
+  //   //   });
+  //   // }
+  //   // 画像IDが指定されている場合は、その画像までスクロール
+  //   // 画像IDが指定されている場合は、その画像までスクロール
+  // }, [searchParams]);
 
   // 2028の配列を定義
   const images = Array.from({ length: 2028 }, (_, i) => i + 1);

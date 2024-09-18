@@ -9,7 +9,7 @@ export default function RepresentationPage() {
         <div className='bg-blue-400'>
           <Link
             // href='https://archives.c.fun.ac.jp/posters/po000001/0001'
-            href='/representation/imagesList?imageId=1126'
+            href='/representation/imagesList?imageId=po001126'
             // rel='noreferrer noopener'
             // target='_blank'
           >
