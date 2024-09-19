@@ -1,3 +1,4 @@
+import { biz_udp } from '@/utils/fonts';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -5,7 +6,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        biz: ['var(--font-biz)'],
+        biz_udp: ['var(--font-biz-udp)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

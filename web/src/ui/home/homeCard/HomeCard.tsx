@@ -29,7 +29,7 @@ export default function HomeCard({
           className='h-72 w-full object-cover'
         />
         <div className='px-6 py-4'>
-          <div className='mb-2 text-xl'>{title}</div>
+          <div className='mb-2 text-xl font-bold'>{title}</div>
           <p className='text-base text-gray-700'>{description}</p>
         </div>
       </div>
