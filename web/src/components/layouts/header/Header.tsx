@@ -15,17 +15,17 @@ const Header = ({
   return (
     <>
       <header className='fixed w-full border-b border-gray-300 bg-white'>
-        <div className='container mx-auto flex flex-col items-center py-1.5 lg:flex-row'>
-          <div className='w-full min-w-fit'>
+        <div className='flex flex-col items-center justify-between py-4 lg:flex-row'>
+          <div className='min-w-fit'>
             <Link
               href='/'
-              className='ml-6 flex items-center justify-center font-serif text-xl font-medium text-gray-800 lg:justify-start'
+              className='ml-6 flex items-center justify-center font-serif text-xl font-medium text-gray-800 duration-300 hover:scale-105 lg:justify-start'
             >
               {logoText}
             </Link>
           </div>
           <div className='container mr-6 hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
-            <div className='mr-2 flex py-1 lg:py-0'>
+            <div className='mr-2  flex py-1 lg:py-0'>
               {buttonText.map((text, index) => (
                 <Button
                   inText={text}
@@ -38,7 +38,7 @@ const Header = ({
           </div>
         </div>
       </header>
-      <div className='h-12'></div>
+      <div className='h-16'></div>
     </>
   );
 };

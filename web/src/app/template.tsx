@@ -1,23 +1,21 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import React from 'react';
 
-const variants = {
+const fadeInVariants = {
   hidden: { opacity: 0 },
-  enter: { opacity: 1 },
+
+  visible: { opacity: 1 },
 };
 
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
-      variants={variants}
       initial='hidden'
-      animate='enter'
-      transition={{
-        type: 'linear',
-        duration: 1,
-      }}
+      animate='visible'
+      exit='hidden'
+      variants={fadeInVariants}
+      transition={{ duration: 1.5 }}
     >
       {children}
     </motion.div>

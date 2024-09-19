@@ -16,8 +16,3 @@
         display: none;
     }
 }
-
-/* 日本語フォントを指定 */
-body {
-    font-family: 'Noto Sans JP', sans-serif;
-}

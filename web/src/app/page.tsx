@@ -12,11 +12,13 @@ export default function Home() {
             type='imagesList'
           />
         </Link>
-        <HomeCard
-          title='タイトル一覧'
-          description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
-          type='titleList'
-        />
+        <Link href='/titles'>
+          <HomeCard
+            title='タイトル一覧'
+            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
+            type='titleList'
+          />
+        </Link>
         <HomeCard
           title='物体名一覧'
           description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
