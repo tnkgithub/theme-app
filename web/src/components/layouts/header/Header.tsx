@@ -14,7 +14,7 @@ const Header = ({
 }) => {
   return (
     <>
-      <header className='fixed w-full border-b border-gray-300 bg-white'>
+      <header className='fixed z-10 w-full border-b border-gray-300 bg-white'>
         <div className='flex flex-col items-center justify-between py-4 lg:flex-row'>
           <div className='min-w-fit'>
             <Link
