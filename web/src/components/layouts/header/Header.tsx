@@ -19,7 +19,7 @@ const Header = ({
           <div className='min-w-fit'>
             <Link
               href='/'
-              className='ml-6 flex items-center justify-center font-serif text-xl font-medium text-gray-800 duration-300 hover:scale-105 lg:justify-start'
+              className='ml-6 flex items-center justify-center font-serif text-xl font-medium text-gray-800 lg:justify-start'
             >
               {logoText}
             </Link>
