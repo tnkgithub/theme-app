@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 const fadeInVariants = {
   hidden: { opacity: 0 },
-
   visible: { opacity: 1 },
 };
 
