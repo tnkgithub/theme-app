@@ -31,7 +31,7 @@ const SearchBox = ({ placeholder }: { placeholder: string }) => {
         />
         <button
           type='submit'
-          className='ml-auto rounded-md bg-blue-500 px-3 py-1 text-sm text-white duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300'
+          className='ml-auto rounded-md bg-blue-500 px-3 py-1 text-sm text-white duration-300 focus:outline-none'
         >
           検索
         </button>
