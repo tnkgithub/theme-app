@@ -1,4 +1,4 @@
-import HomeCard from '@/ui/home/homeCard/HomeCard';
+import Card from '@/components/elements/card/Card';
 import Link from 'next/link';
 
 export default function Home() {
@@ -6,20 +6,20 @@ export default function Home() {
     <main>
       <div className='container mx-auto flex h-full flex-wrap items-center justify-center p-10 lg:justify-between'>
         <Link href='/representation'>
-          <HomeCard
+          <Card
             title='画像一覧'
             description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
             type='imagesList'
           />
         </Link>
         <Link href='/titles'>
-          <HomeCard
+          <Card
             title='タイトル一覧'
             description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
             type='titleList'
           />
         </Link>
-        <HomeCard
+        <Card
           title='物体名一覧'
           description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
           type='objectList'
