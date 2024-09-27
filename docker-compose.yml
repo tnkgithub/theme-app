@@ -8,15 +8,7 @@ services:
     ports:
       - "8000:8000"
       - "6006:6006"
-
-  api:
-    build:
-      context: ./api
-      dockerfile: api.dockerfile
-    volumes:
-      - ./api:/app
-    ports:
-      - "3000:3000"
+      - "5555:5555"
     depends_on:
       - db
 
@@ -28,7 +20,6 @@ services:
       - POSTGRES_DB=db
     ports:
       - "5432:5432"
-    restart: always
     volumes:
       - ./db/data:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d

@@ -6,9 +6,13 @@ COPY package*.json ./
 
 COPY . .
 
-# CMD ["npm", "run", "dev"]
+# storybookの起動に必要なパッケージ
+RUN apt-get update && apt-get install -y xdg-utils
 
-COPY startup.sh /startup.sh
-RUN chmod 744 /startup.sh
+# prismaの起動に必要なパッケージ
+RUN apt-get update && apt-get install -y openssl
 
-CMD ["/startup.sh"]
+RUN npm i -g prisma
+RUN npm i @prisma/client
+
+CMD ["npm", "run", "dev"]
