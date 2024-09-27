@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function RepresentationPage() {
   return (
     <main>
-      <div className='m-2 grid grid-cols-26 gap-1'>
+      <div className='grid-cols-26 m-2 grid gap-1 '>
         <div className=' bg-blue-400 duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'>
           <Link
             // href='https://archives.c.fun.ac.jp/posters/po000001/0001'
