@@ -2,7 +2,7 @@
 CREATE TABLE "Poster" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "explanation" TEXT NOT NULL,
+    "explanation" TEXT,
     "somCoordinate" INTEGER NOT NULL,
     "representationsCoordinate" INTEGER,
 
