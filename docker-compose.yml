@@ -6,9 +6,9 @@ services:
     volumes:
       - ./web:/app
     ports:
-      - "8000:8000"
-      - "6006:6006"
-      - "5555:5555"
+      - '8000:8000'
+      - '6006:6006'
+      - '5555:5555'
     depends_on:
       - db
     tty: true
@@ -20,7 +20,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=db
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - ./db/data:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d
