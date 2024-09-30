@@ -7,19 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model poster {
+model Poster {
   id                        String    @id
   title                     String
   explanation               String?
-  somCoordinate             Int
-  representationsCoordinate Int?
-  objWord                   obj_word[]
+  somCoordinate             Int @map("som_coordinate")
+  representationsCoordinate Int? @map("representations_coordinate")
+  objectWord                ObjectWord[]
+  @@map("posters")
 }
 
-model obj_word {
+model ObjectWord {
   word     String
-  posterId String
-  poster   poster @relation(fields: [posterId], references: [id])
+  posterId String @map("poster_id")
+  poster   Poster @relation(fields: [posterId], references: [id])
 
   @@id([word, posterId])
+  @@map("object_words")
 }
