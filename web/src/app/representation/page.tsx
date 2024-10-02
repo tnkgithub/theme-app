@@ -21,16 +21,14 @@ export default async function RepresentationPage() {
       {/* postersのjsonを表示 */}
       <div className='m-2 grid grid-cols-26 gap-1'>
         {posters.map((poster: Poster) => (
-          <div
-            key={poster.id}
-            className='flex justify-center bg-blue-400 duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
-          >
+          <div key={poster.id} className='flex justify-center bg-blue-400 '>
             <Link href={`/representation/imagesList?imageId=${poster.id}`}>
               <Image
-                src={`/posters/trimmedPoster/${poster.id}.jpg`}
+                src={`/posters/normalPoster/${poster.id}.jpg`}
                 alt={`Image ${poster.id}`}
                 width={100}
                 height={162}
+                className='h-40 object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
               />
             </Link>
           </div>

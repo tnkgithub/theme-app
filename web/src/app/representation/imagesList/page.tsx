@@ -16,7 +16,7 @@ export default function ImagesListPage() {
   }
 
   // 2028の配列を定義
-  const images = Array.from({ length: 2028 }, (_, i) => i + 1);
+  const images = Array.from({ length: 50 }, (_, i) => i + 1);
 
   return (
     <main>
@@ -27,7 +27,7 @@ export default function ImagesListPage() {
             className='flex justify-center bg-blue-400 duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
           >
             <Image
-              src={`/posters/trimmedPoster/po00${image}.jpg`}
+              src={`/posters/trimmedPoster/po0000${image}.jpg`}
               alt={`Image ${image}`}
               width={100}
               height={162}

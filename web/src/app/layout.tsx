@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='ja' className={`${biz_udp.variable}`}>
+    <html lang='ja' className={`${biz_udp.variable} font-biz_udp`}>
       <body>
         <Header
           logoText='Archive App'
