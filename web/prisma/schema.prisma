@@ -10,7 +10,7 @@ datasource db {
 model Poster {
   id                        String    @id
   title                     String
-  explanation               String?
+  discription               String?
   somCoordinate             Int @map("som_coordinate")
   representationsCoordinate Int? @map("representations_coordinate")
   objectWord                ObjectWord[]

@@ -12,12 +12,11 @@ async function main() {
     .on('data', (data) => results.push(data))
     .on('end', async () => {
       for (const item of results) {
-        // console.log(item);
         await prisma.poster.create({
           data: {
             id: item.id,
             title: item.title,
-            explanation: item.explanation,
+            discription: item.discription,
             somCoordinate: parseInt(item.somCoordinate, 10), // 数値に変換
             representationsCoordinate: !isNaN(
               parseInt(item.representationsCoordinate, 10)
