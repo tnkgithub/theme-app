@@ -24,7 +24,7 @@ export default async function RepresentationPage() {
           <div key={poster.id} className='flex justify-center bg-blue-400 '>
             <Link href={`/representation/imagesList?imageId=${poster.id}`}>
               <Image
-                src={`/posters/normalPoster/${poster.id}.jpg`}
+                src={`/posters/${poster.id}.jpg`}
                 alt={`Image ${poster.id}`}
                 width={100}
                 height={162}
