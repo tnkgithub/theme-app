@@ -1,20 +1,21 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma/Prisma';
 
-// PosterテーブルのrepresentaionCoordinateカラムの値を取得する
+// PosterテーブルのrepresentationsCoordinateカラムがnullでないデータのidのみを取得し、値に基づいてソートして返す
 export async function GET() {
   try {
     const posters = await prisma.poster.findMany({
-      // 条件を指定する: representationsCoordinateカラムがnullでないもの
       where: {
         representationsCoordinate: {
           not: null,
         },
       },
-      // 取得するカラムを指定する: id, representationsCoordinate
       select: {
         id: true,
         representationsCoordinate: true,
+      },
+      orderBy: {
+        representationsCoordinate: 'asc', // 'desc' にすれば降順
       },
     });
     return NextResponse.json({ posters }, { status: 200 });
