@@ -28,7 +28,7 @@ export default async function RepresentationPage() {
                 alt={`${poster.representationsCoordinate}`}
                 width={100}
                 height={162}
-                className='h-40 w-28 object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
+                className='duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
               />
             </Link>
           </div>
