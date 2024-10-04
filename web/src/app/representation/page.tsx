@@ -22,7 +22,7 @@ export default async function RepresentationPage() {
       <div className='m-2 grid grid-cols-26 gap-1'>
         {posters.map((poster: Poster) => (
           <div key={poster.id} className='flex justify-center bg-blue-400 '>
-            <Link href={`/representation/imagesList?imageId=${poster.id}`}>
+            <Link href={`/representation/som?imageId=${poster.id}`}>
               <Image
                 src={`/posters/${poster.id}.jpg`}
                 alt={`${poster.representationsCoordinate}`}

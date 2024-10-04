@@ -5,6 +5,15 @@
   - You are about to drop the `objWord` table. If the table is not empty, all the data it contains will be lost.
 
 */
+-- DropForeignKey
+ALTER TABLE "objWord" DROP CONSTRAINT "objWord_posterId_fkey";
+
+-- DropTable
+DROP TABLE "Poster";
+
+-- DropTable
+DROP TABLE "objWord";
+
 -- CreateTable
 CREATE TABLE "poster" (
     "id" TEXT NOT NULL,

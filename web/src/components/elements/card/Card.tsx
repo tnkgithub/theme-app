@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const imagesPathMap = {
-  imagesList: '/posters/normalPoster/po000001.jpg',
+  imagesList: '/posters/po000001.jpg',
   titleList: '',
   objectList: '',
 };
