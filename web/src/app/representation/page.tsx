@@ -26,8 +26,8 @@ export default async function RepresentationPage() {
               <Image
                 src={`/posters/${poster.id}.jpg`}
                 alt={`${poster.representationsCoordinate}`}
-                width={150}
-                height={243}
+                width={100}
+                height={100}
                 className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
               />
             </Link>
