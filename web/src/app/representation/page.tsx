@@ -17,9 +17,9 @@ export default async function RepresentationPage() {
   const posters = (await getStaticProps()).props.posters;
 
   return (
-    <main>
+    <main className='mt-12'>
       {/* postersのjsonを表示 */}
-      <div className='m-1 grid grid-cols-26 gap-1'>
+      <div className='m-2 grid grid-cols-26 gap-1'>
         {posters.map((poster: Poster) => (
           <div key={poster.id} className='w-100 h-141 bg-gray-500'>
             <Link href={`/representation/som?imageId=${poster.id}`}>

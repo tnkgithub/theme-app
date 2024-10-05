@@ -42,7 +42,7 @@ export default function ImagesListPage() {
   const aroundPosters = getAroundPosters(imageId, posters);
 
   return (
-    <main>
+    <main className='mt-12'>
       <div className='m-8 grid grid-cols-17 gap-2'>
         {/* 画像IDのjsonを表示 */}
 
@@ -50,7 +50,6 @@ export default function ImagesListPage() {
         {aroundPosters && aroundPosters.length > 0 ? (
           aroundPosters.map((poster: Poster, index) => (
             <div key={index} className='w-150 h-211 bg-gray-500'>
-              {/* ポスターが存在しない場合はエラーメッセージを表示 */}
               {poster && poster.id ? (
                 <Link href={`/representation/som?imageId=${poster.id}`}>
                   <Image
@@ -62,9 +61,7 @@ export default function ImagesListPage() {
                   />
                 </Link>
               ) : (
-                <div className='text-red-500'>
-                  Error: Poster data is missing
-                </div>
+                <div className='bg-gray-500 animate-pulse' />
               )}
             </div>
           ))
