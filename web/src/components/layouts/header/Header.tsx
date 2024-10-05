@@ -21,11 +21,11 @@ const Header = ({
   return (
     <>
       <header className='fixed z-10 w-full border-b border-gray-300 bg-white'>
-        <div className='flex flex-col items-center justify-between py-4 lg:flex-row'>
+        <div className='flex flex-col items-center justify-between py-16 lg:flex-row'>
           <div className='min-w-fit'>
             <Link
               href='/'
-              className='ml-6 flex items-center justify-center font-serif text-xl font-medium text-gray-800 lg:justify-start'
+              className='ml-24 flex items-center justify-center font-serif text-xl font-medium text-gray-800 lg:justify-start'
             >
               {logoText}
             </Link>
@@ -33,8 +33,8 @@ const Header = ({
           {/* <div className='text-xl font-biz_udp font-bold text-blue-500'>
             代表資料
           </div> */}
-          <div className='container mr-6 hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
-            <div className='mr-2  flex py-1 lg:py-0'>
+          <div className='container mr-24 hidden flex-col items-center justify-center pt-8 md:flex md:flex-row lg:justify-end lg:py-0'>
+            <div className='mr-8  flex py-4 lg:py-0'>
               {buttonText.map((text, index) => (
                 <Button
                   inText={text}
@@ -47,7 +47,7 @@ const Header = ({
           </div>
         </div>
       </header>
-      <div className='h-16 md:h-28 lg:h-16 '></div>
+      <div className='h-64 md:h-112 lg:h-64 '></div>
     </>
   );
 };

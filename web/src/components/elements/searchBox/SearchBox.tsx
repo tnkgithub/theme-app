@@ -1,13 +1,12 @@
 import React from 'react';
-import Button from '@/components/elements/button/Button';
 
 const SearchBox = ({ placeholder }: { placeholder: string }) => {
   return (
-    <form className='w-72'>
-      <div className='flex items-center rounded-md bg-gray-300 p-1 text-gray-600'>
-        <div className='mx-1 '>
+    <form className='w-320'>
+      <div className='flex items-center rounded-md bg-gray-300 p-4 text-gray-600'>
+        <div className='mx-4 '>
           <svg
-            className='size-4'
+            className='size-16'
             aria-hidden='true'
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -25,13 +24,13 @@ const SearchBox = ({ placeholder }: { placeholder: string }) => {
         <input
           type='search'
           id='default-search'
-          className=' flex-auto bg-inherit py-1 pr-1 ps-2 text-sm font-medium focus:outline-none'
+          className=' flex-auto bg-inherit py-4 pr-4 ps-8 text-sm font-medium focus:outline-none'
           placeholder={placeholder}
           required
         />
         <button
           type='submit'
-          className='ml-auto rounded-md bg-blue-500 px-3 py-1 text-sm text-white duration-300 focus:outline-none'
+          className='ml-auto rounded-md bg-blue-500 px-12 py-4 text-sm text-white duration-300 focus:outline-none'
         >
           検索
         </button>

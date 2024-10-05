@@ -1,4 +1,3 @@
-import { biz_udp } from '@/utils/fonts';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -14,12 +13,17 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       gridTemplateColumns: {
-        '17': 'repeat(17, minmax(100px, 1fr))',
+        '17': 'repeat(17, minmax(150px, 1fr))',
         '26': 'repeat(26, minmax(100px, 1fr))',
         '78': 'repeat(78, minmax(100px, 1fr))',
       },
     },
+    spacing: {
+      ...Object.fromEntries(
+        [...Array(401)].map((_, i) => i).map((num) => [num, `${num}px`])
+      ),
+    },
+    plugins: [],
   },
-  plugins: [],
 };
 export default config;

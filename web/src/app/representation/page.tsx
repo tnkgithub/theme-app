@@ -21,13 +21,13 @@ export default async function RepresentationPage() {
       {/* postersのjsonを表示 */}
       <div className='m-1 grid grid-cols-26 gap-1'>
         {posters.map((poster: Poster) => (
-          <div key={poster.id} className='border border-gray-500 bg-blue-500'>
+          <div key={poster.id} className='w-100 h-141 bg-gray-500'>
             <Link href={`/representation/som?imageId=${poster.id}`}>
               <Image
                 src={`/posters/${poster.id}.jpg`}
                 alt={`${poster.representationsCoordinate}`}
                 width={100}
-                height={100}
+                height={141}
                 className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
               />
             </Link>
