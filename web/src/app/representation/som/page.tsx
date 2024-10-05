@@ -17,22 +17,25 @@ function getImageID() {
 //
 function getAroundPosters(imageId: string, posters: Poster[]) {
   const aroundPostersId = []; // 画像IDのリスト
-  let somCoordinate = null;
+  let targetCoordinate = null;
+
+  // ターゲットの画像IDの座標を取得
   for (const poster of posters) {
     if (poster.id === imageId) {
-      somCoordinate = poster.somCoordinate;
+      targetCoordinate = poster.somCoordinate;
       break;
     }
   }
 
-  if (somCoordinate !== null) {
-    for (let i = 0; i < 76; i++) {
-      if (posters[i].somCoordinate + 76 === somCoordinate) {
-        aroundPostersId.push({
-          id: posters[i].id,
-          somCoordinate: posters[i].somCoordinate,
-        });
-      }
+  const x = 78; // somの横方向の数
+  const y = 26; // somの縦方向の数
+
+  if (targetCoordinate !== null) {
+    // targetCoordinateの周囲の画像IDを取得
+    for (const poster of posters) {
+      if (
+
+      )
     }
   }
   return aroundPostersId;
