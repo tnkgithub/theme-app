@@ -168,9 +168,13 @@ export default function ImagesListPage() {
   return (
     <main>
       <div className='m-2 grid grid-cols-17 gap-1'>
+        {/* 画像IDのjsonを表示 */}
+
+        {/* aroundPostersがnullまたはundefinedならエラーメッセージを表示 */}
         {aroundPosters && aroundPosters.length > 0 ? (
           aroundPosters.map((poster: Poster, index) => (
             <div key={index} className='bg-gray-500'>
+              {/* ポスターが存在しない場合はエラーメッセージを表示 */}
               {poster && poster.id ? (
                 <Link href={`/representation/som?imageId=${poster.id}`}>
                   <Image
