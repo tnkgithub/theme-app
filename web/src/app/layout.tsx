@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import type { Metadata } from 'next';
 import { biz_udp } from '@/utils/fonts';
 import '@/ui/global.css';
