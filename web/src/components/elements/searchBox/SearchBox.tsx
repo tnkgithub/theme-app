@@ -1,9 +1,16 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import React from 'react';
 
-const SearchBox = ({ placeholder }: { placeholder: string }) => {
+const SearchBox = ({
+  placeholder,
+  buttonText,
+}: {
+  placeholder: string;
+  buttonText: string;
+}) => {
   return (
-    <form className='w-320'>
-      <div className='flex items-center rounded-md bg-gray-300 p-4 text-gray-600'>
+    <form className='w-280'>
+      <div className='flex items-center rounded-md bg-gray-200 p-4'>
         <div className='mx-4 '>
           <svg
             className='size-16'
@@ -24,15 +31,15 @@ const SearchBox = ({ placeholder }: { placeholder: string }) => {
         <input
           type='search'
           id='default-search'
-          className=' flex-auto bg-inherit py-4 pr-4 ps-8 text-sm font-medium focus:outline-none'
+          className='min-w-50 flex-auto bg-inherit py-4 pr-4 ps-8 text-sm font-medium focus:outline-none'
           placeholder={placeholder}
           required
         />
         <button
           type='submit'
-          className='ml-auto rounded-md bg-blue-500 px-12 py-4 text-sm text-white duration-300 focus:outline-none'
+          className='ml-auto min-w-fit rounded-md bg-blue-500 px-12 py-4 text-sm text-white duration-300 focus:outline-none'
         >
-          検索
+          {buttonText}
         </button>
       </div>
     </form>

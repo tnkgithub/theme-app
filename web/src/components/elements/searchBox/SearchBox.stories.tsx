@@ -13,4 +13,5 @@ export const SearchBoxStory = (Template as any).bind({});
 
 SearchBoxStory.args = {
   placeholder: '検索',
+  buttonText: '検索',
 };

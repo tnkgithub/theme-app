@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import React from 'react';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import Button from '@/components/elements/button/Button';
@@ -20,7 +21,7 @@ const Header = ({
 }) => {
   return (
     <>
-      <header className='fixed z-10 w-full border-b border-gray-300 bg-white'>
+      <header className='fixed z-20 w-full border-b border-gray-300 bg-white'>
         <div className='flex flex-col items-center justify-between py-16 lg:flex-row'>
           <div className='min-w-fit'>
             <Link
@@ -43,11 +44,11 @@ const Header = ({
                 />
               ))}
             </div>
-            <SearchBox placeholder='検索' />
+            <SearchBox placeholder='検索' buttonText='検索' />
           </div>
         </div>
       </header>
-      <div className='h-64 md:h-112 lg:h-64 '></div>
+      <div className='md:h-112 h-64 lg:h-64 '></div>
     </>
   );
 };
