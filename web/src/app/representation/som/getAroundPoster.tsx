@@ -27,7 +27,7 @@ export function getAroundPosters(imageId: string, posters: Poster[]) {
 
   // 画像IDをaroundPostersIdに追加
   if (startX < 0 && startY < 0) {
-    // たーげっとが左上にあり、縦と横の両方を折り返す場合 例）targetCoordinate[0, 0]
+    // ターゲットが左上にあり、縦と横の両方を折り返す場合 例）targetCoordinate[0, 0]
     const tmpStartX = 26 + startX;
     const tmpStartY = 78 + startY;
     for (let x = tmpStartX; x <= 25; x++) {

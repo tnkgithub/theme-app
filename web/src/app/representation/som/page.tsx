@@ -1,76 +1,61 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 'use client';
 
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Poster } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAroundPosters } from './aroundPoster';
-
-// URLからクエリパラメータを取得
-function getImageID() {
-  const searchParams = useSearchParams();
-  const imageId = searchParams.get('imageId') ?? '0';
-  return imageId;
-}
+import { useFetchPosterData } from '@/hooks/useFetchPosterData';
+import { useGetQuery } from '@/hooks/useGetQuery';
+import useOpenDescription from '@/hooks/useOpenDescription';
+import { getAroundPosters } from './getAroundPoster';
+import { Poster } from '@prisma/client';
+import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 
 export default function ImagesListPage() {
-  const imageId = getImageID();
+  // URLからクエリパラメータを取得
+  const imageId = useGetQuery();
+
+  // ポスターの説明を開く
+  useOpenDescription(imageId);
 
   // ポスターのsom座標のjsonを取得
-  const [posters, setPosters] = useState<Poster[]>([]);
-
-  useEffect(() => {
-    fetch('http://localhost:8000/api/poster/som')
-      .then((res) => res.json())
-      .then(({ posters }) => {
-        setPosters(posters);
-      });
-  }, []);
-
-  // imageIdがpoから始まる場合はポスターのurlを開く
-  if (imageId.includes('po')) {
-    const posterUrl = `https://archives.c.fun.ac.jp/posters/${imageId}/0001`;
-    // 別タブでurlを開く
-    window.open(posterUrl, '_blank', 'width=800, height=800');
-  } else {
-    console.log('imageId is not found');
-  }
+  const posters = useFetchPosterData('http://localhost:8000/api/poster/som');
 
   // som座標の周囲の画像IDを取得
   const aroundPosters = getAroundPosters(imageId, posters);
 
   return (
-    <main className='mt-12'>
-      <div className='m-8 grid grid-cols-17 gap-2'>
-        {/* 画像IDのjsonを表示 */}
+    <MotionWrapper>
+      <main className='mt-12'>
+        <div className='grid-cols-17 m-8 grid gap-2'>
+          {/* 画像IDのjsonを表示 */}
 
-        {/* aroundPostersがnullまたはundefinedならエラーメッセージを表示 */}
-        {aroundPosters && aroundPosters.length > 0 ? (
-          aroundPosters.map((poster: Poster, index) => (
-            <div key={index} className='w-150 h-211 bg-gray-500'>
-              {poster && poster.id ? (
-                <Link href={`/representation/som?imageId=${poster.id}`}>
-                  <Image
-                    src={`/posters/${poster.id}.jpg`}
-                    alt={`${poster.somCoordinate}`}
-                    width={150}
-                    height={211}
-                    className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
-                  />
-                </Link>
-              ) : (
-                <div className='bg-gray-500 animate-pulse' />
-              )}
+          {/* aroundPostersがnullまたはundefinedならエラーメッセージを表示 */}
+          {aroundPosters && aroundPosters.length > 0 ? (
+            aroundPosters.map((poster: Poster, index) => (
+              <div key={index} className='h-211 w-150 bg-gray-500'>
+                {poster && poster.id ? (
+                  <Link href={`/representation/som?imageId=${poster.id}`}>
+                    <Image
+                      src={`/posters/${poster.id}.jpg`}
+                      alt={`${poster.somCoordinate}`}
+                      width={150}
+                      height={211}
+                      className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
+                    />
+                  </Link>
+                ) : (
+                  <div className='animate-pulse bg-gray-500' />
+                )}
+              </div>
+            ))
+          ) : (
+            <div className='text-red-500'>
+              Error: aroundPosters is null or undefined
             </div>
-          ))
-        ) : (
-          <div className='text-red-500'>
-            Error: aroundPosters is null or undefined
-          </div>
-        )}
-      </div>
-    </main>
+          )}
+        </div>
+      </main>
+    </MotionWrapper>
   );
 }
