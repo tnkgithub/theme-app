@@ -7,7 +7,7 @@ const imagesPathMap = {
   objectList: '',
 };
 
-export default function Card({
+function Card({
   title,
   description,
   type,
@@ -36,3 +36,5 @@ export default function Card({
     </>
   );
 }
+
+export default Card;

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import Button from './Button';
 
 const meta: Meta = {
@@ -10,6 +10,7 @@ export default meta;
 
 const Template = (args: any) => <Button {...args} />;
 export const ButtonStory = (Template as any).bind({});
+
 ButtonStory.args = {
   inText: 'Button',
 };
