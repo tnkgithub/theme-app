@@ -1,14 +1,50 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import React from 'react';
-import Link from 'next/link';
+import { cva } from 'class-variance-authority';
 
-const Button = ({ inText, pageLink }: { inText: string; pageLink: string }) => {
+type ButtonProps = {
+  inText: string;
+  intent?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
+  isDisabled?: boolean;
+  onClick: () => void;
+};
+
+const buttonVariants = cva(
+  'mx-2 rounded-lg px-0 py-8 text-center text-sm font-bold duration-300 hover:bg-blue-500 hover:text-white',
+  {
+    variants: {
+      intent: {
+        primary: 'bg-white text-gray-800',
+        secondary: 'bg-blue-500 text-white',
+      },
+      size: {
+        small: 'w-min-fit rounded-md px-8 py-3',
+        medium: 'w-105 px-12 py-4',
+        large: 'w-170 my-2 p-8',
+      },
+    },
+  }
+);
+
+const Button = ({
+  inText,
+  intent = 'primary',
+  size = 'medium',
+  isDisabled = false,
+  onClick,
+}: ButtonProps) => {
+  const buttonClass = buttonVariants({ intent, size });
+
   return (
-    <Link
-      href={pageLink}
-      className='mx-2 w-128 rounded-lg bg-white px-0 py-8 text-center text-sm font-bold text-gray-800 duration-300 hover:bg-blue-500 hover:text-white'
+    <button
+      type='button'
+      className={buttonClass}
+      disabled={isDisabled}
+      onClick={onClick}
     >
       {inText}
-    </Link>
+    </button>
   );
 };
 

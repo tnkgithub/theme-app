@@ -19,6 +19,7 @@
     "@trpc/next": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
+    "class-variance-authority": "^0.7.0",
     "csv-parser": "^3.0.0",
     "D": "^1.0.0",
     "eslint-plugin-tailwindcss": "^3.17.4",

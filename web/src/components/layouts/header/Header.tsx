@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable tailwindcss/no-custom-classname */
 import React from 'react';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
@@ -7,18 +9,10 @@ import Link from 'next/link';
 type HeaderProps = {
   logoText: string;
   buttonText: string[];
-  buttonLink: string[];
+  onClickHandler: () => void;
 };
 
-const Header = ({
-  logoText,
-  buttonText,
-  buttonLink,
-}: {
-  logoText: string;
-  buttonText: string[];
-  buttonLink: string[];
-}) => {
+const Header = ({ logoText, buttonText, onClickHandler }: HeaderProps) => {
   return (
     <>
       <header className='fixed z-20 w-full border-b border-gray-300 bg-white'>
@@ -38,13 +32,15 @@ const Header = ({
             <div className='mr-8  flex py-4 lg:py-0'>
               {buttonText.map((text, index) => (
                 <Button
-                  inText={text}
                   key={index}
-                  pageLink={buttonLink[index]}
+                  inText={text}
+                  intent='primary'
+                  size='medium'
+                  onClick={onClickHandler}
                 />
               ))}
             </div>
-            <SearchBox placeholder='検索' buttonText='検索' />
+            <SearchBox placeholder='検索' buttonText='検索' size='medium' />
           </div>
         </div>
       </header>

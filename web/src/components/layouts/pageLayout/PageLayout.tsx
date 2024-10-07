@@ -7,10 +7,9 @@ const PageLayout = () => {
       <Header
         logoText='Logo'
         buttonText={['新規登録', 'ログイン']}
-        buttonLink={['/register', '/login']}
+        onClickHandler={() => {}}
       />
       <SideBar />
-      <main className='flex-1'>main</main>
     </div>
   );
 };

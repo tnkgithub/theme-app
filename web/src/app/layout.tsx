@@ -1,8 +1,12 @@
+/* eslint-disable tailwindcss/classnames-order */
 /* eslint-disable tailwindcss/no-custom-classname */
 import type { Metadata } from 'next';
 import { biz_udp } from '@/utils/fonts';
 import '@/ui/global.css';
 import Header from '@/components/layouts/header/Header';
+import React from 'react';
+import { onClickTmp } from './onClickTmp';
+import SideBar from '@/components/layouts/sideBar/SideBar';
 
 export const metadata: Metadata = {
   title: 'Archive App',
@@ -19,7 +23,7 @@ export default function RootLayout({
         <Header
           logoText='Archive App'
           buttonText={['画像一覧', 'タイトル一覧', '物体名一覧']}
-          buttonLink={['/representation', '/titles', '/']}
+          onClickHandler={onClickTmp}
         />
         {children}
       </body>
