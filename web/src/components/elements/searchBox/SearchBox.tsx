@@ -24,7 +24,7 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        small: 'w-124',
+        small: 'w-124 text-xs',
         medium: 'w-152',
         large: 'w-184',
       },

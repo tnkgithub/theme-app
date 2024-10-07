@@ -47,7 +47,14 @@ const SideBar = () => {
           </div>
         </div> */}
           <div className='my-4 py-8'>
-            <SearchBox placeholder='絞り込み' buttonText='検索' size='small' />
+            <p className='pb-12 text-center text-lg font-bold'>
+              キーワードで絞り込む
+            </p>
+            <SearchBox
+              placeholder='キーワードを入力'
+              buttonText='検索'
+              size='small'
+            />
           </div>
         </div>
       </aside>

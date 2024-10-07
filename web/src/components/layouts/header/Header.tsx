@@ -40,7 +40,11 @@ const Header = ({ logoText, buttonText, onClickHandler }: HeaderProps) => {
                 />
               ))}
             </div>
-            <SearchBox placeholder='検索' buttonText='検索' size='medium' />
+            <SearchBox
+              placeholder='資料を検索'
+              buttonText='検索'
+              size='medium'
+            />
           </div>
         </div>
       </header>

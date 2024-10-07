@@ -6,7 +6,6 @@ import '@/ui/global.css';
 import Header from '@/components/layouts/header/Header';
 import React from 'react';
 import { onClickTmp } from './onClickTmp';
-import SideBar from '@/components/layouts/sideBar/SideBar';
 
 export const metadata: Metadata = {
   title: 'Archive App',
