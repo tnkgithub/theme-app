@@ -1,6 +1,5 @@
 'use client';
 
-/* eslint-disable tailwindcss/no-custom-classname */
 import React from 'react';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import Button from '@/components/elements/button/Button';
@@ -16,7 +15,7 @@ const Header = ({ logoText, buttonText, onClickHandler }: HeaderProps) => {
   return (
     <>
       <header className='fixed z-20 w-full border-b border-gray-300 bg-white'>
-        <div className='flex flex-col items-center justify-between py-4 lg:flex-row'>
+        <div className='flex flex-col items-center justify-between pb-2 pt-4 lg:flex-row'>
           <div className='min-w-fit'>
             <Link
               href='/'

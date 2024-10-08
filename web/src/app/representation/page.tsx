@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { Poster } from '@prisma/client';
 import React from 'react';
 import Image from 'next/image';

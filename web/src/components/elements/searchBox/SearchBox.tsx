@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import React from 'react';
 import { cva } from 'class-variance-authority';
 import Button from '@/components/elements/button/Button';

@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import React from 'react';
 import { cva } from 'class-variance-authority';
 
@@ -11,7 +10,7 @@ type ButtonProps = {
 };
 
 const buttonVariants = cva(
-  'm-1 rounded-lg text-center text-sm font-bold duration-300 hover:bg-blue-500 hover:text-white',
+  'm-0.5 rounded-lg text-center text-sm font-bold duration-300 hover:bg-blue-500 hover:text-white',
   {
     variants: {
       intent: {
@@ -21,7 +20,7 @@ const buttonVariants = cva(
       size: {
         small: 'w-12 rounded-md p-1',
         medium: 'w-28 px-3 py-2',
-        large: 'w-44 p-2',
+        large: 'w-48 p-2',
       },
     },
   }

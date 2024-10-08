@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 'use client';
 
 import React from 'react';
@@ -32,7 +31,7 @@ export default function ImagesListPage() {
           <SideBar />
         </div>
         <div className='grow px-1'>
-          <main className='mt-3'>
+          <main className='m-3'>
             <div className='grid-cols-17 m-2 grid gap-1'>
               {/* 画像IDのjsonを表示 */}
 
