@@ -32,7 +32,7 @@ const SideBar = () => {
               onClick={() => {}}
             />
           </div>
-          <div className='my-1 w-52 py-2'>
+          <div className='my-1 w-52 border-b pb-4 pt-2'>
             <p className='pb-3 ps-2 text-left text-lg font-bold'>
               キーワードで絞り込む
             </p>
@@ -40,6 +40,14 @@ const SideBar = () => {
               placeholder='キーワードを入力'
               buttonText='検索'
               size='small'
+            />
+          </div>
+          <div className='my-3 flex w-52 flex-col items-center'>
+            <Button
+              inText='代表資料に戻る'
+              intent='secondary'
+              size='large'
+              onClick={() => {}}
             />
           </div>
         </div>
