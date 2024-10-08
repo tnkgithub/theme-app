@@ -19,7 +19,7 @@ const buttonVariants = cva(
         secondary: 'bg-blue-500 text-white',
       },
       size: {
-        small: 'w-min-fit rounded-md px-8 py-3',
+        small: 'w-50 rounded-md px-4 py-2',
         medium: 'w-105 px-12 py-4',
         large: 'w-170 my-2 p-8',
       },

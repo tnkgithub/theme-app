@@ -24,9 +24,9 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        small: 'w-124 text-xs',
-        medium: 'w-152',
-        large: 'w-184',
+        small: 'w-112 text-xs',
+        medium: 'w-140',
+        large: 'w-160',
       },
     },
   }
@@ -42,35 +42,39 @@ const SearchBox = ({
 
   return (
     <form className={searchBoxClass}>
-      <div className='flex flex-row items-center rounded-md bg-gray-200 p-4'>
-        <svg
-          className='ml-4 size-16'
-          aria-hidden='true'
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 20 20'
-        >
-          <path
-            stroke='currentColor'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth='2'
-            d='m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z'
+      <div className='flex flex-row items-center justify-between rounded-md bg-gray-200 p-4'>
+        <div className='flex flex-row items-center'>
+          <svg
+            className='ml-4 size-16'
+            aria-hidden='true'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 20 20'
+          >
+            <path
+              stroke='currentColor'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z'
+            />
+          </svg>
+          <input
+            type='search'
+            id='default-search'
+            className={inputClass}
+            placeholder={placeholder}
+            required
           />
-        </svg>
-        <input
-          type='search'
-          id='default-search'
-          className={inputClass}
-          placeholder={placeholder}
-          required
-        />
-        <Button
-          inText={buttonText}
-          intent='secondary'
-          size='small'
-          onClick={() => {}}
-        />
+        </div>
+        <div className='justify-end'>
+          <Button
+            inText={buttonText}
+            intent='secondary'
+            size='small'
+            onClick={() => {}}
+          />
+        </div>
       </div>
     </form>
   );
