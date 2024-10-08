@@ -40,15 +40,26 @@ export default function ImagesListPage() {
                 aroundPosters.map((poster: Poster, index) => (
                   <div key={index} className='w-[120px] bg-gray-500'>
                     {poster && poster.id ? (
-                      <Link href={`/representation/som?imageId=${poster.id}`}>
+                      // imageIdとposter.idが一致する場合はリンクを無効にする
+                      imageId === poster.id ? (
                         <Image
                           src={`/posters/${poster.id}.jpg`}
                           alt={`${poster.somCoordinate}`}
                           width={120}
                           height={120}
-                          className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
+                          className='border-4 border-blue-500 object-cover pb-0.5 duration-300 hover:scale-110 hover:shadow-xl'
                         />
-                      </Link>
+                      ) : (
+                        <Link href={`/representation/som?imageId=${poster.id}`}>
+                          <Image
+                            src={`/posters/${poster.id}.jpg`}
+                            alt={`${poster.somCoordinate}`}
+                            width={120}
+                            height={120}
+                            className='object-cover duration-300 hover:scale-110 hover:border-4 hover:border-gray-200 hover:shadow-xl'
+                          />
+                        </Link>
+                      )
                     ) : (
                       <div className='animate-pulse bg-gray-500' />
                     )}

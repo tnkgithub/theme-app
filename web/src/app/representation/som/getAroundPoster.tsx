@@ -46,7 +46,7 @@ export function getAroundPosters(imageId: string, posters: Poster[]) {
         aroundPosters.push(posters[x * 78 + y]);
       }
     }
-  } else if (startX < 0) {
+  } else if (startX < 0 && 0 <= startY && endY < 78) {
     // ターゲットが上端付近にあり、縦のみ折り返す場合 例）targetCoordinate[0, 8]
     const tmpStartX = 26 + startX;
     for (let x = tmpStartX; x <= 25; x++) {
@@ -59,14 +59,56 @@ export function getAroundPosters(imageId: string, posters: Poster[]) {
         aroundPosters.push(posters[x * 78 + y]);
       }
     }
-  } else if (startY < 0) {
-    // ターゲットが左端付近にあり、横のみ折り返す場合 例）targetCoordinate[5, 0]
+  } else if (startX < 0 && endY >= 78) {
+    // ターゲットが右上端付近にあり、横と縦の両方を折り返す場合 例）targetCoordinate[0, 77]
+    const tmpStartX = 26 + startX;
+    const tmpEndY = endY - 78;
+    for (let x = tmpStartX; x <= 25; x++) {
+      for (let y = startY; y <= 77; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+      for (let y = 0; y <= tmpEndY; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+    }
+    for (let x = 0; x <= endX; x++) {
+      for (let y = startY; y <= 77; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+      for (let y = 0; y <= tmpEndY; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+    }
+  } else if (endX >= 26 && startY < 0) {
+    // ターゲットが左下にあり、縦と横の両方を折り返す場合 例）targetCoordinate[25, 0]
+    const tmpEndX = endX - 26;
     const tmpStartY = 78 + startY;
-    for (let x = startX; x <= endX; x++) {
+    for (let x = startX; x <= 25; x++) {
       for (let y = tmpStartY; y <= 77; y++) {
         aroundPosters.push(posters[x * 78 + y]);
       }
       for (let y = 0; y <= endY; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+    }
+    for (let x = 0; x <= tmpEndX; x++) {
+      for (let y = tmpStartY; y <= 77; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+      for (let y = 0; y <= endY; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+    }
+  } else if (endX >= 26 && 0 <= startY && endY < 78) {
+    // ターゲットが下端付近にあり、縦のみ折り返す場合 例）targetCoordinate[25, 8]
+    const tmpEndX = endX - 26;
+    for (let x = startX; x <= 25; x++) {
+      for (let y = startY; y <= endY; y++) {
+        aroundPosters.push(posters[x * 78 + y]);
+      }
+    }
+    for (let x = 0; x <= tmpEndX; x++) {
+      for (let y = startY; y <= endY; y++) {
         aroundPosters.push(posters[x * 78 + y]);
       }
     }
@@ -90,16 +132,14 @@ export function getAroundPosters(imageId: string, posters: Poster[]) {
         aroundPosters.push(posters[x * 78 + y]);
       }
     }
-  } else if (endX >= 26) {
-    // ターゲットが下端付近にあり、縦のみ折り返す場合 例）targetCoordinate[25, 8]
-    const tmpEndX = endX - 26;
-    for (let x = startX; x <= 25; x++) {
-      for (let y = startY; y <= endY; y++) {
+  } else if (startY < 0) {
+    // ターゲットが左端付近にあり、横のみ折り返す場合 例）targetCoordinate[5, 0]
+    const tmpStartY = 78 + startY;
+    for (let x = startX; x <= endX; x++) {
+      for (let y = tmpStartY; y <= 77; y++) {
         aroundPosters.push(posters[x * 78 + y]);
       }
-    }
-    for (let x = 0; x <= tmpEndX; x++) {
-      for (let y = startY; y <= endY; y++) {
+      for (let y = 0; y <= endY; y++) {
         aroundPosters.push(posters[x * 78 + y]);
       }
     }
