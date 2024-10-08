@@ -34,7 +34,6 @@ export default function ImagesListPage() {
           <main className='m-3'>
             <div className='grid-cols-17 m-2 grid gap-1'>
               {/* 画像IDのjsonを表示 */}
-
               {/* aroundPostersがnullまたはundefinedならエラーメッセージを表示 */}
               {aroundPosters && aroundPosters.length > 0 ? (
                 aroundPosters.map((poster: Poster, index) => (
@@ -53,7 +52,7 @@ export default function ImagesListPage() {
                         <Link href={`/representation/som?imageId=${poster.id}`}>
                           <Image
                             src={`/posters/${poster.id}.jpg`}
-                            alt={`${poster.somCoordinate}`}
+                            alt={'Poster None'}
                             width={120}
                             height={120}
                             className='object-cover duration-300 hover:scale-110 hover:border-4 hover:border-gray-200 hover:shadow-xl'

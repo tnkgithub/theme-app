@@ -20,7 +20,7 @@ export default function RootLayout({
         <Header
           logoText='Archive App'
           buttonText={['画像一覧', 'タイトル一覧', '物体名一覧']}
-          onClickHandler={onClickTmp}
+          buttonHref={['/representation', '/titles', '']}
         />
         {children}
       </body>
