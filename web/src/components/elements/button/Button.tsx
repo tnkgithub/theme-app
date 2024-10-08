@@ -11,7 +11,7 @@ type ButtonProps = {
 };
 
 const buttonVariants = cva(
-  'mx-2 rounded-lg px-0 py-8 text-center text-sm font-bold duration-300 hover:bg-blue-500 hover:text-white',
+  'm-1 rounded-lg text-center text-sm font-bold duration-300 hover:bg-blue-500 hover:text-white',
   {
     variants: {
       intent: {
@@ -19,9 +19,9 @@ const buttonVariants = cva(
         secondary: 'bg-blue-500 text-white',
       },
       size: {
-        small: 'w-50 rounded-md px-4 py-2',
-        medium: 'w-105 px-12 py-4',
-        large: 'w-170 my-2 p-8',
+        small: 'w-12 rounded-md p-1',
+        medium: 'w-28 px-3 py-2',
+        large: 'w-44 p-2',
       },
     },
   }

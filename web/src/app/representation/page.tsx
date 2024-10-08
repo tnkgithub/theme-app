@@ -20,9 +20,9 @@ export default async function RepresentationPage() {
 
   return (
     <MotionWrapper>
-      <main className='mt-12'>
+      <main className='mt-3'>
         {/* postersのjsonを表示 */}
-        <div className='grid-cols-26  m-2 grid gap-1'>
+        <div className='grid-cols-26  m-1 grid gap-1'>
           {posters.map((poster: Poster) => (
             <div key={poster.id} className='h-141 w-100 bg-gray-500'>
               <Link href={`/representation/som?imageId=${poster.id}`}>

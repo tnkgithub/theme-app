@@ -28,25 +28,25 @@ export default function ImagesListPage() {
   return (
     <MotionWrapper>
       <div className='flex flex-row'>
-        <div className='w-220 h-screen '>
+        <div className='h-screen w-52 '>
           <SideBar />
         </div>
-        <div className='grow px-5'>
-          <main className='mt-12'>
-            <div className='grid-cols-17 m-8 grid gap-2'>
+        <div className='grow px-1'>
+          <main className='mt-3'>
+            <div className='grid-cols-17 m-2 grid gap-1'>
               {/* 画像IDのjsonを表示 */}
 
               {/* aroundPostersがnullまたはundefinedならエラーメッセージを表示 */}
               {aroundPosters && aroundPosters.length > 0 ? (
                 aroundPosters.map((poster: Poster, index) => (
-                  <div key={index} className='h-211 w-150 bg-gray-500'>
+                  <div key={index} className='w-[120px] bg-gray-500'>
                     {poster && poster.id ? (
                       <Link href={`/representation/som?imageId=${poster.id}`}>
                         <Image
                           src={`/posters/${poster.id}.jpg`}
                           alt={`${poster.somCoordinate}`}
-                          width={150}
-                          height={211}
+                          width={120}
+                          height={120}
                           className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
                         />
                       </Link>

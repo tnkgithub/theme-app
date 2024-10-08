@@ -9,24 +9,24 @@ type SearchBoxProps = {
   size?: 'small' | 'medium' | 'large';
 };
 
-const searchBoxVariants = cva('w-200', {
+const searchBoxVariants = cva('', {
   variants: {
     size: {
-      small: 'w-180',
-      medium: 'w-230',
-      large: 'w-260',
+      small: 'w-52',
+      medium: 'w-60',
+      large: 'w-72',
     },
   },
 });
 
 const inputVariants = cva(
-  'w-200 bg-inherit py-4 ps-8 text-sm font-medium focus:outline-none',
+  'bg-inherit py-1 ps-2 text-sm font-medium focus:outline-none',
   {
     variants: {
       size: {
-        small: 'w-112 text-xs',
-        medium: 'w-140',
-        large: 'w-160',
+        small: 'w-28 text-xs',
+        medium: 'w-32',
+        large: 'w-40',
       },
     },
   }
@@ -42,10 +42,10 @@ const SearchBox = ({
 
   return (
     <form className={searchBoxClass}>
-      <div className='flex flex-row items-center justify-between rounded-md bg-gray-200 p-4'>
+      <div className='flex flex-row items-center justify-between rounded-md bg-gray-200 p-1'>
         <div className='flex flex-row items-center'>
           <svg
-            className='ml-4 size-16'
+            className='ml-1 size-4'
             aria-hidden='true'
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -67,14 +67,12 @@ const SearchBox = ({
             required
           />
         </div>
-        <div className='justify-end'>
-          <Button
-            inText={buttonText}
-            intent='secondary'
-            size='small'
-            onClick={() => {}}
-          />
-        </div>
+        <Button
+          inText={buttonText}
+          intent='secondary'
+          size='small'
+          onClick={() => {}}
+        />
       </div>
     </form>
   );
