@@ -2,9 +2,11 @@
 
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import React from 'react';
-import Button from '@/components/elements/button/Button';
+import { Button, LinkButton } from '@/components/elements/button/Button';
 
 const SideBar = () => {
+  // ボタンを押されたときにLinkを発火する
+
   return (
     <>
       <aside className='fixed top-16 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-32 lg:top-16'>
@@ -42,14 +44,13 @@ const SideBar = () => {
               size='small'
             />
           </div>
-          <div className='my-3 flex w-52 flex-col items-center'>
-            <Button
-              inText='代表資料に戻る'
-              intent='secondary'
-              size='large'
-              onClick={() => {}}
-            />
-          </div>
+          <div className='my-3 flex w-52 flex-col items-center'></div>
+          <LinkButton
+            inText='代表資料に戻る'
+            intent='secondary'
+            size='large'
+            href='/representation'
+          />
         </div>
       </aside>
       <div className='h-screen w-56'></div>

@@ -2,16 +2,16 @@
 
 import React from 'react';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
-import Button from '@/components/elements/button/Button';
+import { LinkButton } from '@/components/elements/button/Button';
 import Link from 'next/link';
 
 type HeaderProps = {
   logoText: string;
   buttonText: string[];
-  onClickHandler: () => void;
+  buttonHref: string[];
 };
 
-const Header = ({ logoText, buttonText, onClickHandler }: HeaderProps) => {
+const Header = ({ logoText, buttonText, buttonHref }: HeaderProps) => {
   return (
     <>
       <header className='fixed z-20 w-full border-b border-gray-300 bg-white'>
@@ -30,12 +30,12 @@ const Header = ({ logoText, buttonText, onClickHandler }: HeaderProps) => {
           <div className='container mr-6 hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
             <div className='mr-2  flex py-1 lg:py-0'>
               {buttonText.map((text, index) => (
-                <Button
+                <LinkButton
                   key={index}
                   inText={text}
                   intent='primary'
                   size='medium'
-                  onClick={onClickHandler}
+                  href={buttonHref[index]}
                 />
               ))}
             </div>
