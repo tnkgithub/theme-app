@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 export default function useOpenDescription(posterId: string) {
   if (posterId.includes('po')) {
     const posterUrl = `https://archives.c.fun.ac.jp/posters/${posterId}/0001`;

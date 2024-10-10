@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useFetchTitleSimData } from '@/hooks/useFetchTitleSimData';
+// import { useFetchTitleSimData } from '@/hooks/useFetchTitleSimData';
 import { useGetQuery } from '@/hooks/useGetQuery';
 import useOpenDescription from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
@@ -14,9 +14,15 @@ export default function TitleSimilarityPage() {
 
   useOpenDescription(posterId);
 
-  const titleSimList = useFetchTitleSimData(
-    `http://localhost:8000/api/poster/titleSim?posterId=${posterId}`
-  );
+  const [titleSimData, setTitleSimData] = useState<TitleSimilarity[]>([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/api/poster/titleSim?posterId=${posterId}`)
+      .then((res) => res.json())
+      .then(({ titleSim }) => {
+        setTitleSimData(titleSim);
+      });
+  }, [posterId]);
 
   return (
     // <MotionWrapper>
@@ -34,23 +40,24 @@ export default function TitleSimilarityPage() {
               height={120}
               className='border-4 border-blue-500 object-cover pb-0.5 duration-300 hover:scale-110 hover:shadow-xl'
             />
-            {titleSimList && titleSimList.length > 0 ? (
-              titleSimList.map((title: TitleSimilarity) =>
-                title.id === posterId ? null : ( // for文のcontinueみたいに次のループに飛ばす
+            {titleSimData && titleSimData.length > 0 ? (
+              Array.from({ length: 200 }, (_, i) => {
+                const simKey = `sim_${i + 1}`;
+                return (
                   <Link
-                    key={title.id}
-                    href={`/representation/titleSim?posterId=${title.id}`}
+                    key={i}
+                    href={`/representation/titleSim?posterId=${titleSimData[0][simKey as keyof (typeof titleSimData)[0]]}`}
                   >
                     <Image
-                      src={`/posters/${title.id}.jpg`}
-                      alt={'Poster None'}
+                      src={`/posters/${titleSimData[0][simKey as keyof TitleSimilarity]}.jpg`}
+                      alt={`${titleSimData[0][simKey as keyof TitleSimilarity]}`}
                       width={120}
                       height={120}
                       className='object-cover duration-300 hover:scale-110 hover:border-4 hover:border-gray-200 hover:shadow-xl'
                     />
                   </Link>
-                )
-              )
+                );
+              })
             ) : (
               <div>no data</div>
             )}

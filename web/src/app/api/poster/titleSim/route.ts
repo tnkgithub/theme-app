@@ -6,8 +6,15 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const posterId = searchParams.get('posterId');
 
+  if (!posterId) {
+    return NextResponse.json(
+      { error: 'posterId is required' },
+      { status: 400 }
+    );
+  }
+
   try {
-    const titleSim = await prisma.title_similarities.findMany({
+    const titleSim = await prisma.titleSimilarity.findMany({
       where: {
         id: posterId,
       },
