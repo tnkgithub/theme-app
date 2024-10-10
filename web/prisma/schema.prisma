@@ -704,8 +704,9 @@ model TitleSimilarityMatrixPart1 {
   po000991 Float
   po000992 Float
   po000995 Float
-  similarityMatrixId String @map("similarity_matrix_id")
-  similarityMatrix   TitleSimilarityMatrix @relation(fields: [similarityMatrixId], references: [id])
+  similarityMatrixId Int @map("similarity_matrix_id")
+  similarityMatrix   TitleSimilarityMatrix @relation(fields: [similarityMatrixId], references: [numberId])
+  @@map("title_similarity_matrix_part1")
 }
 
 model TitleSimilarityMatrixPart2 {
@@ -1389,8 +1390,9 @@ model TitleSimilarityMatrixPart2 {
   po001997 Float
   po001998 Float
   po001999 Float
-  similarityMatrixId String @map("similarity_matrix_id")
-  similarityMatrix   TitleSimilarityMatrix @relation(fields: [similarityMatrixId], references: [id])
+  similarityMatrixId Int @map("similarity_matrix_id")
+  similarityMatrix   TitleSimilarityMatrix @relation(fields: [similarityMatrixId], references: [numberId])
+  @@map("title_similarity_matrix_part2")
 }
 
 model TitleSimilarityMatrixPart3 {
@@ -2066,13 +2068,15 @@ model TitleSimilarityMatrixPart3 {
   po006794 Float
   po006796 Float
   po006797 Float
-  similarityMatrixId String @map("similarity_matrix_id")
-  similarityMatrix   TitleSimilarityMatrix @relation(fields: [similarityMatrixId], references: [id])
+  similarityMatrixId  Int @map("similarity_matrix_id")
+  similarityMatrix   TitleSimilarityMatrix @relation(fields: [similarityMatrixId], references: [numberId])
+  @@map("title_similarity_matrix_part3")
 }
 
 model TitleSimilarityMatrix {
-  id    String @id
+  numberId    Int    @id @default(autoincrement())
   part1 TitleSimilarityMatrixPart1[]
   part2 TitleSimilarityMatrixPart2[]
   part3 TitleSimilarityMatrixPart3[]
+  @@map("title_similarity_matrix")
 }

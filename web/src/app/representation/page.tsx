@@ -24,7 +24,7 @@ export default async function RepresentationPage() {
         <div className='grid-cols-26  m-1 grid gap-1'>
           {posters.map((poster: Poster) => (
             <div key={poster.id} className='h-141 w-100 bg-gray-500'>
-              <Link href={`/representation/som?imageId=${poster.id}`}>
+              <Link href={`/representation/som?posterId=${poster.id}`}>
                 <Image
                   src={`/posters/${poster.id}.jpg`}
                   alt={`${poster.representationsCoordinate}`}

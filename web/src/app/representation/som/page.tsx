@@ -49,7 +49,9 @@ export default function ImagesListPage() {
                           className='border-4 border-blue-500 object-cover pb-0.5 duration-300 hover:scale-110 hover:shadow-xl'
                         />
                       ) : (
-                        <Link href={`/representation/som?imageId=${poster.id}`}>
+                        <Link
+                          href={`/representation/som?posterId=${poster.id}`}
+                        >
                           <Image
                             src={`/posters/${poster.id}.jpg`}
                             alt={'Poster None'}
