@@ -18,7 +18,7 @@ export default async function RepresentationPage() {
   const posters = (await getStaticProps()).props.posters;
 
   return (
-    <MotionWrapper>
+    // <MotionWrapper>
       <main className='mt-3'>
         {/* postersのjsonを表示 */}
         <div className='grid-cols-26  m-1 grid gap-1'>
@@ -37,6 +37,6 @@ export default async function RepresentationPage() {
           ))}
         </div>
       </main>
-    </MotionWrapper>
+    // </MotionWrapper>
   );
 }

@@ -20,7 +20,7 @@ export default function TitleSimilarityPage() {
   );
 
   return (
-    <MotionWrapper>
+    // <MotionWrapper>
       <div className='flex flex-row'>
         <div className='h-screen w-52 '>
           <SideBar />
@@ -59,6 +59,6 @@ export default function TitleSimilarityPage() {
           </main>
         </div>
       </div>
-    </MotionWrapper>
+    // </MotionWrapper>
   );
 }
