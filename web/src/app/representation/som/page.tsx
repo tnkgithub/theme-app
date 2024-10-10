@@ -13,16 +13,16 @@ import SideBar from '@/components/layouts/sideBar/SideBar';
 
 export default function ImagesListPage() {
   // URLからクエリパラメータを取得
-  const imageId = useGetQuery();
+  const posterId = useGetQuery();
 
   // ポスターの説明を開く
-  useOpenDescription(imageId);
+  useOpenDescription(posterId);
 
   // ポスターのsom座標のjsonを取得
   const posters = useFetchPosterData('http://localhost:8000/api/poster/som');
 
   // som座標の周囲の画像IDを取得
-  const aroundPosters = getAroundPosters(imageId, posters);
+  const aroundPosters = getAroundPosters(posterId, posters);
 
   return (
     <MotionWrapper>
@@ -39,8 +39,8 @@ export default function ImagesListPage() {
                 aroundPosters.map((poster: Poster, index) => (
                   <div key={index} className='w-[120px] bg-gray-500'>
                     {poster && poster.id ? (
-                      // imageIdとposter.idが一致する場合はリンクを無効にする
-                      imageId === poster.id ? (
+                      // posterIdとposter.idが一致する場合はリンクを無効にする
+                      posterId === poster.id ? (
                         <Image
                           src={`/posters/${poster.id}.jpg`}
                           alt={`${poster.somCoordinate}`}
