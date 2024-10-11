@@ -8,18 +8,109 @@ export async function GET(request: Request) {
 
   if (!posterId) {
     return NextResponse.json(
-      { error: 'posterId is required' },
+      { error: 'Invalid query parameter' },
+      { status: 400 }
+    );
+  }
+  //posterId
+  const posterNumber = parseInt(posterId.split('o')[1]);
+
+  try {
+    if (posterNumber < 1000) {
+      const titleSimilarityMatrix =
+        await prisma.titleSimilarityMatrixPart1.findMany({
+          // posterIdが0.7以上のデータを取得
+          select: {
+            id: true,
+            [posterId]: true,
+          },
+          orderBy: {
+            [posterId]: 'desc',
+          },
+          where: {
+            [posterId]: {
+              gte: 0.7,
+            },
+          },
+        });
+      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    } else if (posterNumber < 2000) {
+      const titleSimilarityMatrix =
+        await prisma.titleSimilarityMatrixPart2.findMany({
+          select: {
+            id: true,
+            [posterId]: true,
+          },
+          orderBy: {
+            [posterId]: 'desc',
+          },
+          where: {
+            [posterId]: {
+              gte: 0.7,
+            },
+          },
+        });
+      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    } else {
+      const titleSimilarityMatrix =
+        await prisma.titleSimilarityMatrixPart3.findMany({
+          select: {
+            id: true,
+            [posterId]: true,
+          },
+          orderBy: {
+            [posterId]: 'desc',
+          },
+          where: {
+            [posterId]: {
+              gte: 0.7,
+            },
+          },
+        });
+      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    }
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+}
+
+interface TitleSimilarityMatrix {
+  id: string;
+  [key: string]: number | string;
+}
+
+export async function POST(request: Request) {
+  // ここでボディを受け取れていないからエラーになっている
+  const body = await request.json();
+  const titleSimData = body.titleSimilarityMatrix;
+
+  // q: 修正案を書いてください
+  // a: ここでtitleSimDataがundefinedの場合はエラーを返すようにする
+
+  if (!titleSimData) {
+    return NextResponse.json(
+      { error: 'Invalid request body' },
       { status: 400 }
     );
   }
 
+  const titleIds = titleSimData.map((item: { id: any }) => item.id);
   try {
-    const titleSim = await prisma.titleSimilarity.findMany({
+    // データベースからidに一致するタイトルを取得
+    const titleData = await prisma.poster.findMany({
       where: {
-        id: posterId,
+        id: {
+          in: titleIds,
+        },
+      },
+      select: {
+        id: true,
+        title: true,
       },
     });
-    return NextResponse.json({ titleSim }, { status: 200 });
+
+    return NextResponse.json({ titleData }, { status: 200 });
+
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
