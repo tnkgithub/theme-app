@@ -74,3 +74,44 @@ export async function GET(request: Request) {
     return NextResponse.json({ error }, { status: 500 });
   }
 }
+
+interface TitleSimilarityMatrix {
+  id: string;
+  [key: string]: number | string;
+}
+
+export async function POST(request: Request) {
+  // ここでボディを受け取れていないからエラーになっている
+  const body = await request.json();
+  const titleSimData = body.titleSimilarityMatrix;
+
+  // q: 修正案を書いてください
+  // a: ここでtitleSimDataがundefinedの場合はエラーを返すようにする
+
+  if (!titleSimData) {
+    return NextResponse.json(
+      { error: 'Invalid request body' },
+      { status: 400 }
+    );
+  }
+
+  const titleIds = titleSimData.map((item: { id: any }) => item.id);
+  try {
+    // データベースからidに一致するタイトルを取得
+    const titleData = await prisma.poster.findMany({
+      where: {
+        id: {
+          in: titleIds,
+        },
+      },
+      select: {
+        id: true,
+        title: true,
+      },
+    });
+
+    return NextResponse.json({ titleData }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+}

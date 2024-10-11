@@ -1,69 +1,78 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import { useFetchTitleSimData } from '@/hooks/useFetchTitleSimData';
 import { useGetQuery } from '@/hooks/useGetQuery';
 import useOpenDescription from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
-import { TitleSimilarityMatrixPart1 } from '@prisma/client';
-import { title } from 'process';
+import { Poster, TitleSimilarityMatrixPart1 } from '@prisma/client';
 
 export default function TitleSimilarityPage() {
   const posterId = useGetQuery();
-
   useOpenDescription(posterId);
 
-  const titleSimList = useFetchTitleSimData(
-    `http://localhost:8000/api/poster/titleSim?posterId=${posterId}`
+  const apiPath = `http://localhost:8000/api/poster/titleSim?posterId=${posterId}`;
+  const { titleSimData, titleData } = useFetchTitleSimData(apiPath);
+
+  const renderPosterImage = (id: string, title: string) => (
+    <div className='border- h-[260px] border-4 border-blue-500 bg-white shadow-xl duration-300 hover:scale-110'>
+      <Image
+        src={`/posters/${id}.jpg`}
+        alt={title}
+        layout='responsive'
+        width={120}
+        height={169.2}
+        className=' object-cover pb-0.5'
+      />
+      <div className='line-clamp-3 px-1'>{title}</div>
+    </div>
+  );
+
+  const renderTargetPosterImage = (title: TitleSimilarityMatrixPart1) => {
+    const matchedPoster = titleData?.find(
+      (data: Poster) => data.id === title.id
+    );
+    return matchedPoster && title.id !== posterId ? (
+      <div
+        key={title.id}
+        className='h-[260px] bg-white shadow-xl duration-300 hover:scale-110'
+      >
+        <Link href={`/representation/titleSim?posterId=${title.id}`}>
+          <Image
+            src={`/posters/${title.id}.jpg`}
+            alt={matchedPoster.title}
+            layout='responsive'
+            width={120}
+            height={169.2}
+            className='object-cover pb-0.5'
+          />
+        </Link>
+        <div className='line-clamp-3 px-1'>{matchedPoster.title}</div>
+      </div>
+    ) : null;
+  };
+
+  const mainContent = titleSimData?.length ? (
+    <div className='grid-cols-17 m-2 grid gap-2'>
+      {renderPosterImage(
+        posterId,
+        titleData?.find((data: Poster) => data.id === posterId)?.title || ''
+      )}
+      {titleSimData.map(renderTargetPosterImage)}
+    </div>
+  ) : (
+    <div>Loading...</div>
   );
 
   return (
-    // <MotionWrapper>
     <div className='flex flex-row'>
-      <div className='h-screen w-52 '>
+      <aside className='h-screen w-52'>
         <SideBar />
-      </div>
-      <div className='grow px-1'>
-        <main className='m-3'>
-          {titleSimList && titleSimList.length > 0 ? (
-            <div className='grid-cols-17 m-2 grid gap-1'>
-              <div className='h-[200px] border border-gray-500'>
-                <Image
-                  src={`/posters/${posterId}.jpg`}
-                  alt={`${posterId}`}
-                  width={120}
-                  height={120}
-                  className='border-4 border-blue-500 object-cover pb-0.5 duration-300 hover:scale-110 hover:shadow-xl'
-                />
-                <div>{}</div>
-              </div>
-              {titleSimList.map((title: TitleSimilarityMatrixPart1) =>
-                title.id === posterId ? null : (
-                  // for文のcontinueみたいに次のループに飛ばす
-                  <Link
-                    key={title.id}
-                    href={`/representation/titleSim?posterId=${title.id}`}
-                  >
-                    <Image
-                      src={`/posters/${title.id}.jpg`}
-                      alt={'Poster None'}
-                      width={120}
-                      height={120}
-                      className='object-cover duration-300 hover:scale-110 hover:border-4 hover:border-gray-200 hover:shadow-xl'
-                    />
-                  </Link>
-                )
-              )}
-            </div>
-          ) : (
-            <div> loading</div>
-          )}
-        </main>
-      </div>
+      </aside>
+      <section className='grow px-1'>
+        <main className='m-3'>{mainContent}</main>
+      </section>
     </div>
-    // </MotionWrapper>
   );
 }

@@ -18,7 +18,7 @@ export default async function RepresentationPage() {
   const posters = (await getStaticProps()).props.posters;
 
   return (
-    // <MotionWrapper>
+    <MotionWrapper>
       <main className='mt-3'>
         {/* postersのjsonを表示 */}
         <div className='grid-cols-26  m-1 grid gap-1'>
@@ -28,6 +28,7 @@ export default async function RepresentationPage() {
                 <Image
                   src={`/posters/${poster.id}.jpg`}
                   alt={`${poster.representationsCoordinate}`}
+                  layout='responsive'
                   width={100}
                   height={141}
                   className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
@@ -37,6 +38,6 @@ export default async function RepresentationPage() {
           ))}
         </div>
       </main>
-    // </MotionWrapper>
+    </MotionWrapper>
   );
 }
