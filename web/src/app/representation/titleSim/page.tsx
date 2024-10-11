@@ -8,7 +8,6 @@ import useOpenDescription from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import { Poster, TitleSimilarityMatrixPart1 } from '@prisma/client';
 
-
 export default function TitleSimilarityPage() {
   const posterId = useGetQuery();
   useOpenDescription(posterId);

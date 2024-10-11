@@ -16,7 +16,7 @@ async function main() {
           data: {
             id: item.id,
             title: item.title,
-            discription: item.discription,
+            description: item.description,
             somCoordinate: parseInt(item.somCoordinate, 10), // 数値に変換
             representationsCoordinate: !isNaN(
               parseInt(item.representationsCoordinate, 10)

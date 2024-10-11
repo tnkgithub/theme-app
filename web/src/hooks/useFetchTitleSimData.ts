@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { Poster, TitleSimilarityMatrixPart1 } from '@prisma/client';
-import { transform } from 'next/dist/build/swc';
 
 export const useFetchTitleSimData = (url: string) => {
   const [titleSimData, setTitleSimData] = useState<
     TitleSimilarityMatrixPart1[]
   >([]);
   const [titleData, setTitleData] = useState<Poster[]>();
-
 
   useEffect(() => {
     const fetchData = async () => {

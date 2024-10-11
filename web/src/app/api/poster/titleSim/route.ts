@@ -12,6 +12,7 @@ export async function GET(request: Request) {
       { status: 400 }
     );
   }
+
   //posterId
   const posterNumber = parseInt(posterId.split('o')[1]);
 
@@ -74,18 +75,9 @@ export async function GET(request: Request) {
   }
 }
 
-interface TitleSimilarityMatrix {
-  id: string;
-  [key: string]: number | string;
-}
-
 export async function POST(request: Request) {
-  // ここでボディを受け取れていないからエラーになっている
   const body = await request.json();
   const titleSimData = body.titleSimilarityMatrix;
-
-  // q: 修正案を書いてください
-  // a: ここでtitleSimDataがundefinedの場合はエラーを返すようにする
 
   if (!titleSimData) {
     return NextResponse.json(
@@ -110,7 +102,6 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ titleData }, { status: 200 });
-
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
