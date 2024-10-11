@@ -6,35 +6,70 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const posterId = searchParams.get('posterId');
 
-  // posterId='poOOOOOO' のような文字列を 'p', 'OOOOOO' に分割し、'OOOOOO' をnumber型に変換して、0として返す
   if (!posterId) {
     return NextResponse.json(
-      { error: 'posterId is required' },
+      { error: 'Invalid query parameter' },
       { status: 400 }
     );
   }
-  const posterIdNumber = posterId.split('o')[1];
-  const posterNumber = Number(posterIdNumber);
 
-  let tableNum: string = '';
-  if (posterNumber < 1000) {
-    tableNum = 'title_similarity_matrix_part1';
-  } else if (posterNumber < 2000) {
-    tableNum = 'title_similarity_matrix_part2';
-  } else {
-    tableNum = 'title_similarity_matrix_part3';
-  }
+  //posterId
+  const posterNumber = parseInt(posterId.split('o')[1]);
 
   try {
-    // q: 0.5以上の類似度のポスターを取得をしたい場合
-    // a: SELECT id, ${posterId} FROM ${tableNum} WHERE ${posterId} >= 0.5 ORDER BY ${posterId} DESC
-    const titleSimilarityMatrix = await prisma.$queryRawUnsafe(`
-      SELECT id, ${posterId}
-      FROM ${tableNum}
-      WHERE ${posterId} >= 0.7
-      ORDER BY ${posterId} DESC
-    `);
-    return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    if (posterNumber < 1000) {
+      const titleSimilarityMatrix =
+        await prisma.titleSimilarityMatrixPart1.findMany({
+          // posterIdが0.7以上のデータを取得
+          select: {
+            id: true,
+            [posterId]: true,
+          },
+          orderBy: {
+            [posterId]: 'desc',
+          },
+          where: {
+            [posterId]: {
+              gte: 0.7,
+            },
+          },
+        });
+      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    } else if (posterNumber < 2000) {
+      const titleSimilarityMatrix =
+        await prisma.titleSimilarityMatrixPart2.findMany({
+          select: {
+            id: true,
+            [posterId]: true,
+          },
+          orderBy: {
+            [posterId]: 'desc',
+          },
+          where: {
+            [posterId]: {
+              gte: 0.7,
+            },
+          },
+        });
+      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    } else {
+      const titleSimilarityMatrix =
+        await prisma.titleSimilarityMatrixPart3.findMany({
+          select: {
+            id: true,
+            [posterId]: true,
+          },
+          orderBy: {
+            [posterId]: 'desc',
+          },
+          where: {
+            [posterId]: {
+              gte: 0.7,
+            },
+          },
+        });
+      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    }
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
