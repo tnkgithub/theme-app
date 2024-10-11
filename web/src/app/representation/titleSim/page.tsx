@@ -16,7 +16,7 @@ export default function TitleSimilarityPage() {
   const { titleSimData, titleData } = useFetchTitleSimData(apiPath);
 
   const renderPosterImage = (id: string, title: string) => (
-    <div className='border- h-[260px] border-4 border-blue-500 bg-white shadow-xl duration-300 hover:scale-110'>
+    <div className='border- h-[260px] border-4 border-blue-500 bg-white shadow-md duration-300 hover:scale-110'>
       <Image
         src={`/posters/${id}.jpg`}
         alt={title}
@@ -36,7 +36,7 @@ export default function TitleSimilarityPage() {
     return matchedPoster && title.id !== posterId ? (
       <div
         key={title.id}
-        className='h-[260px] bg-white shadow-xl duration-300 hover:scale-110'
+        className='h-[260px] bg-white shadow-md duration-300 hover:scale-110'
       >
         <Link href={`/representation/titleSim?posterId=${title.id}`}>
           <Image
