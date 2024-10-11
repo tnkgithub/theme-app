@@ -10,6 +10,7 @@ export const useFetchTitleSimData = (url: string) => {
   >([]);
   const [titleData, setTitleData] = useState<Poster[]>();
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
