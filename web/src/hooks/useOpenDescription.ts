@@ -1,11 +1,12 @@
-export default function useOpenDescription(posterId: string) {
-  if (posterId.includes('po')) {
-    const posterUrl = `https://archives.c.fun.ac.jp/posters/${posterId}/0001`;
-    // 別タブでurlを開く
-    window.open(posterUrl, '_blank', 'width=800, height=800');
-  } else {
-    console.log('imageId is not found');
-  }
+'use client';
 
+import { useEffect } from 'react';
+
+export default function useOpenDescription(posterId: string) {
+  useEffect(() => {
+    if (!posterId) return;
+    const posterUrl = `https://archives.c.fun.ac.jp/posters/${posterId}/0001`;
+    window.open(posterUrl, '_blank', 'width=800, height=800');
+  }, [posterId]);
   return;
 }

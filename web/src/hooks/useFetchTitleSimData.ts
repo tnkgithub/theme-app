@@ -1,8 +1,12 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import { TitleSimilarityMatrix } from '@prisma/client';
+import { TitleSimilarityMatrixPart1 } from '@prisma/client';
 
 export const useFetchTitleSimData = (url: string) => {
-  const [titleSimData, setTitleSimData] = useState<TitleSimilarityMatrix[]>([]);
+  const [titleSimData, setTitleSimData] = useState<
+    TitleSimilarityMatrixPart1[]
+  >([]);
 
   useEffect(() => {
     fetch(url)

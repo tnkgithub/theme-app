@@ -26,9 +26,12 @@ export async function GET(request: Request) {
   }
 
   try {
+    // q: 0.5以上の類似度のポスターを取得をしたい場合
+    // a: SELECT id, ${posterId} FROM ${tableNum} WHERE ${posterId} >= 0.5 ORDER BY ${posterId} DESC
     const titleSimilarityMatrix = await prisma.$queryRawUnsafe(`
       SELECT id, ${posterId}
       FROM ${tableNum}
+      WHERE ${posterId} >= 0.7
       ORDER BY ${posterId} DESC
     `);
     return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
