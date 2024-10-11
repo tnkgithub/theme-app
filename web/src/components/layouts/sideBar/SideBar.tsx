@@ -3,9 +3,10 @@
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import React from 'react';
 import { Button, LinkButton } from '@/components/elements/button/Button';
+import { useGetQuery } from '@/hooks/useGetQuery';
 
 const SideBar = () => {
-  // ボタンを押されたときにLinkを発火する
+  const posterId = useGetQuery();
 
   return (
     <>
@@ -15,17 +16,17 @@ const SideBar = () => {
             <p className='w-full pb-1 ps-2 text-left text-lg font-bold'>
               類似資料で絞り込む
             </p>
-            <Button
+            <LinkButton
               inText='画像が類似する資料'
               intent='primary'
               size='large'
-              onClick={() => {}}
+              href={`/representation/som?posterId=${posterId}`}
             />
-            <Button
+            <LinkButton
               inText='タイトルが類似する資料'
               intent='primary'
               size='large'
-              onClick={() => {}}
+              href={`/representation/titleSim?posterId=${posterId}`}
             />
             <Button
               inText='同じ物体を含む資料'

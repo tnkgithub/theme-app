@@ -9,6 +9,7 @@ import { useGetQuery } from '@/hooks/useGetQuery';
 import useOpenDescription from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import { TitleSimilarityMatrixPart1 } from '@prisma/client';
+import { title } from 'process';
 
 export default function TitleSimilarityPage() {
   const posterId = useGetQuery();
@@ -27,16 +28,19 @@ export default function TitleSimilarityPage() {
       </div>
       <div className='grow px-1'>
         <main className='m-3'>
-          <div className='grid-cols-17 m-2 grid gap-1'>
-            <Image
-              src={`/posters/${posterId}.jpg`}
-              alt={`${posterId}`}
-              width={120}
-              height={120}
-              className='border-4 border-blue-500 object-cover pb-0.5 duration-300 hover:scale-110 hover:shadow-xl'
-            />
-            {titleSimList && titleSimList.length > 0 ? (
-              titleSimList.map((title: TitleSimilarityMatrixPart1) =>
+          {titleSimList && titleSimList.length > 0 ? (
+            <div className='grid-cols-17 m-2 grid gap-1'>
+              <div className='h-[200px] border border-gray-500'>
+                <Image
+                  src={`/posters/${posterId}.jpg`}
+                  alt={`${posterId}`}
+                  width={120}
+                  height={120}
+                  className='border-4 border-blue-500 object-cover pb-0.5 duration-300 hover:scale-110 hover:shadow-xl'
+                />
+                <div>{}</div>
+              </div>
+              {titleSimList.map((title: TitleSimilarityMatrixPart1) =>
                 title.id === posterId ? null : (
                   // for文のcontinueみたいに次のループに飛ばす
                   <Link
@@ -52,11 +56,11 @@ export default function TitleSimilarityPage() {
                     />
                   </Link>
                 )
-              )
-            ) : (
-              <div>no data</div>
-            )}
-          </div>
+              )}
+            </div>
+          ) : (
+            <div> loading</div>
+          )}
         </main>
       </div>
     </div>
