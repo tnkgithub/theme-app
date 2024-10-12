@@ -3,7 +3,6 @@ import { biz_udp } from '@/utils/fonts';
 import '@/ui/global.css';
 import Header from '@/components/layouts/header/Header';
 import React from 'react';
-import { onClickTmp } from './onClickTmp';
 
 export const metadata: Metadata = {
   title: 'Archive App',
