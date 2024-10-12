@@ -5,8 +5,9 @@ import prisma from '@/lib/prisma/Prisma';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const posterId = searchParams.get('posterId');
+  const threshold = searchParams.get('threshold');
 
-  if (!posterId) {
+  if (!posterId || !threshold) {
     return NextResponse.json(
       { error: 'Invalid query parameter' },
       { status: 400 }
@@ -15,6 +16,7 @@ export async function GET(request: Request) {
 
   //posterId
   const posterNumber = parseInt(posterId.split('o')[1]);
+  const thresholdNumber = parseFloat(threshold);
 
   try {
     if (posterNumber < 1000) {
@@ -30,7 +32,7 @@ export async function GET(request: Request) {
           },
           where: {
             [posterId]: {
-              gte: 0.7,
+              gte: [thresholdNumber],
             },
           },
         });
@@ -47,7 +49,7 @@ export async function GET(request: Request) {
           },
           where: {
             [posterId]: {
-              gte: 0.7,
+              gte: [thresholdNumber],
             },
           },
         });
@@ -64,7 +66,7 @@ export async function GET(request: Request) {
           },
           where: {
             [posterId]: {
-              gte: 0.7,
+              gte: [thresholdNumber],
             },
           },
         });
