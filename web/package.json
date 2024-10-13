@@ -19,6 +19,7 @@
     "@trpc/next": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
+    "@types/react-router-dom": "^5.3.3",
     "class-variance-authority": "^0.7.0",
     "csv-parser": "^3.0.0",
     "D": "^1.0.0",
@@ -28,6 +29,7 @@
     "pg": "^8.13.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-router-dom": "^6.27.0",
     "react-scroll": "^1.9.0",
     "tailwind-merge": "^2.5.2",
     "zod": "^3.23.8"

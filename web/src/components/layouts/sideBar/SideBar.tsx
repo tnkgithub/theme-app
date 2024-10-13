@@ -1,16 +1,20 @@
 'use client';
 
 import SearchBox from '@/components/elements/searchBox/SearchBox';
-import React from 'react';
 import { Button, LinkButton } from '@/components/elements/button/Button';
-import { useGetQuery } from '@/hooks/useGetQuery';
+import Slider from '@/components/elements/slider/Slider';
 
-const SideBar = () => {
-  const posterId = useGetQuery();
+interface SideBarProps {
+  posterId: string;
+  isSliderOpen: boolean;
+  onSliderChange: (value: number) => void;
+}
 
+// スライダーの値をpropsで親コンポーネントに渡す
+const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
   return (
-    <>
-      <aside className='fixed top-16 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-32 lg:top-16'>
+    <div>
+      <div className='fixed top-16 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-32 lg:top-16'>
         <div className='flex flex-col items-center'>
           <div className='my-3 flex w-52 flex-col items-center border-b py-2'>
             <p className='w-full pb-1 ps-2 text-left text-lg font-bold'>
@@ -36,7 +40,7 @@ const SideBar = () => {
             />
           </div>
           <div className='my-1 w-52 border-b pb-4 pt-2'>
-            <p className='pb-3 ps-2 text-left text-lg font-bold'>
+            <p className='pb-2 ps-2 text-left text-lg font-bold'>
               キーワードで絞り込む
             </p>
             <SearchBox
@@ -45,6 +49,18 @@ const SideBar = () => {
               size='small'
             />
           </div>
+          {isSliderOpen && (
+            <div className='my-1 flex w-52 flex-col items-center border-b pb-4 pt-2'>
+              <p className='w-full pb-2 ps-2 text-left text-lg font-bold'>
+                類似度を変更
+              </p>
+              <Slider
+                onChange={(value: number) => {
+                  onSliderChange(value);
+                }}
+              />
+            </div>
+          )}
           <div className='my-3 flex w-52 flex-col items-center'></div>
           <LinkButton
             inText='代表資料に戻る'
@@ -53,9 +69,9 @@ const SideBar = () => {
             href='/representation'
           />
         </div>
-      </aside>
-      <div className='h-screen w-56'></div>
-    </>
+      </div>
+      <div className='h-screen w-56' />
+    </div>
   );
 };
 

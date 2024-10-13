@@ -32,7 +32,7 @@ export async function GET(request: Request) {
           },
           where: {
             [posterId]: {
-              gte: [thresholdNumber],
+              gte: thresholdNumber,
             },
           },
         });
@@ -49,7 +49,7 @@ export async function GET(request: Request) {
           },
           where: {
             [posterId]: {
-              gte: [thresholdNumber],
+              gte: thresholdNumber,
             },
           },
         });
@@ -66,7 +66,7 @@ export async function GET(request: Request) {
           },
           where: {
             [posterId]: {
-              gte: [thresholdNumber],
+              gte: thresholdNumber,
             },
           },
         });

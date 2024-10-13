@@ -7,9 +7,9 @@ const PageLayout = () => {
       <Header
         logoText='Logo'
         buttonText={['新規登録', 'ログイン']}
-        onClickHandler={() => {}}
+        buttonHref={['/signup', '/login']}
       />
-      <SideBar />
+      <SideBar posterId='1' isSliderOpen={false} onSliderChange={() => {}} />
     </div>
   );
 };

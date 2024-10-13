@@ -11,12 +11,18 @@ import { Poster } from '@prisma/client';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 
 export default function ImagesListPage() {
+  // URLのクエリパラメータからposterIdを取得
   const posterId = useGetQuery();
+
+  // ポスターの詳細情報を別ウィンドウで表示する
   useOpenDescription(posterId);
 
+  // ポスターのデータを取得
   const posters = useFetchPosterData('http://localhost:8000/api/poster/som');
+  // ポスターのデータから周辺のポスターを取得
   const aroundPosters = getAroundPosters(posterId, posters);
 
+  // ポスター画
   const renderPoster = (poster: Poster) => {
     if (!poster || !poster.id) return null; // posterがundefinedまたはidがない場合は何も表示しない
 
@@ -44,7 +50,11 @@ export default function ImagesListPage() {
   return (
     <div className='flex'>
       <div className='h-screen w-52'>
-        <SideBar />
+        <SideBar
+          posterId={posterId}
+          isSliderOpen={false}
+          onSliderChange={() => {}}
+        />
       </div>
       <div className='grow px-1'>
         <main className='m-3'>
