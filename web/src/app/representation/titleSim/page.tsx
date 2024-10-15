@@ -29,7 +29,7 @@ export default function TitleSimilarityPage() {
   const mainContent = titleSimData?.length ? (
     <>
       <p className='m-3 text-xl'>類似度 ≧ {sliderValue}</p>
-      <div className='m-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
+      <div className='m-2 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
         {/*  posterIdのポスター画像を描画 */}
         {renderTargetPosterImage(
           posterId,

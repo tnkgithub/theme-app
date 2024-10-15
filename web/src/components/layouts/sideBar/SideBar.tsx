@@ -54,7 +54,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               />
             </div>
           )}
-          <div className='my-1 w-52 border-b pb-4 pt-2'>
+          <div className='my-1 w-52 border-b pb-8 pt-2'>
             <p className='pb-2 ps-2 text-left text-lg font-bold'>
               キーワードで絞り込む
             </p>

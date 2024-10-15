@@ -3,8 +3,8 @@ import { cva } from 'class-variance-authority';
 const somIcon = () => (
   <svg
     className='mr-1'
-    width='24px'
-    height='24px'
+    width='22px'
+    height='22px'
     strokeWidth='1.5'
     viewBox='0 0 24 24'
     fill='none'
@@ -38,8 +38,8 @@ const somIcon = () => (
 const titleIcon = () => (
   <svg
     className='mr-1'
-    width='24px'
-    height='24px'
+    width='22px'
+    height='22px'
     strokeWidth='1.5'
     viewBox='0 0 24 24'
     fill='none'
@@ -71,8 +71,8 @@ const titleIcon = () => (
 const objectIcon = () => (
   <svg
     className='mr-1'
-    width='24px'
-    height='24px'
+    width='22px'
+    height='22px'
     strokeWidth='1.5'
     viewBox='0 0 24 24'
     fill='none'
