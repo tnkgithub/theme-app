@@ -1,7 +1,7 @@
 'use client';
 
 import SearchBox from '@/components/elements/searchBox/SearchBox';
-import { Button, LinkButton } from '@/components/elements/button/Button';
+import { LinkButton, IconButton } from '@/components/elements/button/Button';
 import Slider from '@/components/elements/slider/Slider';
 
 interface SideBarProps {
@@ -20,33 +20,26 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
             <p className='w-full pb-1 ps-2 text-left text-lg font-bold'>
               類似資料で絞り込む
             </p>
-            <LinkButton
+            <IconButton
               inText='画像が類似する資料'
               intent='primary'
               size='large'
               href={`/representation/som?posterId=${posterId}`}
+              icon='som'
             />
-            <LinkButton
+            <IconButton
               inText='タイトルが類似する資料'
               intent='primary'
               size='large'
               href={`/representation/titleSim?posterId=${posterId}`}
+              icon='title'
             />
-            <Button
+            <IconButton
               inText='同じ物体を含む資料'
               intent='primary'
               size='large'
-              onClick={() => {}}
-            />
-          </div>
-          <div className='my-1 w-52 border-b pb-4 pt-2'>
-            <p className='pb-2 ps-2 text-left text-lg font-bold'>
-              キーワードで絞り込む
-            </p>
-            <SearchBox
-              placeholder='キーワードを入力'
-              buttonText='検索'
-              size='small'
+              href='#'
+              icon='object'
             />
           </div>
           {isSliderOpen && (
@@ -61,6 +54,16 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               />
             </div>
           )}
+          <div className='my-1 w-52 border-b pb-4 pt-2'>
+            <p className='pb-2 ps-2 text-left text-lg font-bold'>
+              キーワードで絞り込む
+            </p>
+            <SearchBox
+              placeholder='キーワードを入力'
+              buttonText='検索'
+              size='small'
+            />
+          </div>
           <div className='my-3 flex w-52 flex-col items-center'></div>
           <LinkButton
             inText='代表資料に戻る'

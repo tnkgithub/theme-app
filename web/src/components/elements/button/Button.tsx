@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { somIcon, titleIcon, objectIcon } from '@/components/elements/icon/svg';
 import { cva } from 'class-variance-authority';
 
 type BaseButtonProps = {
@@ -17,6 +18,11 @@ type LinkButtonProps = BaseButtonProps & {
   href: string;
 };
 
+type IconButtonProps = BaseButtonProps & {
+  href: string;
+  icon?: 'som' | 'title' | 'object';
+};
+
 const buttonVariants = cva('m-0.5 rounded-lg text-center text-sm font-bold ', {
   variants: {
     intent: {
@@ -27,7 +33,7 @@ const buttonVariants = cva('m-0.5 rounded-lg text-center text-sm font-bold ', {
     size: {
       small: 'w-12 rounded-md p-1',
       medium: 'w-28 px-3 py-2',
-      large: 'w-48 p-2',
+      large: 'flex w-48 items-center justify-start p-2 text-left',
     },
   },
 });
@@ -59,7 +65,8 @@ const LinkButton = ({
   size = 'medium',
   isDisabled = false,
   href,
-}: LinkButtonProps) => {
+  icon = 'som',
+}: IconButtonProps) => {
   const buttonClass = buttonVariants({ intent, size });
 
   return (
@@ -71,4 +78,27 @@ const LinkButton = ({
   );
 };
 
-export { Button, LinkButton };
+// ボタンテキストの左側にsvgアイコンを表示するボタン
+const IconButton = ({
+  inText,
+  intent = 'primary',
+  size = 'large',
+  isDisabled = false,
+  href,
+  icon = 'som',
+}: IconButtonProps) => {
+  const buttonClass = buttonVariants({ intent, size });
+
+  return (
+    <Link href={href}>
+      <button type='button' className={buttonClass} disabled={isDisabled}>
+        {icon === 'som' && somIcon()}
+        {icon === 'title' && titleIcon()}
+        {icon === 'object' && objectIcon()}
+        {inText}
+      </button>
+    </Link>
+  );
+};
+
+export { Button, LinkButton, IconButton };
