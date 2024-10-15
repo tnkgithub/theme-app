@@ -1,7 +1,6 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 const { PrismaClient } = require('@prisma/client');
-const { rejects } = require('assert');
 
 const prisma = new PrismaClient();
 
@@ -25,7 +24,7 @@ async function main() {
             data: {
               part1: {
                 create: {
-                  id: posterId,
+                  posterId: row.id,
                   po000001: parseFloat(row['po000001']),
                   po000002: parseFloat(row['po000002']),
                   po000005: parseFloat(row['po000005']),
@@ -706,7 +705,7 @@ async function main() {
               },
               part2: {
                 create: {
-                  id: posterId,
+                  posterId: row.id,
                   po001000: parseFloat(row['po001000']),
                   po001001: parseFloat(row['po001001']),
                   po001011: parseFloat(row['po001011']),
@@ -1390,7 +1389,7 @@ async function main() {
               },
               part3: {
                 create: {
-                  id: posterId,
+                  posterId: row.id,
                   po002000: parseFloat(row['po002000']),
                   po002001: parseFloat(row['po002001']),
                   po002002: parseFloat(row['po002002']),
@@ -2070,6 +2069,7 @@ async function main() {
       } catch (e) {
         console.error(e);
       }
+      console.log('Done');
     });
 }
 

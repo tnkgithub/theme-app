@@ -14,7 +14,7 @@ async function main() {
       for (const item of results) {
         await prisma.poster.create({
           data: {
-            id: item.id,
+            posterId: item.posterId,
             title: item.title,
             description: item.description,
             somCoordinate: parseInt(item.somCoordinate, 10), // 数値に変換
@@ -27,11 +27,9 @@ async function main() {
         });
       }
       console.log('Data imported successfully!');
-      await prisma.$disconnect();
     });
 }
 
 main().catch((e) => {
   console.error(e);
-  prisma.$disconnect();
 });
