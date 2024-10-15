@@ -27,20 +27,21 @@ export default function TitleSimilarityPage() {
   );
 
   const mainContent = titleSimData?.length ? (
-    <div>
+    <>
       <p className='m-3 text-xl'>類似度 ≧ {sliderValue}</p>
-      <div className='m-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
+      <div className='m-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
         {/*  posterIdのポスター画像を描画 */}
         {renderTargetPosterImage(
           posterId,
-          titleData?.find((data: Poster) => data.id === posterId)?.title || ''
+          titleData?.find((poster: Poster) => poster.posterId === posterId)
+            ?.title || ''
         )}
         {/*  類似度行列のデータを元にポスター画像を描画 */}
         {titleSimData.map((title: TitleSimilarityMatrixPart1) =>
           titleData ? renderPosterImage(title, titleData, posterId) : null
         )}
       </div>
-    </div>
+    </>
   ) : (
     <div>Loading...</div>
   );

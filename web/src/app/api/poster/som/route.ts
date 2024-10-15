@@ -6,7 +6,7 @@ export async function GET() {
   try {
     const posters = await prisma.poster.findMany({
       select: {
-        id: true,
+        posterId: true,
         somCoordinate: true,
       },
       orderBy: {

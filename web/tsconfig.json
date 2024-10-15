@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/prisma/importData.js", "src/lib/prisma/importTitleSim.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/prisma/pushData.js", "src/lib/prisma/pushTitleSim.js"],
   "exclude": ["node_modules"]
 }

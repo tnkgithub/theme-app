@@ -4,7 +4,7 @@ import { TitleSimilarityMatrixPart1 } from '@prisma/client';
 import { Poster } from '@prisma/client';
 
 export const renderTargetPosterImage = (posterId: string, title: string) => (
-  <div className='border-4 border-blue-500 bg-white shadow-md duration-300 hover:scale-110'>
+  <div className='bg-white shadow-md  outline outline-4 outline-blue-500 duration-300 hover:scale-110'>
     <Image
       src={`/posters/${posterId}.jpg`}
       alt={title}
@@ -21,15 +21,17 @@ export const renderPosterImage = (
   titleData: Poster[],
   posterId: string
 ) => {
-  const matchedPoster = titleData?.find((data: Poster) => data.id === title.id);
-  return matchedPoster && title.id !== posterId ? (
+  const matchedPoster = titleData?.find(
+    (poster: Poster) => poster.posterId === title.posterId
+  );
+  return matchedPoster && title.posterId !== posterId ? (
     <div
-      key={title.id}
+      key={title.posterId}
       className='bg-white shadow-md duration-300 hover:scale-110'
     >
-      <Link href={`/representation/titleSim?posterId=${title.id}`}>
+      <Link href={`/representation/titleSim?posterId=${title.posterId}`}>
         <Image
-          src={`/posters/${title.id}.jpg`}
+          src={`/posters/${title.posterId}.jpg`}
           alt={matchedPoster.title}
           width={120}
           height={169.2}

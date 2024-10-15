@@ -24,7 +24,7 @@ export async function GET(request: Request) {
         await prisma.titleSimilarityMatrixPart1.findMany({
           // posterIdが0.7以上のデータを取得
           select: {
-            id: true,
+            posterId: true,
             [posterId]: true,
           },
           orderBy: {
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
       const titleSimilarityMatrix =
         await prisma.titleSimilarityMatrixPart2.findMany({
           select: {
-            id: true,
+            posterId: true,
             [posterId]: true,
           },
           orderBy: {
@@ -58,7 +58,7 @@ export async function GET(request: Request) {
       const titleSimilarityMatrix =
         await prisma.titleSimilarityMatrixPart3.findMany({
           select: {
-            id: true,
+            posterId: true,
             [posterId]: true,
           },
           orderBy: {
@@ -88,17 +88,19 @@ export async function POST(request: Request) {
     );
   }
 
-  const titleIds = titleSimData.map((item: { id: any }) => item.id);
+  const titleIds = titleSimData.map(
+    (item: { posterId: string }) => item.posterId
+  );
   try {
     // データベースからidに一致するタイトルを取得
     const titleData = await prisma.poster.findMany({
       where: {
-        id: {
+        posterId: {
           in: titleIds,
         },
       },
       select: {
-        id: true,
+        posterId: true,
         title: true,
       },
     });

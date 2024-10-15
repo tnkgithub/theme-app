@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 'use client';
 
 import React from 'react';
@@ -24,23 +25,23 @@ export default function ImagesListPage() {
 
   // ポスター画
   const renderPoster = (poster: Poster) => {
-    if (!poster || !poster.id) return null; // posterがundefinedまたはidがない場合は何も表示しない
+    if (!poster || !poster.posterId) return null; // posterがundefinedまたはidがない場合は何も表示しない
 
     return (
-      <div key={poster.id} className='w-[120px] bg-gray-500'>
+      <div key={poster.posterId} className='w-[120px] bg-gray-500'>
         <Link
           href={
-            posterId === poster.id
+            posterId === poster.posterId
               ? '#'
-              : `/representation/som?posterId=${poster.id}`
+              : `/representation/som?posterId=${poster.posterId}`
           }
         >
           <Image
-            src={`/posters/${poster.id}.jpg`}
+            src={`/posters/${poster.posterId}.jpg`}
             alt={String(poster.somCoordinate) || 'Poster'}
             width={120}
             height={169.2}
-            className={`object-cover duration-300  hover:scale-110 hover:shadow-xl ${posterId === poster.id ? 'border-4 border-blue-500' : 'hover:border-4 hover:border-gray-200 '}`}
+            className={`object-cover duration-300  hover:scale-110 hover:shadow-xl ${posterId === poster.posterId ? 'border-4 border-blue-500' : 'outline outline-2 outline-white '}`}
           />
         </Link>
       </div>

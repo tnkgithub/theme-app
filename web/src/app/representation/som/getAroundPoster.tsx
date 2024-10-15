@@ -1,6 +1,6 @@
 import { Poster } from '@prisma/client';
 
-export function getAroundPosters(imageId: string, posters: Poster[]) {
+export function getAroundPosters(posterId: string, posters: Poster[]) {
   const aroundPosters: Poster[] = []; // 画像IDのリスト
   let targetCoordinate: number[] = [0, 0];
 
@@ -9,7 +9,7 @@ export function getAroundPosters(imageId: string, posters: Poster[]) {
 
   // ターゲットの画像IDの2次元座標を取得
   for (const poster of posters) {
-    if (poster.id === imageId) {
+    if (poster.posterId === posterId) {
       const x = Math.floor(poster.somCoordinate / numY);
       const y = poster.somCoordinate % numY;
       targetCoordinate = [x, y];
