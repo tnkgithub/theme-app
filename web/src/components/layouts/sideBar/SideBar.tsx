@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import { LinkButton, IconButton } from '@/components/elements/button/Button';
 import Slider from '@/components/elements/slider/Slider';
@@ -12,6 +14,8 @@ interface SideBarProps {
 
 // スライダーの値をpropsで親コンポーネントに渡す
 const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
+  const pathname = usePathname();
+
   return (
     <div>
       <div className='fixed top-16 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-32 lg:top-16'>
@@ -22,28 +26,28 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
             </p>
             <IconButton
               inText='画像が類似する資料'
-              intent='primary'
-              size='large'
+              intent={`${pathname === '/representation/som' ? 'inHrefs' : 'primary'}`}
+              size='forSideBar'
               href={`/representation/som?posterId=${posterId}`}
               icon='som'
             />
             <IconButton
               inText='タイトルが類似する資料'
-              intent='primary'
-              size='large'
+              intent={`${pathname === '/representation/titleSim' ? 'inHrefs' : 'primary'}`}
+              size='forSideBar'
               href={`/representation/titleSim?posterId=${posterId}`}
               icon='title'
             />
             <IconButton
               inText='同じ物体を含む資料'
               intent='primary'
-              size='large'
+              size='forSideBar'
               href='#'
               icon='object'
             />
           </div>
           {isSliderOpen && (
-            <div className='my-1 flex w-52 flex-col items-center border-b pb-4 pt-2'>
+            <div className='my-1 flex w-52 flex-col items-center border-b pb-4 pt-1'>
               <p className='w-full pb-2 ps-2 text-left text-lg font-bold'>
                 類似度を変更
               </p>
@@ -54,8 +58,8 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               />
             </div>
           )}
-          <div className='my-1 w-52 border-b pb-8 pt-2'>
-            <p className='pb-2 ps-2 text-left text-lg font-bold'>
+          <div className='my-1 w-52 border-b pb-6 pt-2'>
+            <p className='pb-4 ps-2 text-left text-lg font-bold'>
               キーワードで絞り込む
             </p>
             <SearchBox

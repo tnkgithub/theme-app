@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import { somIcon, titleIcon, objectIcon } from '@/components/elements/icon/svg';
+import { SomIcon, TitleIcon, ObjectIcon } from '@/components/elements/icon/svg';
 import { cva } from 'class-variance-authority';
 
 type BaseButtonProps = {
   inText: string;
-  intent?: 'primary' | 'secondary';
-  size?: 'small' | 'medium' | 'large';
+  intent?: 'primary' | 'secondary' | 'inHrefs';
+  size?: 'small' | 'medium' | 'large' | 'forSideBar';
   isDisabled?: boolean;
 };
 
@@ -23,20 +23,24 @@ type IconButtonProps = BaseButtonProps & {
   icon?: 'som' | 'title' | 'object';
 };
 
-const buttonVariants = cva('m-0.5 rounded-lg text-center text-sm font-bold ', {
-  variants: {
-    intent: {
-      primary:
-        'bg-white text-gray-800 duration-300 hover:bg-blue-500 hover:text-white',
-      secondary: 'bg-blue-500 text-white duration-300 hover:scale-105',
+const buttonVariants = cva(
+  'm-0.5 rounded-lg text-center text-sm font-bold transition-colors duration-300',
+  {
+    variants: {
+      intent: {
+        primary: 'bg-white text-gray-800  hover:bg-blue-500 hover:text-white',
+        secondary: 'bg-blue-500 text-white hover:bg-blue-700',
+        inHrefs: 'bg-blue-500 text-white',
+      },
+      size: {
+        small: 'w-12 rounded-md p-1',
+        medium: 'w-28 px-3 py-2',
+        large: 'w-48 p-2',
+        forSideBar: 'group flex w-48 items-center justify-start p-2 text-left ',
+      },
     },
-    size: {
-      small: 'w-12 rounded-md p-1',
-      medium: 'w-28 px-3 py-2',
-      large: 'flex w-48 items-center justify-start p-2 text-left',
-    },
-  },
-});
+  }
+);
 
 const Button = ({
   inText,
@@ -65,8 +69,7 @@ const LinkButton = ({
   size = 'medium',
   isDisabled = false,
   href,
-  icon = 'som',
-}: IconButtonProps) => {
+}: LinkButtonProps) => {
   const buttonClass = buttonVariants({ intent, size });
 
   return (
@@ -82,7 +85,7 @@ const LinkButton = ({
 const IconButton = ({
   inText,
   intent = 'primary',
-  size = 'large',
+  size = 'forSideBar',
   isDisabled = false,
   href,
   icon = 'som',
@@ -92,9 +95,15 @@ const IconButton = ({
   return (
     <Link href={href}>
       <button type='button' className={buttonClass} disabled={isDisabled}>
-        {icon === 'som' && somIcon()}
-        {icon === 'title' && titleIcon()}
-        {icon === 'object' && objectIcon()}
+        {icon &&
+          React.createElement(
+            {
+              som: SomIcon,
+              title: TitleIcon,
+              object: ObjectIcon,
+            }[icon],
+            { className: intent === 'inHrefs' ? 'text-white' : '' }
+          )}
         {inText}
       </button>
     </Link>
