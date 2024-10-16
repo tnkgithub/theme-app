@@ -6,7 +6,7 @@ import { cva } from 'class-variance-authority';
 type BaseButtonProps = {
   inText: string;
   intent?: 'primary' | 'secondary' | 'inHrefs';
-  size?: 'small' | 'medium' | 'large' | 'forSideBar';
+  size?: 'small' | 'medium' | 'large' | 'icon';
   isDisabled?: boolean;
 };
 
@@ -36,7 +36,7 @@ const buttonVariants = cva(
         small: 'w-12 rounded-md p-1',
         medium: 'w-28 px-3 py-2',
         large: 'w-48 p-2',
-        forSideBar: 'group flex w-48 items-center justify-start p-2 text-left ',
+        icon: 'group flex w-48 items-center justify-start p-2 text-left ',
       },
     },
   }
@@ -85,7 +85,7 @@ const LinkButton = ({
 const IconButton = ({
   inText,
   intent = 'primary',
-  size = 'forSideBar',
+  size = 'icon',
   isDisabled = false,
   href,
   icon = 'som',

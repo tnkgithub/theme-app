@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import { LinkButton, IconButton } from '@/components/elements/button/Button';
@@ -27,21 +26,21 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
             <IconButton
               inText='画像が類似する資料'
               intent={`${pathname === '/representation/som' ? 'inHrefs' : 'primary'}`}
-              size='forSideBar'
+              size='icon'
               href={`/representation/som?posterId=${posterId}`}
               icon='som'
             />
             <IconButton
               inText='タイトルが類似する資料'
               intent={`${pathname === '/representation/titleSim' ? 'inHrefs' : 'primary'}`}
-              size='forSideBar'
+              size='icon'
               href={`/representation/titleSim?posterId=${posterId}`}
               icon='title'
             />
             <IconButton
               inText='同じ物体を含む資料'
               intent='primary'
-              size='forSideBar'
+              size='icon'
               href='#'
               icon='object'
             />
