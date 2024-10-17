@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useFetchPosterData } from '@/hooks/useFetchPosterData';
 import { useGetQuery } from '@/hooks/useGetQuery';
-import useOpenDescription from '@/hooks/useOpenDescription';
+import { useOpenDescription } from '@/hooks/useOpenDescription';
 import { getAroundPosters } from './getAroundPoster';
 import { Poster } from '@prisma/client';
 import SideBar from '@/components/layouts/sideBar/SideBar';
@@ -51,11 +51,7 @@ export default function ImagesListPage() {
   return (
     <div className='flex'>
       <div className='h-screen w-52'>
-        <SideBar
-          posterId={posterId}
-          isSliderOpen={false}
-          onSliderChange={() => {}}
-        />
+        <SideBar posterId={posterId} isSliderOpen={false} />
       </div>
       <div className='grow px-1'>
         <main className='m-3'>

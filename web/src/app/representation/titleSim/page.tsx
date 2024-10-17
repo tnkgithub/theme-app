@@ -4,7 +4,7 @@ import { useFetchTitleSimData } from '@/hooks/useFetchTitleSimData';
 import { useGetQuery } from '@/hooks/useGetQuery';
 import { useState } from 'react';
 import { usePushQuery } from '@/hooks/usePushQuery';
-import useOpenDescription from '@/hooks/useOpenDescription';
+import { useOpenDescription } from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import { Poster, TitleSimilarityMatrixPart1 } from '@prisma/client';
 import { renderPosterImage, renderTargetPosterImage } from './randerPoster';

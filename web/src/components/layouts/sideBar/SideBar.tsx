@@ -8,7 +8,7 @@ import Slider from '@/components/elements/slider/Slider';
 interface SideBarProps {
   posterId: string;
   isSliderOpen: boolean;
-  onSliderChange: (value: number) => void;
+  onSliderChange?: (value: number) => void;
 }
 
 // スライダーの値をpropsで親コンポーネントに渡す
@@ -39,9 +39,9 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
             />
             <IconButton
               inText='同じ物体を含む資料'
-              intent='primary'
+              intent={`${pathname === '/representation/objects' ? 'inHrefs' : 'primary'}`}
               size='icon'
-              href='#'
+              href={`/representation/objects?posterId=${posterId}`}
               icon='object'
             />
           </div>
@@ -52,7 +52,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               </p>
               <Slider
                 onChange={(value: number) => {
-                  onSliderChange(value);
+                  onSliderChange?.(value);
                 }}
               />
             </div>

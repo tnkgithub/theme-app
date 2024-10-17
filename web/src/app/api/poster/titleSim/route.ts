@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma/Prisma';
 
 // TitleSimilarityMatrixテーブルから指定されたカラムのデータを取得し、ソートして返す
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
   const posterId = searchParams.get('posterId');
   const threshold = searchParams.get('threshold');
 
