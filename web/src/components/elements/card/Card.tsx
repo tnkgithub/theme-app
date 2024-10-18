@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const imagesPathMap = {
   imagesList: '/representation.jpg',
@@ -37,4 +38,33 @@ function Card({
   );
 }
 
-export default Card;
+function PosterCard({
+  title,
+  posterId,
+  link,
+  isTarget,
+}: {
+  title?: string;
+  posterId: string;
+  link?: string;
+  isTarget: boolean;
+}) {
+  return (
+    <div className='bg-gray-500 shadow-md duration-300 hover:scale-110'>
+      <Link href={link || '#'}>
+        <Image
+          src={`/posters/${posterId}.jpg`}
+          alt={title || 'Poster'}
+          width={120}
+          height={169.2}
+          className={`w-full object-cover pb-0.5 ${isTarget ? 'border-4 border-blue-500' : ''}`}
+        />
+        {title && (
+          <div className='line-clamp-3 h-20 bg-white px-2 py-1'>{title}</div>
+        )}
+      </Link>
+    </div>
+  );
+}
+
+export { Card, PosterCard };

@@ -3,10 +3,9 @@
 import { useFetchObjectData } from '@/hooks/useFetchObjectData';
 import { useGetQuery } from '@/hooks/useGetQuery';
 import { useOpenDescription } from '@/hooks/useOpenDescription';
+import { renderTargetPosterImage } from '../titleSim/renderPoster';
+import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect } from 'react';
 
 export default function ObjectPage() {
   const posterId = useGetQuery();
@@ -23,24 +22,18 @@ export default function ObjectPage() {
         <div key={item.id} className='pb-5'>
           <p className='m-3 text-xl'>物体名: {item.word}</p>
           <div className='grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
-            {item.posters.map((poster) => (
-              <div
-                key={poster.posterId}
-                className='bg-white shadow-md duration-300 hover:scale-110'
-              >
-                <Link
-                  href={`/representation/objects?posterId=${poster.posterId}`}
-                >
-                  <Image
-                    src={`/posters/${poster.posterId}.jpg`}
-                    alt='poster'
-                    width={120}
-                    height={169.2}
-                    className='w-full object-cover pb-0.5'
+            <PosterCard posterId={posterId} link='#' isTarget={true} />
+            {item.posters.map(
+              (poster) =>
+                poster.posterId !== posterId && (
+                  <PosterCard
+                    key={poster.posterId}
+                    posterId={poster.posterId}
+                    link={`/representation/objects?posterId=${poster.posterId}`}
+                    isTarget={false}
                   />
-                </Link>
-              </div>
-            ))}
+                )
+            )}
           </div>
         </div>
       ))}

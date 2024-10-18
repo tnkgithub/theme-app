@@ -1,4 +1,4 @@
-import Card from '@/components/elements/card/Card';
+import { Card } from '@/components/elements/card/Card';
 import Link from 'next/link';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 

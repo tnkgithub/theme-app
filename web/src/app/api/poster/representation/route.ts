@@ -11,9 +11,8 @@ export async function GET() {
         },
       },
       select: {
-        id: true,
         posterId: true,
-        representationsCoordinate: true,
+        // representationsCoordinate: true,
       },
       orderBy: {
         representationsCoordinate: 'asc', // 'desc' にすれば降順

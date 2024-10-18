@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { TitleSimilarityMatrixPart1 } from '@prisma/client';
 import { Poster } from '@prisma/client';
 
-export const renderTargetPosterImage = (posterId: string, title: string) => (
+export const renderTargetPosterImage = (posterId: string, title?: string) => (
   <div className='bg-white shadow-md  outline outline-4 outline-blue-500 duration-300 hover:scale-110'>
     <Image
       src={`/posters/${posterId}.jpg`}
-      alt={title}
+      alt={title ? title : 'Poster'}
       width={120}
       height={169.2}
       className='w-full pb-0.5'

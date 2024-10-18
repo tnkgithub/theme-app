@@ -1,9 +1,10 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import { Poster } from '@prisma/client';
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { PosterCard } from '@/components/elements/card/Card';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
+import Link from 'next/link';
+import Image from 'next/image';
 
 async function getStaticProps() {
   const res = await fetch('http://localhost:8000/api/poster/representation');
@@ -29,6 +30,13 @@ export default async function RepresentationPage() {
         {/* postersのjsonを表示 */}
         <div className='grid-cols-26  m-1 grid gap-1'>
           {posters.map((poster: Poster) => (
+            // <PosterCard
+            //   key={poster.id}
+            //   posterId={poster.posterId}
+            //   link={`/representation/som?posterId=${poster.posterId}`}
+            //   isTarget={false}
+            // />
+            // 何故か、poster.posterIdがundefinedになり、poster.idがnumberのはずなのに、stringになる
             <div key={poster.id} className='h-141 w-100 bg-gray-500'>
               <Link href={`/representation/som?posterId=${poster.id}`}>
                 <Image

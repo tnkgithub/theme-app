@@ -2,13 +2,12 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { useFetchPosterData } from '@/hooks/useFetchPosterData';
 import { useGetQuery } from '@/hooks/useGetQuery';
 import { useOpenDescription } from '@/hooks/useOpenDescription';
 import { getAroundPosters } from './getAroundPoster';
 import { Poster } from '@prisma/client';
+import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 
 export default function ImagesListPage() {
@@ -29,21 +28,15 @@ export default function ImagesListPage() {
 
     return (
       <div key={poster.posterId} className='w-[120px] bg-gray-500'>
-        <Link
-          href={
+        <PosterCard
+          posterId={poster.posterId}
+          link={
             posterId === poster.posterId
               ? '#'
               : `/representation/som?posterId=${poster.posterId}`
           }
-        >
-          <Image
-            src={`/posters/${poster.posterId}.jpg`}
-            alt={String(poster.somCoordinate) || 'Poster'}
-            width={120}
-            height={169.2}
-            className={`object-cover duration-300  hover:scale-110 hover:shadow-xl ${posterId === poster.posterId ? 'border-4 border-blue-500' : 'outline outline-2 outline-white '}`}
-          />
-        </Link>
+          isTarget={posterId === poster.posterId}
+        />
       </div>
     );
   };
