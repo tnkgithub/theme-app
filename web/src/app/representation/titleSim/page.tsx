@@ -8,6 +8,7 @@ import { useOpenDescription } from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import { PosterCard } from '@/components/elements/card/Card';
 import { Poster, TitleSimilarityMatrixPart1 } from '@prisma/client';
+import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 const renderPosterImage = (
   title: TitleSimilarityMatrixPart1,
@@ -64,7 +65,7 @@ export default function TitleSimilarityPage() {
       </div>
     </>
   ) : (
-    <div>Loading...</div>
+    <LoadingSkelton />
   );
 
   return (

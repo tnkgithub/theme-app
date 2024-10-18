@@ -9,6 +9,7 @@ import { getAroundPosters } from './getAroundPoster';
 import { Poster } from '@prisma/client';
 import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
+import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 export default function ImagesListPage() {
   // URLのクエリパラメータからposterIdを取得
@@ -52,9 +53,7 @@ export default function ImagesListPage() {
             {Array.isArray(aroundPosters) && aroundPosters.length > 0 ? (
               aroundPosters.map(renderPoster)
             ) : (
-              <div className='text-red-500'>
-                Error: aroundPosters is null or undefined
-              </div>
+              <LoadingSkelton />
             )}
           </div>
         </main>

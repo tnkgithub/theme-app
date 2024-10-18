@@ -3,9 +3,9 @@
 import { useFetchObjectData } from '@/hooks/useFetchObjectData';
 import { useGetQuery } from '@/hooks/useGetQuery';
 import { useOpenDescription } from '@/hooks/useOpenDescription';
-import { renderTargetPosterImage } from '../titleSim/renderPoster';
 import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
+import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 export default function ObjectPage() {
   const posterId = useGetQuery();
@@ -39,7 +39,7 @@ export default function ObjectPage() {
       ))}
     </>
   ) : (
-    <div>Loading...</div>
+    <LoadingSkelton />
   );
 
   return (
