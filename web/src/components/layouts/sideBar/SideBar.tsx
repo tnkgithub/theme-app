@@ -19,7 +19,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
     <div>
       <div className='fixed top-16 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-32 lg:top-16'>
         <div className='flex flex-col items-center'>
-          <div className='my-3 flex w-52 flex-col items-center border-b py-2'>
+          <div className='my-3 flex w-52 flex-col items-center border-b py-2 pb-6'>
             <p className='w-full pb-1 ps-2 text-left text-lg font-bold'>
               類似資料で絞り込む
             </p>
@@ -57,7 +57,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               />
             </div>
           )}
-          <div className='my-1 w-52 border-b pb-6 pt-2'>
+          {/* <div className='my-1 w-52 border-b pb-6 pt-2'>
             <p className='pb-4 ps-2 text-left text-lg font-bold'>
               キーワードで絞り込む
             </p>
@@ -66,7 +66,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               buttonText='検索'
               size='small'
             />
-          </div>
+          </div> */}
           <div className='my-3 flex w-52 flex-col items-center'></div>
           <LinkButton
             inText='代表資料に戻る'

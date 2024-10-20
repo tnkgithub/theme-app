@@ -65,7 +65,8 @@ export default function TitleSimilarityPage() {
       </div>
     </>
   ) : (
-    <LoadingSkelton />
+    null
+    // <LoadingSkelton />
   );
 
   return (

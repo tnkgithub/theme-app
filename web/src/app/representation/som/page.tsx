@@ -53,7 +53,8 @@ export default function ImagesListPage() {
             {Array.isArray(aroundPosters) && aroundPosters.length > 0 ? (
               aroundPosters.map(renderPoster)
             ) : (
-              <LoadingSkelton />
+              null
+              // <LoadingSkelton />
             )}
           </div>
         </main>

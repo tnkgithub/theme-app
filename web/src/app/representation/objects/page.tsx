@@ -39,7 +39,8 @@ export default function ObjectPage() {
       ))}
     </>
   ) : (
-    <LoadingSkelton />
+    null
+    // <LoadingSkelton />
   );
 
   return (
