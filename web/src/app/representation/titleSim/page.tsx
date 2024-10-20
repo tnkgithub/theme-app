@@ -10,7 +10,7 @@ import { PosterCard } from '@/components/elements/card/Card';
 import { Poster, TitleSimilarityMatrixPart1 } from '@prisma/client';
 import { LoadingSkelton } from '@/ui/loading/skeleton';
 
-const renderPosterImage = (
+const renderPoster = (
   title: TitleSimilarityMatrixPart1,
   titleData: Poster[],
   posterId: string
@@ -60,7 +60,7 @@ export default function TitleSimilarityPage() {
         />
         {/*  類似度行列のデータを元にポスター画像を描画 */}
         {titleSimData.map((title: TitleSimilarityMatrixPart1) =>
-          titleData ? renderPosterImage(title, titleData, posterId) : null
+          titleData ? renderPoster(title, titleData, posterId) : null
         )}
       </div>
     </>
