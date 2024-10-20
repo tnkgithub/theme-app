@@ -9,6 +9,7 @@ import { getAroundPosters } from './getAroundPoster';
 import { Poster } from '@prisma/client';
 import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
+import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 export default function ImagesListPage() {
@@ -48,16 +49,18 @@ export default function ImagesListPage() {
         <SideBar posterId={posterId} isSliderOpen={false} />
       </div>
       <div className='grow px-1'>
-        <main className='m-3'>
-          <div className='grid-cols-17 m-2 grid gap-1'>
-            {Array.isArray(aroundPosters) && aroundPosters.length > 0 ? (
-              aroundPosters.map(renderPoster)
-            ) : (
-              null
-              // <LoadingSkelton />
-            )}
-          </div>
-        </main>
+        <MotionWrapper>
+          <main className='m-3'>
+            <div className='grid-cols-17 m-2 grid gap-1'>
+              {
+                Array.isArray(aroundPosters) && aroundPosters.length > 0
+                  ? aroundPosters.map(renderPoster)
+                  : null
+                // <LoadingSkelton />
+              }
+            </div>
+          </main>
+        </MotionWrapper>
       </div>
     </div>
   );

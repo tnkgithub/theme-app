@@ -5,6 +5,7 @@ import { useGetQuery } from '@/hooks/useGetQuery';
 import { useOpenDescription } from '@/hooks/useOpenDescription';
 import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
+import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 export default function ObjectPage() {
@@ -38,17 +39,17 @@ export default function ObjectPage() {
         </div>
       ))}
     </>
-  ) : (
-    null
-    // <LoadingSkelton />
-  );
+  ) : null;
+  // <LoadingSkelton />
 
   return (
     <div className='flex flex-row'>
       <aside className='h-screen w-52'>
         <SideBar posterId={posterId} isSliderOpen={false} />
       </aside>
-      <section className='grow px-5'>{mainContent}</section>
+      <section className='grow px-5'>
+        <MotionWrapper>{mainContent}</MotionWrapper>
+      </section>
     </div>
   );
 }

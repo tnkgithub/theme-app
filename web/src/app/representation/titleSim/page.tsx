@@ -8,6 +8,7 @@ import { useOpenDescription } from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import { PosterCard } from '@/components/elements/card/Card';
 import { Poster, TitleSimilarityMatrixPart1 } from '@prisma/client';
+import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 const renderPoster = (
@@ -64,10 +65,8 @@ export default function TitleSimilarityPage() {
         )}
       </div>
     </>
-  ) : (
-    null
-    // <LoadingSkelton />
-  );
+  ) : null;
+  // <LoadingSkelton />
 
   return (
     <div className='flex flex-row'>
@@ -81,7 +80,9 @@ export default function TitleSimilarityPage() {
         />
       </aside>
       <section className='grow px-1'>
-        <main className='m-3'>{mainContent}</main>
+        <main className='m-3'>
+          <MotionWrapper>{mainContent}</MotionWrapper>
+        </main>
       </section>
     </div>
   );

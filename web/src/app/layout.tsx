@@ -3,7 +3,6 @@ import { biz_udp } from '@/utils/fonts';
 import '@/ui/global.css';
 import Header from '@/components/layouts/header/Header';
 import React from 'react';
-import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 
 export const metadata: Metadata = {
   title: 'Archive App',
@@ -22,7 +21,7 @@ export default function RootLayout({
           buttonText={['画像一覧', 'タイトル一覧', '物体名一覧']}
           buttonHref={['/representation', '/titles', '']}
         />
-        <MotionWrapper>{children}</MotionWrapper>
+        {children}
       </body>
     </html>
   );
