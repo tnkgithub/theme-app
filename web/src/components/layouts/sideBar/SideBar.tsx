@@ -17,7 +17,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
 
   return (
     <div>
-      <div className='fixed top-16 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-32 lg:top-16'>
+      <div className='fixed top-16 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-32 lg:top-12'>
         <div className='flex flex-col items-center'>
           <div className='my-3 flex w-52 flex-col items-center border-b py-2 pb-6'>
             <p className='w-full pb-1 ps-2 text-left text-lg font-bold'>
