@@ -18,9 +18,7 @@ async function main() {
             title: item.title,
             description: item.description,
             somCoordinate: parseInt(item.somCoordinate, 10), // 数値に変換
-            representationsCoordinate: !isNaN(
-              parseInt(item.representationsCoordinate, 10)
-            )
+            representationsCoordinate: !isNaN(item.representationsCoordinate)
               ? parseInt(item.representationsCoordinate, 10)
               : null,
           },

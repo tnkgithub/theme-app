@@ -57,11 +57,11 @@ function PosterCard({
           alt={title || 'Poster'}
           width={120}
           height={169.2}
-          className={`w-full object-cover pb-0.5 ${isTarget ? 'border-4 border-blue-500' : ''}`}
+          className={`w-full object-cover pb-0.5 ${isTarget ? 'outline outline-4 outline-blue-500' : ''}`}
         />
-        {title && (
+        {title ? (
           <div className='line-clamp-3 h-20 bg-white px-2 py-1'>{title}</div>
-        )}
+        ) : null}
       </Link>
     </div>
   );

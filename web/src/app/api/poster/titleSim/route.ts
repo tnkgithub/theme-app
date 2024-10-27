@@ -1,102 +1,47 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma/Prisma';
 
-// TitleSimilarityMatrixテーブルから指定されたカラムのデータを取得し、ソートして返す
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const posterId = searchParams.get('posterId');
-  const threshold = searchParams.get('threshold');
 
-  if (!posterId || !threshold) {
+  if (!posterId) {
     return NextResponse.json(
       { error: 'Invalid query parameter' },
       { status: 400 }
     );
   }
 
-  //posterId
-  const posterNumber = parseInt(posterId.split('o')[1]);
-  const thresholdNumber = parseFloat(threshold);
-
   try {
-    if (posterNumber < 1000) {
-      const titleSimilarityMatrix =
-        await prisma.titleSimilarityMatrixPart1.findMany({
-          // posterIdが0.7以上のデータを取得
-          select: {
-            posterId: true,
-            [posterId]: true,
-          },
-          orderBy: {
-            [posterId]: 'desc',
-          },
-          where: {
-            [posterId]: {
-              gte: thresholdNumber,
-            },
-          },
-        });
-      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
-    } else if (posterNumber < 2000) {
-      const titleSimilarityMatrix =
-        await prisma.titleSimilarityMatrixPart2.findMany({
-          select: {
-            posterId: true,
-            [posterId]: true,
-          },
-          orderBy: {
-            [posterId]: 'desc',
-          },
-          where: {
-            [posterId]: {
-              gte: thresholdNumber,
-            },
-          },
-        });
-      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
-    } else {
-      const titleSimilarityMatrix =
-        await prisma.titleSimilarityMatrixPart3.findMany({
-          select: {
-            posterId: true,
-            [posterId]: true,
-          },
-          orderBy: {
-            [posterId]: 'desc',
-          },
-          where: {
-            [posterId]: {
-              gte: thresholdNumber,
-            },
-          },
-        });
-      return NextResponse.json({ titleSimilarityMatrix }, { status: 200 });
+    const posterData = await prisma.poster.findFirst({
+      where: {
+        posterId: posterId,
+      },
+      include: {
+        titleSimilarity: {
+          select: Object.fromEntries(
+            Array.from({ length: 132 }, (_, i) => [`id${i + 1}`, true])
+          ),
+        },
+      },
+    });
+
+    if (!posterData) {
+      return NextResponse.json({ error: 'No poster found' }, { status: 404 });
     }
-  } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
-  }
-}
 
-export async function POST(request: Request) {
-  const body = await request.json();
-  const titleSimData = body.titleSimilarityMatrix;
+    // titleSimilarity.id1 から id132 までのデータを取得
+    const titleIdList = Object.values(posterData.titleSimilarity)
+      .flatMap((similarity) =>
+        Array.from({ length: 132 }, (_, i) => similarity[`id${i + 1}`])
+      )
+      .filter((id) => id !== null);
 
-  if (!titleSimData) {
-    return NextResponse.json(
-      { error: 'Invalid request body' },
-      { status: 400 }
-    );
-  }
-
-  const titleIds = titleSimData.map(
-    (item: { posterId: string }) => item.posterId
-  );
-  try {
-    // データベースからidに一致するタイトルを取得
+    // idに一致するタイトルを取得
     const titleData = await prisma.poster.findMany({
       where: {
-        posterId: {
-          in: titleIds,
+        id: {
+          in: titleIdList,
         },
       },
       select: {

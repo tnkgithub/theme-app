@@ -10,7 +10,6 @@ import { Poster } from '@prisma/client';
 import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
-import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 export default function ImagesListPage() {
   // URLのクエリパラメータからposterIdを取得
@@ -21,6 +20,7 @@ export default function ImagesListPage() {
 
   // ポスターのデータを取得
   const posters = useFetchPosterData('http://localhost:8000/api/poster/som');
+
   // ポスターのデータから周辺のポスターを取得
   const aroundPosters = getAroundPosters(posterId, posters);
 
@@ -51,13 +51,10 @@ export default function ImagesListPage() {
       <div className='grow px-1'>
         <MotionWrapper>
           <main className='m-3'>
-            <div className='grid-cols-17 m-2 grid gap-1'>
-              {
-                Array.isArray(aroundPosters) && aroundPosters.length > 0
-                  ? aroundPosters.map(renderPoster)
-                  : null
-                // <LoadingSkelton />
-              }
+            <div className='grid-cols-17 m-2 grid gap-2'>
+              {Array.isArray(aroundPosters) && aroundPosters.length > 0
+                ? aroundPosters.map(renderPoster)
+                : null}
             </div>
           </main>
         </MotionWrapper>

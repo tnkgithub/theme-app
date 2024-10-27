@@ -45,7 +45,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               icon='object'
             />
           </div>
-          {isSliderOpen && (
+          {/* {isSliderOpen && (
             <div className='my-1 flex w-52 flex-col items-center border-b pb-4 pt-1'>
               <p className='w-full pb-2 ps-2 text-left text-lg font-bold'>
                 類似度を変更
@@ -56,7 +56,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
                 }}
               />
             </div>
-          )}
+          )} */}
           {/* <div className='my-1 w-52 border-b pb-6 pt-2'>
             <p className='pb-4 ps-2 text-left text-lg font-bold'>
               キーワードで絞り込む
