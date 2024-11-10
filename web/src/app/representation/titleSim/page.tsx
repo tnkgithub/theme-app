@@ -32,15 +32,20 @@ export default function TitleSimilarityPage() {
           link='#'
           isTarget={true}
         />
-        {titleData.map((poster: Poster) => (
-          <PosterCard
-            key={poster.posterId}
-            title={poster.title}
-            posterId={poster.posterId}
-            link={`/representation/titleSim?posterId=${poster.posterId}`}
-            isTarget={false}
-          />
-        ))}
+        {titleData.map(
+          (poster: Poster) =>
+            // posterIdが一致するポスターは表示しない
+            (poster.posterId !== posterId && (
+              <PosterCard
+                key={poster.posterId}
+                title={poster.title}
+                posterId={poster.posterId}
+                link={`/representation/titleSim?posterId=${poster.posterId}`}
+                isTarget={false}
+              />
+            )) ||
+            null
+        )}
       </div>
     </>
   ) : (

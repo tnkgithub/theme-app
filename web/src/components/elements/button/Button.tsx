@@ -29,7 +29,7 @@ const buttonVariants = cva(
     variants: {
       intent: {
         primary: 'bg-white text-gray-800  hover:bg-blue-500 hover:text-white',
-        secondary: 'bg-blue-500 text-white hover:bg-blue-700',
+        secondary: 'bg-white text-blue-700 hover:bg-blue-700 hover:text-white',
         inHrefs: 'bg-blue-500 text-white',
       },
       size: {
