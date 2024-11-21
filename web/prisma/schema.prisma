@@ -14,8 +14,10 @@ model Poster {
   description               String?
   somCoordinate             Int @map("som_coordinate")
   representationsCoordinate Int? @map("representations_coordinate")
+  clusterId                Int? @map("cluster_id")
   objectWords               PosterToObjectWord[]
   titleSimilarity           TitleSimilarity[]
+  cluster                   Cluster? @relation(fields: [clusterId], references: [id])
   @@map("posters")
 }
 
@@ -33,6 +35,17 @@ model PosterToObjectWord {
   poster   Poster @relation(fields: [posterId], references: [id])
   word     ObjectWord @relation(fields: [wordId], references: [id])
   @@map("posters_to_object_words")
+}
+
+model Cluster {
+  id          Int @id @default(autoincrement())
+  repWord1    String? @map("rep_word1")
+  repWord2    String? @map("rep_word2")
+  repWord3    String? @map("rep_word3")
+  repWord4    String? @map("rep_word4")
+  repWord5    String? @map("rep_word5")
+  posters     Poster[]
+  @@map("clusters")
 }
 
 model TitleSimilarity {

@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 async function main() {
   const results = [];
 
-  fs.createReadStream('public/tmp/data/posterData.csv') // パスを修正
+  fs.createReadStream('public/tmp/data/newPosterData.csv') // パスを修正
     .pipe(csv())
     .on('data', (data) => results.push(data))
     .on('end', async () => {
@@ -20,6 +20,9 @@ async function main() {
             somCoordinate: parseInt(item.somCoordinate, 10), // 数値に変換
             representationsCoordinate: !isNaN(item.representationsCoordinate)
               ? parseInt(item.representationsCoordinate, 10)
+              : null,
+            clusterId: !isNaN(item.clusterId)
+              ? parseInt(item.clusterId, 10)
               : null,
           },
         });
