@@ -6,7 +6,6 @@ import { useOpenDescription } from '@/hooks/useOpenDescription';
 import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
-import { LoadingSkelton } from '@/ui/loading/skeleton';
 
 export default function ObjectPage() {
   const posterId = useGetQuery();
