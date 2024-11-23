@@ -20,20 +20,7 @@ export async function GET() {
       },
     });
 
-    const clusterData = clusters.map((cluster) => ({
-      id: cluster.id,
-      repWord1: cluster.repWord1 || null,
-      repWord2: cluster.repWord2 || null,
-      repWord3: cluster.repWord3 || null,
-      repWord4: cluster.repWord4 || null,
-      repWord5: cluster.repWord5 || null,
-      posters: cluster.posters.map((poster) => ({
-        posterId: poster.posterId,
-        title: poster.title,
-      })),
-    }));
-
-    return NextResponse.json({ clusterData }, { status: 200 });
+    return NextResponse.json({ clusters }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

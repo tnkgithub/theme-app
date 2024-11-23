@@ -6,7 +6,7 @@ import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import Link from 'next/link';
 import Image from 'next/image';
 
-async function getStaticProps() {
+async function fetchData() {
   const res = await fetch('http://localhost:8000/api/poster/representation');
 
   // レスポンスのJSONデータを取得
@@ -22,7 +22,7 @@ async function getStaticProps() {
 }
 
 export default async function RepresentationPage() {
-  const posters = (await getStaticProps()).props.posters;
+  const posters = (await fetchData()).props.posters;
 
   return (
     <MotionWrapper>
