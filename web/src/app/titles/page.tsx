@@ -32,6 +32,30 @@ async function fetchData() {
   };
 }
 
+function RenderPosters({ cluster }: { cluster: TitleClusterProps }) {
+  return (
+    <div className='mx-3 grid grid-cols-2 gap-3'>
+      {cluster.posters.slice(0, 6).map((poster) => (
+        <div
+          key={poster.posterId}
+          className='flex items-center rounded-md bg-blue-50'
+        >
+          <Image
+            src={`/posters/${poster.posterId}.jpg`}
+            alt={`${cluster.repWord1}`}
+            width={50}
+            height={70.5}
+            className='m-2 min-w-16 object-cover'
+          />
+          <div className='flex  h-16 w-fit items-center pr-2'>
+            <p className='line-clamp-2 text-lg'>{poster.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default async function TitleClusterPage() {
   const clusters = (await fetchData()).props.clusters;
   return (
@@ -54,25 +78,7 @@ export default async function TitleClusterPage() {
                       資料数： {cluster.posters.length}件
                     </p>
                   </div>
-                  <div className='mx-3 grid grid-cols-2 gap-3'>
-                    {cluster.posters.slice(0, 6).map((poster) => (
-                      <div
-                        key={poster.posterId}
-                        className='flex items-center rounded-md bg-blue-50 duration-300 hover:scale-105'
-                      >
-                        <Image
-                          src={`/posters/${poster.posterId}.jpg`}
-                          alt={`${cluster.repWord1}`}
-                          width={50}
-                          height={70.5}
-                          className='m-2 min-w-16 object-cover'
-                        />
-                        <div className='flex  h-16 w-fit items-center pr-2'>
-                          <p className='line-clamp-2 text-lg'>{poster.title}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <RenderPosters cluster={cluster} />
                 </Link>
               ))
             : null}

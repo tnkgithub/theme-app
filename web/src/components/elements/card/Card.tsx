@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const imagesPathMap = {
   imagesList: '/representation.jpg',
-  titleList: '',
+  titleList: '/titles.png',
   objectList: '',
 };
 

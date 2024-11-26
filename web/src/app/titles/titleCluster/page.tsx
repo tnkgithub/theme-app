@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 
 type Props = {
   searchParams: {
@@ -32,54 +33,62 @@ async function fetchData(searchParams: Props['searchParams']) {
   return cluster;
 }
 
+function PosterList({ cluster }: { cluster: TitleClusterProps }) {
+  return (
+    <div className='grid grid-cols-1 gap-6 lg:grid-cols-2'>
+      {cluster.posters.map((poster) => (
+        <Link
+          key={poster.posterId}
+          className='flex w-full items-start rounded-md bg-blue-50 duration-300 hover:scale-105'
+          href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
+          target='_blank'
+        >
+          <Image
+            src={`/posters/${poster.posterId}.jpg`}
+            alt={`${cluster.repWord1}`}
+            width={100}
+            height={141}
+            className='m-4 object-cover'
+          />
+          <div className='m-2 flex w-fit flex-col pr-4'>
+            <p className='pb-1 pt-3 text-lg font-bold'>{poster.title}</p>
+            <p className='my-0.5 line-clamp-4 text-base text-gray-800'>
+              {poster.description}
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default async function TitleClusterPage({ searchParams }: Props) {
   const cluster = await fetchData(searchParams);
 
   return (
-    <main className='m-8'>
-      <div className='container mx-auto items-center justify-between'>
-        <div className='flex flex-row items-baseline justify-between px-2 pb-4'>
-          {/* <div className='flex flex-row items-center'>
-            <Link
-              href='/titles/'
-              className='m-1 h-10 pb-3 pr-2 text-4xl font-bold text-gray-300'
-            >
-              {'<'}
-            </Link> */}
-          <p className=' text-3xl font-bold'>
-            代表語： {cluster.repWord1} {cluster.repWord2} {cluster.repWord3}{' '}
-            {cluster.repWord4} {cluster.repWord5}
-          </p>
-          {/* </div> */}
-          <p className='text-lg text-gray-500'>
-            資料数： {cluster.posters.length}件
-          </p>
+    <MotionWrapper>
+      <main className='m-8'>
+        <div className='container mx-auto items-center justify-between'>
+          <div className='flex flex-row items-baseline justify-between px-2 pb-4'>
+            {/* <div className='flex flex-row items-center'>
+              <Link
+                href='/titles/'
+                className='m-1 h-10 pb-3 pr-2 text-4xl font-bold text-gray-300'
+              >
+                {'<'}
+              </Link> */}
+            <p className=' text-3xl font-bold'>
+              代表語： {cluster.repWord1} {cluster.repWord2} {cluster.repWord3}{' '}
+              {cluster.repWord4} {cluster.repWord5}
+            </p>
+            {/* </div> */}
+            <p className='text-lg text-gray-500'>
+              資料数： {cluster.posters.length}件
+            </p>
+          </div>
+          <PosterList cluster={cluster} />
         </div>
-        <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
-          {cluster.posters.map((poster) => (
-            <Link
-              key={poster.posterId}
-              className='flex w-full items-start rounded-md bg-blue-50'
-              href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
-              target='_blank'
-            >
-              <Image
-                src={`/posters/${poster.posterId}.jpg`}
-                alt={`${cluster.repWord1}`}
-                width={100}
-                height={141}
-                className='m-4 object-cover'
-              />
-              <div className='m-2 flex w-fit flex-col pr-4'>
-                <p className='pb-1 pt-3 text-lg font-bold'>{poster.title}</p>
-                <p className='my-0.5 line-clamp-4 text-sm text-gray-800'>
-                  {poster.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </main>
+      </main>
+    </MotionWrapper>
   );
 }
