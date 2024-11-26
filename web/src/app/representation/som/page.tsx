@@ -22,7 +22,7 @@ export default function ImagesListPage() {
   const posters = useFetchPosterData('http://localhost:8000/api/poster/som');
 
   // ポスターのデータから周辺のポスターを取得
-  const aroundPosters = getAroundPosters(posterId, posters);
+  const aroundPosters = getAroundPosters(posterId, posters, 2, 4);
 
   // ポスター画
   const renderPoster = (poster: Poster) => {
@@ -51,7 +51,7 @@ export default function ImagesListPage() {
       <div className='grow px-1'>
         <MotionWrapper>
           <main className='m-3'>
-            <div className='grid-cols-17 m-2 grid gap-2'>
+            <div className='m-2 grid grid-cols-9 gap-2'>
               {Array.isArray(aroundPosters) && aroundPosters.length > 0
                 ? aroundPosters.map(renderPoster)
                 : null}

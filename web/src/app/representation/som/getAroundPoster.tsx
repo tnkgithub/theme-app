@@ -1,6 +1,11 @@
 import { Poster } from '@prisma/client';
 
-export function getAroundPosters(posterId: string, posters: Poster[]) {
+export function getAroundPosters(
+  posterId: string,
+  posters: Poster[],
+  rangeX: number = 5,
+  rangeY: number = 8
+): Poster[] {
   const aroundPosters: Poster[] = []; // 画像IDのリスト
   let targetCoordinate: number[] = [0, 0];
 
@@ -22,8 +27,6 @@ export function getAroundPosters(posterId: string, posters: Poster[]) {
   // 例２）targetCoordinateが[0, 0]だったら, 最初の17個が[21, 70]~[21, 77]と[21, 0]~[21, 8], 次の17個が[22, 70]~[22, 77]と[22, 0]~[22, 8]となる。これを11回繰り返す
   // 例３）targetCoordinateが[25, 77]だったら, 最初の17個が[20, 69]~[20, 77]と[20, 0]~[0, 8], 次の17個が[21, 69]~[21, 77]と[21, 0]~[21, 8]となる。これを11回繰り返す
 
-  const rangeX = 5; // 縦の表示範囲
-  const rangeY = 8; // 横の表示範囲
   let startX = targetCoordinate[0] - rangeX;
   let endX = targetCoordinate[0] + rangeX;
   let startY = targetCoordinate[1] - rangeY;

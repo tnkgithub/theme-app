@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 
 type BaseButtonProps = {
   inText: string;
-  intent?: 'primary' | 'secondary' | 'inHrefs';
+  intent?: 'primary' | 'secondary' | 'third' | 'fourth' | 'inHrefs';
   size?: 'small' | 'medium' | 'large' | 'icon';
   isDisabled?: boolean;
 };
@@ -30,6 +30,9 @@ const buttonVariants = cva(
       intent: {
         primary: 'bg-white text-gray-800  hover:bg-blue-500 hover:text-white',
         secondary: 'bg-white text-blue-700 hover:bg-blue-700 hover:text-white',
+        third:
+          'bg-white text-gray-800 shadow-md shadow-blue-200 hover:bg-blue-500 hover:text-white hover:shadow-md hover:shadow-blue-200',
+        fourth: 'bg-blue-500 text-white hover:bg-blue-700',
         inHrefs: 'bg-blue-500 text-white',
       },
       size: {
