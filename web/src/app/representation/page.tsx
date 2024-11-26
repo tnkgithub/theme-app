@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { Poster } from '@prisma/client';
 import React from 'react';
 // import { PosterCard } from '@/components/elements/card/Card';
@@ -38,14 +37,14 @@ export default async function RepresentationPage() {
                 //   isTarget={false}
                 // />
                 // 何故か、poster.posterIdがundefinedになり、poster.idがnumberのはずなのに、stringになる
-                <div key={poster.id} className='h-141 w-100 bg-gray-500'>
+                <div key={poster.id} className='bg-gray-500'>
                   <Link href={`/representation/som?posterId=${poster.id}`}>
                     <Image
                       src={`/posters/${poster.id}.jpg`}
                       alt={`${poster.representationsCoordinate}`}
                       width={100}
                       height={141}
-                      className='object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
+                      className='h-[141px] object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
                     />
                   </Link>
                 </div>

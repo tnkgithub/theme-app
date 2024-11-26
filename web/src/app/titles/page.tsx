@@ -45,7 +45,7 @@ function RenderPosters({ cluster }: { cluster: TitleClusterProps }) {
             alt={`${cluster.repWord1}`}
             width={50}
             height={70.5}
-            className='m-2 min-w-16 object-cover'
+            className='m-2 h-[70.5px] min-w-16 object-contain'
           />
           <div className='flex  h-16 w-fit items-center pr-2'>
             <p className='line-clamp-2 text-lg'>{poster.title}</p>
