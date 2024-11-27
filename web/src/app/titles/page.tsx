@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import MotionRapper from '@/lib/framerMotion/MotionWrapper';
 import Image from 'next/image';
+import { LinkButton } from '@/components/elements/button/Button';
 
 type TitleClusterProps = {
   id: number;
@@ -66,14 +67,38 @@ export default async function TitleClusterPage() {
             ? clusters.map((cluster: TitleClusterProps) => (
                 <Link
                   key={cluster.id}
-                  className='m-2 rounded-md  border-2 border-gray-200 pb-3  shadow-md duration-300 hover:scale-105'
+                  className='m-2 h-fit rounded-md border-2 border-gray-200 pb-3  shadow-md'
                   href={`/titles/titleCluster?clusterId=${cluster.id}`}
                 >
-                  <div className='flex flex-row items-center justify-between'>
+                  {/* <div className='flex flex-row items-center justify-between'>
                     <p className='inline-block -translate-y-3 translate-x-4 truncate whitespace-nowrap rounded-md bg-blue-500 px-3 py-1 text-lg  text-white  lg:max-w-[250px] xl:max-w-[480px]'>
                       {cluster.repWord1} {cluster.repWord2} {cluster.repWord3}
                       {'  '}
                       {cluster.repWord4} {cluster.repWord5}
+                    </p> */}
+                  <div className='flex flex-row items-center justify-between'>
+                    <p className='inline-block -translate-y-4  translate-x-4 px-3 lg:max-w-[250px] xl:max-w-[480px]'>
+                      <div className='flex flex-row'>
+                        {Array.from({ length: 5 }, (_, i) => {
+                          const repWord =
+                            cluster[
+                              `repWord${i + 1}` as keyof TitleClusterProps
+                            ];
+
+                          if (!repWord) return null;
+                          return (
+                            <LinkButton
+                              key={i}
+                              inText={
+                                typeof repWord === 'string' ? repWord : ''
+                              }
+                              intent='fourth'
+                              size='fit'
+                              href='#'
+                            />
+                          );
+                        })}
+                      </div>
                     </p>
                     <p className='mx-1 inline-block min-w-fit p-2 text-sm text-gray-500'>
                       資料数： {cluster.posters.length}件

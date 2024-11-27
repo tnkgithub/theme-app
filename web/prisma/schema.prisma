@@ -182,6 +182,15 @@ model TitleSimilarity {
   id130   Int?
   id131   Int?
   id132   Int?
+  id133   Int?
+  id134   Int?
+  id135   Int?
+  id136   Int?
+  id137   Int?
+  id138   Int?
+  id139   Int?
+  id140   Int?
+  id141   Int?
   poster   Poster @relation(fields: [posterId], references: [id])
   @@map("title_similarities")
 }

@@ -22,14 +22,14 @@ export default function ImagesListPage() {
   const posters = useFetchPosterData('http://localhost:8000/api/poster/som');
 
   // ポスターのデータから周辺のポスターを取得
-  const aroundPosters = getAroundPosters(posterId, posters, 2, 4);
+  const aroundPosters = getAroundPosters(posterId, posters, 3, 5);
 
   // ポスター画
   const renderPoster = (poster: Poster) => {
     if (!poster || !poster.posterId) return null; // posterがundefinedまたはidがない場合は何も表示しない
 
     return (
-      <div key={poster.posterId} className='w-[120px] bg-gray-500'>
+      <div key={poster.posterId} className='bg-gray-500'>
         <PosterCard
           posterId={poster.posterId}
           link={
@@ -51,7 +51,7 @@ export default function ImagesListPage() {
       <div className='grow px-1'>
         <MotionWrapper>
           <main className='m-3'>
-            <div className='m-2 grid grid-cols-9 gap-2'>
+            <div className='m-2 grid grid-cols-11 gap-2'>
               {Array.isArray(aroundPosters) && aroundPosters.length > 0
                 ? aroundPosters.map(renderPoster)
                 : null}

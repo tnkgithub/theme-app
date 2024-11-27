@@ -50,14 +50,14 @@ function PosterCard({
   isTarget: boolean;
 }) {
   return (
-    <div className='bg-gray-500 shadow-md duration-300 hover:scale-110'>
+    <div className='aspect-1/1.41 w-full bg-gray-500 shadow-md duration-300 hover:scale-110'>
       <Link href={link || '#'}>
         <Image
           src={`/posters/${posterId}.jpg`}
           alt={title || 'Poster'}
           width={120}
           height={169.2}
-          className={`h-[169.2px] w-full object-cover pb-0.5 ${isTarget ? 'outline outline-4 outline-blue-500' : ''}`}
+          className={`aspect-1/1.41 w-full object-cover pb-0.5 ${isTarget ? 'outline outline-4 outline-blue-500' : ''}`}
         />
         {title ? (
           <div className='line-clamp-3 h-20 bg-white px-2 py-1'>{title}</div>

@@ -91,14 +91,27 @@ export default async function TitleClusterPage({ searchParams }: Props) {
             <div className='flex flex-row items-center'>
               <Link
                 href='/titles/'
-                className='h-9 pb-3 pr-2 text-4xl font-bold text-gray-300 duration-300 hover:text-blue-400'
+                className='h-9 pb-3 text-4xl font-bold text-gray-300 duration-300 hover:text-blue-400'
               >
                 〈
               </Link>
-              <p className='rounded-md bg-blue-500 px-5 py-2 text-3xl font-bold text-white shadow-md shadow-blue-300'>
-                代表語： {cluster.repWord1} {cluster.repWord2}{' '}
-                {cluster.repWord3} {cluster.repWord4} {cluster.repWord5}
-              </p>
+              <div className='flex flex-row gap-2 px-5 py-2'>
+                {Array.from({ length: 5 }, (_, i) => {
+                  const repWord =
+                    cluster[`repWord${i + 1}` as keyof TitleClusterProps];
+
+                  if (!repWord) return null;
+                  return (
+                    <LinkButton
+                      key={i}
+                      inText={typeof repWord === 'string' ? repWord : ''}
+                      intent='fourth'
+                      size='xlarge'
+                      href='#'
+                    />
+                  );
+                })}
+              </div>
             </div>
             <p className='text-lg text-gray-500'>
               資料数： {cluster.posters.length}件
