@@ -9,6 +9,7 @@ type Props = {
     [key: string]: string | undefined; // 他のプロパティを許容
   };
 };
+
 type TitleClusterProps = {
   id: number;
   repWord1?: string;
