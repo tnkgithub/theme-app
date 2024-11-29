@@ -68,7 +68,7 @@ const SearchBox = ({
         </div>
         <Button
           inText={buttonText}
-          intent='fourth'
+          intent='Search'
           size='small'
           onClick={() => {}}
         />

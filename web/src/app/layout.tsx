@@ -16,11 +16,7 @@ export default function RootLayout({
   return (
     <html lang='ja' className={`${biz_udp.variable} font-biz_udp`}>
       <body>
-        <Header
-          logoText='Archive App'
-          buttonText={['画像一覧', 'タイトル一覧', '物体名一覧']}
-          buttonHref={['/representation', '/titles', '']}
-        />
+        <Header />
         {children}
       </body>
     </html>

@@ -1,17 +1,14 @@
 'use client';
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import { LinkButton } from '@/components/elements/button/Button';
 import Link from 'next/link';
 
-type HeaderProps = {
-  logoText: string;
-  buttonText: string[];
-  buttonHref: string[];
-};
+const Header = () => {
+  const pathname = usePathname();
 
-const Header = ({ logoText, buttonText, buttonHref }: HeaderProps) => {
   return (
     <>
       <header className='fixed z-20 w-full border-b border-gray-300 bg-white'>
@@ -21,7 +18,7 @@ const Header = ({ logoText, buttonText, buttonHref }: HeaderProps) => {
               href='/'
               className='ml-6 flex items-center justify-center font-serif text-xl font-medium text-gray-800 lg:justify-start'
             >
-              {logoText}
+              Archive App
             </Link>
           </div>
           {/* <div className='text-xl font-biz_udp font-bold text-blue-500'>
@@ -29,15 +26,24 @@ const Header = ({ logoText, buttonText, buttonHref }: HeaderProps) => {
           </div> */}
           <div className='container mr-6 hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
             <div className='mr-2  flex py-1 lg:py-0'>
-              {buttonText.map((text, index) => (
-                <LinkButton
-                  key={index}
-                  inText={text}
-                  intent='primary'
-                  size='medium'
-                  href={buttonHref[index]}
-                />
-              ))}
+              <LinkButton
+                inText='画像一覧'
+                intent={`${pathname === '/representation' ? 'inHrefs' : 'primary'}`}
+                size='medium'
+                href='/representation/'
+              />
+              <LinkButton
+                inText='タイトル一覧'
+                intent={`${pathname === '/titles' ? 'inHrefs' : 'primary'}`}
+                size='medium'
+                href='/titles/'
+              />
+              <LinkButton
+                inText='物体名一覧'
+                intent={`${pathname === '/objects' ? 'inHrefs' : 'primary'}`}
+                size='medium'
+                href='/objects/'
+              />
             </div>
             <SearchBox
               placeholder='資料を検索'

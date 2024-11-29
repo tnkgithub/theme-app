@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 
 type BaseButtonProps = {
   inText: string;
-  intent?: 'primary' | 'secondary' | 'third' | 'fourth' | 'inHrefs';
+  intent?: 'primary' | 'secondary' | 'third' | 'fourth' | 'inHrefs' | 'Search';
   size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon';
   isDisabled?: boolean;
 };
@@ -31,9 +31,11 @@ const buttonVariants = cva(
         primary: 'bg-white text-gray-800  hover:bg-blue-500 hover:text-white',
         secondary: 'bg-white text-blue-700 hover:bg-blue-500 hover:text-white',
         third:
-          'bg-white text-gray-800 shadow-md shadow-blue-200 hover:bg-blue-500 hover:text-white hover:shadow-md hover:shadow-blue-200',
-        fourth: 'bg-blue-500 text-white duration-300 hover:scale-90',
+          'rounded-md bg-gray-50 text-gray-900 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
+        fourth:
+          'rounded-md bg-gray-100 text-gray-900 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
         inHrefs: 'bg-blue-500 text-white',
+        Search: 'bg-blue-500 text-white hover:bg-blue-600',
       },
       size: {
         small: 'w-12 rounded-md p-1',
