@@ -9,7 +9,7 @@ type Props = {
   };
 };
 
-type ObjectDataProps = {
+type ObjectProps = {
   id: string;
   word: string;
   posters: { posterId: string }[];
@@ -21,7 +21,7 @@ async function fetchData(posterId: string, word: string) {
   );
   const data = await res.json();
 
-  const ObjectData: ObjectDataProps = data.responseData;
+  const ObjectData: ObjectProps = data.responseData;
 
   return ObjectData;
 }
@@ -30,7 +30,7 @@ function MainContent({
   objectData,
   posterId,
 }: {
-  objectData: ObjectDataProps;
+  objectData: ObjectProps;
   posterId: string;
 }) {
   return (

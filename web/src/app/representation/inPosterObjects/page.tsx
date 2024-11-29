@@ -57,7 +57,7 @@ function mainContent({
                       <PosterCard
                         key={poster.posterId}
                         posterId={poster.posterId}
-                        link={`/representation/objects?posterId=${poster.posterId}`}
+                        link={`/representation/inPosterObjects?posterId=${poster.posterId}`}
                         isTarget={false}
                       />
                     )
