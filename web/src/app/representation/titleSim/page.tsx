@@ -17,7 +17,7 @@ export default function TitleSimilarityPage() {
 
   // タイトルデータを取得
   const titleData = useFetchTitleData(
-    `http://localhost:8000/api/poster/titleSim?posterId=${posterId}`
+    `http://localhost:8000/api/poster/representation/titleSim?posterId=${posterId}`
   );
 
   const mainContent = titleData ? (

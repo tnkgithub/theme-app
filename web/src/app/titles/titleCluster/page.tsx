@@ -71,7 +71,7 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
                 inText='画像内物体'
                 intent='third'
                 size='medium'
-                href={`/representation/objects?posterId=${poster.posterId}`}
+                href={`/representation/inPosterObjects?posterId=${poster.posterId}`}
               />
             </div>
           </div>

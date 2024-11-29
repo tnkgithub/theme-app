@@ -19,7 +19,9 @@ export default function ImagesListPage() {
   useOpenDescription(posterId);
 
   // ポスターのデータを取得
-  const posters = useFetchPosterData('http://localhost:8000/api/poster/som');
+  const posters = useFetchPosterData(
+    'http://localhost:8000/api/poster/representation/som'
+  );
 
   // ポスターのデータから周辺のポスターを取得
   const aroundPosters = getAroundPosters(posterId, posters, 3, 5);

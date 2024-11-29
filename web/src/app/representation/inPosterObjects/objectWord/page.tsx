@@ -16,7 +16,7 @@ type ObjectDataProps = {
 
 async function fetchData(posterId: string, word: string) {
   const res = await fetch(
-    `http://localhost:8000/api/poster/inPosterObjects/objectWord?posterId=${posterId}&word=${word}`
+    `http://localhost:8000/api/poster/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${word}`
   );
   const data = await res.json();
 
