@@ -16,7 +16,7 @@ type ObjectDataProps = {
 
 async function fetchData(posterId: string, word: string) {
   const res = await fetch(
-    `http://localhost:8000/api/poster/objects/objectWord?posterId=${posterId}&word=${word}`
+    `http://localhost:8000/api/poster/inPosterObjects/objectWord?posterId=${posterId}&word=${word}`
   );
   const data = await res.json();
 
@@ -34,7 +34,7 @@ function MainContent({
 }) {
   return (
     <>
-      <div className='mt-8 pb-5'>{objectData.word}</div>
+      <div className='mx-6 mt-4 text-3xl'>{objectData.word}</div>
 
       <div className='mt-5 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
         <PosterCard posterId={posterId} link='#' isTarget={true} />
@@ -44,7 +44,7 @@ function MainContent({
               <PosterCard
                 key={poster.posterId}
                 posterId={poster.posterId}
-                link={`/representation/objects?posterId=${poster.posterId}`}
+                link={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
                 isTarget={false}
               />
             )
@@ -60,11 +60,11 @@ export default async function ObjectWordPage({ searchParams }: Props) {
   const objectData = await fetchData(posterId, word);
 
   return (
-    <main>
+    <main className='flex flex-row'>
       <aside className='h-screen w-52'>
         <SideBar posterId={posterId} isSliderOpen={false} />
       </aside>
-      <section className='flex w-full flex-col items-center'>
+      <section className='m-2 px-5'>
         <MainContent objectData={objectData} posterId={posterId} />
       </section>
     </main>

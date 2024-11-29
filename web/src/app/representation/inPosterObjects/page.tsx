@@ -85,7 +85,7 @@ export default function ObjectsPage() {
   const posterId = useGetQuery();
 
   const objectData = useFetchObjectData(
-    `http://localhost:8000/api/poster/objects?posterId=${posterId}`
+    `http://localhost:8000/api/poster/inPosterObjects?posterId=${posterId}`
   );
 
   useOpenDescription(posterId);
