@@ -15,13 +15,13 @@ type TitleClusterProps = {
 };
 
 async function fetchData() {
-  const res = await fetch('http://localhost:8000/api/poster/titleCluster');
+  const res = await fetch('http://localhost:8000/api/poster/titles/');
 
   // レスポンスのJSONデータを取得
   const data = await res.json();
 
   // clustersがオブジェクトの中にあるため、正しく取り出す
-  const clusters: TitleClusterProps[] = data.clusterData;
+  const clusters: TitleClusterProps[] = data.clusters;
 
   // postersのlengthで降順ソート
   // clusters.sort((a, b) => b.posters.length - a.posters.length);
@@ -39,7 +39,7 @@ function RenderInCluster({ cluster }: { cluster: TitleClusterProps }) {
       {cluster.posters.slice(0, 6).map((poster) => (
         <div
           key={poster.posterId}
-          className='flex items-center rounded-md bg-blue-50 shadow-md shadow-blue-100'
+          className='flex items-center rounded-md bg-blue-50 shadow-sm shadow-gray-300'
         >
           <Image
             src={`/posters/${poster.posterId}.jpg`}
@@ -67,7 +67,7 @@ export default async function TitleClusterPage() {
             ? clusters.map((cluster: TitleClusterProps) => (
                 <Link
                   key={cluster.id}
-                  className='m-2 h-fit rounded-md border-2 border-gray-200 pb-3  shadow-md'
+                  className='m-2 h-fit rounded-xl border-2 border-gray-200 pb-3  shadow-md duration-300 hover:shadow-gray-400'
                   href={`/titles/titleCluster?clusterId=${cluster.id}`}
                 >
                   {/* <div className='flex flex-row items-center justify-between'>
@@ -76,30 +76,24 @@ export default async function TitleClusterPage() {
                       {'  '}
                       {cluster.repWord4} {cluster.repWord5}
                     </p> */}
-                  <div className='flex flex-row items-center justify-between'>
-                    <p className='inline-block -translate-y-4  translate-x-4 px-3 lg:max-w-[250px] xl:max-w-[480px]'>
-                      <div className='flex flex-row'>
-                        {Array.from({ length: 5 }, (_, i) => {
-                          const repWord =
-                            cluster[
-                              `repWord${i + 1}` as keyof TitleClusterProps
-                            ];
+                  <div className='flex flex-row items-center justify-between '>
+                    <div className='my-2 ml-0.5 flex flex-row gap-1 px-2'>
+                      {Array.from({ length: 5 }, (_, i) => {
+                        const repWord =
+                          cluster[`repWord${i + 1}` as keyof TitleClusterProps];
 
-                          if (!repWord) return null;
-                          return (
-                            <LinkButton
-                              key={i}
-                              inText={
-                                typeof repWord === 'string' ? repWord : ''
-                              }
-                              intent='fourth'
-                              size='fit'
-                              href='#'
-                            />
-                          );
-                        })}
-                      </div>
-                    </p>
+                        if (!repWord) return null;
+                        return (
+                          <LinkButton
+                            key={i}
+                            inText={typeof repWord === 'string' ? repWord : ''}
+                            intent='fourth'
+                            size='fit'
+                            href='#'
+                          />
+                        );
+                      })}
+                    </div>
                     <p className='mx-1 inline-block min-w-fit p-2 text-sm text-gray-500'>
                       資料数： {cluster.posters.length}件
                     </p>

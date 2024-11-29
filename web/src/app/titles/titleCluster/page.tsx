@@ -25,7 +25,7 @@ async function fetchData(searchParams: Props['searchParams']) {
 
   // 外部APIやデータベースへのリクエスト例
   const res = await fetch(
-    `http://localhost:8000/api/poster/titleCluster/inCluster?clusterId=${clusterId}`
+    `http://localhost:8000/api/poster/titles/titleCluster?clusterId=${clusterId}`
   );
 
   const data = await res.json();
@@ -41,7 +41,7 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
       {cluster.posters.map((poster) => (
         <a
           key={poster.posterId}
-          className='flex size-full items-center rounded-md bg-blue-50 p-2 shadow-md shadow-blue-100 duration-300 hover:scale-105'
+          className='flex size-full items-center rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400'
           href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
           target='_blank'
           rel='noopener noreferrer'
@@ -106,7 +106,7 @@ export default async function TitleClusterPage({ searchParams }: Props) {
                     <LinkButton
                       key={i}
                       inText={typeof repWord === 'string' ? repWord : ''}
-                      intent='fourth'
+                      intent='third'
                       size='xlarge'
                       href='#'
                     />
