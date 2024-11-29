@@ -41,7 +41,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               inText='同名の物体を含む資料'
               intent={`${pathname === '/representation/objects' ? 'inHrefs' : 'primary'}`}
               size='icon'
-              href={`/representation/objects?posterId=${posterId}`}
+              href={`/representation/inPosterObjects?posterId=${posterId}`}
               icon='object'
             />
           </div>

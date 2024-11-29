@@ -50,7 +50,7 @@ function mainContent({
             <div className='mt-5 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
               <PosterCard posterId={posterId} link='#' isTarget={true} />
               {item.posters
-                .slice(0, 23)
+                .slice(0, 22)
                 .map(
                   (poster) =>
                     poster.posterId !== posterId && (
@@ -64,12 +64,12 @@ function mainContent({
                 )}
               {item.posters.length > 20 && (
                 <Link
-                  href={`/representation/objects/objectWord?posterId=${posterId}&word=${item.word}`}
+                  href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
                 >
-                  <div className='flex size-full items-center justify-center px-1 text-sm text-blue-500 outline outline-2 outline-blue-500'>
+                  <div className='flex size-full items-center justify-center px-1 text-base text-blue-500 '>
                     すべての資料
                     <br />
-                    を表示
+                    を表示 →
                   </div>
                 </Link>
               )}

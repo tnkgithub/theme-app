@@ -51,7 +51,13 @@ function PosterCard({
 }) {
   return (
     <div className='aspect-1/1.41 w-full bg-gray-500 shadow-md duration-300 hover:scale-110'>
-      <Link href={link || '#'}>
+      {/* もし、linkがhttps://archives.c.fun.ac.jp/postersを含む場合、targetを_blankにする */}
+      <Link
+        href={link || '#'}
+        {...(link?.includes('https://archives.c.fun.ac.jp/posters')
+          ? { target: '_blank' }
+          : {})}
+      >
         <Image
           src={`/posters/${posterId}.jpg`}
           alt={title || 'Poster'}
