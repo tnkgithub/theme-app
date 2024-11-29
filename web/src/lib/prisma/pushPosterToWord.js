@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 async function main() {
   const results = [];
 
-  fs.createReadStream('public/tmp/data/poster_word2.csv') // パスを修正
+  fs.createReadStream('public/tmp/data/poster_word4.csv') // パスを修正
     .pipe(csv())
     .on('data', (data) => results.push(data))
     .on('end', async () => {
