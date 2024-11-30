@@ -1,10 +1,11 @@
 'use client';
 
+// urlからクエリパラメータを取得する
 import { useSearchParams } from 'next/navigation';
 
-// URLからクエリパラメータを取得
-export function useGetQuery() {
+export const useGetQuery = () => {
   const searchParams = useSearchParams();
-  const posterId = searchParams.get('posterId') ?? '0';
+  const posterId = searchParams.get('posterId');
+
   return posterId;
-}
+};

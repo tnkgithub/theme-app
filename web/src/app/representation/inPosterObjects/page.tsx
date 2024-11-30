@@ -1,14 +1,10 @@
-'use client';
-
-import { useFetchObjectData } from '@/hooks/useFetchObjectData';
-import { useGetQuery } from '@/hooks/useGetQuery';
 import { useOpenDescription } from '@/hooks/useOpenDescription';
 import { PosterCard } from '@/components/elements/card/Card';
 import Link from 'next/link';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 
-type ObjectData = {
+type ObjectDataProps = {
   word: string;
   posters: { posterId: string }[];
 };
@@ -17,10 +13,10 @@ function MainContent({
   objectData,
   posterId,
 }: {
-  objectData: ObjectData[];
+  objectData: ObjectDataProps[];
   posterId: string;
 }) {
-  if (objectData.length === 0) {
+  if (!objectData || objectData.length === 0) {
     return (
       <div>
         <p className='mt-5 p-2 text-2xl'>物体なし</p>
@@ -32,60 +28,64 @@ function MainContent({
   } else {
     return (
       <>
-        {objectData.length > 0 &&
-          objectData.map((item) => (
-            <div key={item.word} className='mt-8 pb-5'>
-              <Link
-                className='mx-6 text-3xl duration-300 hover:text-blue-500'
-                href={``}
-              >
-                {item.word}
-              </Link>
-              <div className='mt-5 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
-                <PosterCard posterId={posterId} link='#' isTarget={true} />
-                {item.posters
-                  .slice(0, 22)
-                  .map((poster) =>
-                    poster.posterId !== posterId ? (
-                      <PosterCard
-                        key={poster.posterId}
-                        posterId={poster.posterId}
-                        link={`/representation/inPosterObjects?posterId=${poster.posterId}`}
-                        isTarget={false}
-                      />
-                    ) : null
-                  )}
-                {item.posters.length > 22 && (
-                  <Link
-                    href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
-                  >
-                    <div className='flex size-full items-center justify-center px-1 text-base text-blue-500 '>
-                      すべての資料
-                      <br />
-                      を表示 →
-                    </div>
-                  </Link>
+        {objectData.map((item) => (
+          <div key={item.word} className='mt-8 pb-5'>
+            <Link
+              className='mx-6 text-3xl duration-300 hover:text-blue-500'
+              href={``}
+            >
+              {item.word}
+            </Link>
+            <div className='mt-5 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
+              <PosterCard posterId={posterId} link='#' isTarget={true} />
+              {item.posters
+                .slice(0, 22)
+                .map((poster) =>
+                  poster.posterId !== posterId ? (
+                    <PosterCard
+                      key={poster.posterId}
+                      posterId={poster.posterId}
+                      link={`/representation/inPosterObjects?posterId=${poster.posterId}`}
+                      isTarget={false}
+                    />
+                  ) : null
                 )}
-              </div>
+              {item.posters.length > 22 && (
+                <Link
+                  href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
+                >
+                  <div className='flex size-full items-center justify-center px-1 text-base text-blue-500 '>
+                    すべての資料
+                    <br />
+                    を表示 →
+                  </div>
+                </Link>
+              )}
             </div>
-          ))}
+          </div>
+        ))}
       </>
     );
   }
 }
 
-export default function ObjectsPage() {
-  const posterId = useGetQuery();
+export default async function ObjectsPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
+  const posterId = searchParams.posterId || '';
 
-  const objectData = useFetchObjectData(
-    `http://localhost:8000/api/poster/representation/inPosterObjects?posterId=${posterId}`
-  );
+  const fetchObjects = async () => {
+    const response = await fetch(
+      `http://localhost:8000/api/poster/representation/inPosterObjects?posterId=${posterId}`
+    );
+    return response.json();
+  };
 
-  useOpenDescription(posterId);
+  const objectData: ObjectDataProps[] = (await fetchObjects()).objectData;
 
-  if (!objectData) {
-    return <div>Loading...</div>;
-  }
+  // useOpenDescription(posterId);
 
   return (
     <div className='flex flex-row'>

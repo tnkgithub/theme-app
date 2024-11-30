@@ -1,49 +1,48 @@
-/* eslint-disable tailwindcss/no-custom-classname */
-'use client';
-
-import React from 'react';
-import { useFetchPosterData } from '@/hooks/useFetchPosterData';
-import { useGetQuery } from '@/hooks/useGetQuery';
-import { useOpenDescription } from '@/hooks/useOpenDescription';
 import { getAroundPosters } from './getAroundPoster';
-import { Poster } from '@prisma/client';
 import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
+import { Poster } from '@prisma/client';
 
-export default function ImagesListPage() {
-  // URLのクエリパラメータからposterIdを取得
-  const posterId = useGetQuery();
+const renderPoster = (poster: Poster, posterId: string) => {
+  if (!poster || !poster.posterId) return null;
 
-  // ポスターの詳細情報を別ウィンドウで表示する
-  useOpenDescription(posterId);
+  return (
+    <div key={poster.posterId} className='bg-gray-500'>
+      <PosterCard
+        posterId={poster.posterId}
+        link={
+          posterId === poster.posterId
+            ? '#'
+            : `/representation/som?posterId=${poster.posterId}`
+        }
+        isTarget={posterId === poster.posterId}
+      />
+    </div>
+  );
+};
+
+export default async function ImagesListPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
+  const posterId = searchParams.posterId || '';
 
   // ポスターのデータを取得
-  const posters = useFetchPosterData(
-    'http://localhost:8000/api/poster/representation/som'
-  );
+  const fetchPosters = async () => {
+    const response = await fetch(
+      'http://localhost:8000/api/poster/representation/som'
+    );
+    return response.json();
+  };
+
+  const posters: Poster[] = (await fetchPosters()).posters;
 
   // ポスターのデータから周辺のポスターを取得
   const aroundPosters = getAroundPosters(posterId, posters, 3, 5);
 
   // ポスター画
-  const renderPoster = (poster: Poster) => {
-    if (!poster || !poster.posterId) return null; // posterがundefinedまたはidがない場合は何も表示しない
-
-    return (
-      <div key={poster.posterId} className='bg-gray-500'>
-        <PosterCard
-          posterId={poster.posterId}
-          link={
-            posterId === poster.posterId
-              ? '#'
-              : `/representation/som?posterId=${poster.posterId}`
-          }
-          isTarget={posterId === poster.posterId}
-        />
-      </div>
-    );
-  };
 
   return (
     <div className='flex'>
@@ -55,7 +54,7 @@ export default function ImagesListPage() {
           <main className='m-3'>
             <div className='m-2 grid grid-cols-11 gap-2'>
               {Array.isArray(aroundPosters) && aroundPosters.length > 0
-                ? aroundPosters.map(renderPoster)
+                ? aroundPosters.map((poster) => renderPoster(poster, posterId))
                 : null}
             </div>
           </main>

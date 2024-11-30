@@ -16,6 +16,7 @@ type ButtonProps = BaseButtonProps & {
 
 type LinkButtonProps = BaseButtonProps & {
   href: string;
+  isTarget?: boolean;
 };
 
 type IconButtonProps = BaseButtonProps & {
@@ -76,11 +77,12 @@ const LinkButton = ({
   size = 'medium',
   isDisabled = false,
   href,
+  isTarget = false,
 }: LinkButtonProps) => {
   const buttonClass = buttonVariants({ intent, size });
 
   return (
-    <Link href={href}>
+    <Link href={href} target={isTarget ? '_blank' : undefined}>
       <button type='button' className={buttonClass} disabled={isDisabled}>
         {inText}
       </button>

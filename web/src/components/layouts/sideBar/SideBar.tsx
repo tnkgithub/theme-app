@@ -45,6 +45,16 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               icon='object'
             />
           </div>
+
+          <div className='my-1 w-52 border-b pb-6 pt-2'>
+            <LinkButton
+              inText='詳細情報を表示'
+              intent='secondary'
+              size='large'
+              href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
+              isTarget={true}
+            />
+          </div>
           {/* {isSliderOpen && (
             <div className='my-1 flex w-52 flex-col items-center border-b pb-4 pt-1'>
               <p className='w-full pb-2 ps-2 text-left text-lg font-bold'>
