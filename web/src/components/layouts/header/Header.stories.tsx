@@ -6,21 +6,8 @@ const meta: Meta = {
   component: Header,
 };
 
-type HeaderProps = {
-  logoText: string;
-  buttonText: string[];
-  buttonLink: string[];
-};
-
 export default meta;
 
 // propsを受け取るために、propsの型を定義する
-const Template = (args: HeaderProps) => <Header {...args} />;
+const Template = (args: any) => <Header {...args} />;
 export const HeaderStory = (Template as any).bind({});
-
-// propsの初期値を設定する
-HeaderStory.args = {
-  logoText: 'Logo',
-  buttonText: ['Button1', 'Button2', 'Button3'],
-  buttonLink: ['/', '/', '/'],
-};

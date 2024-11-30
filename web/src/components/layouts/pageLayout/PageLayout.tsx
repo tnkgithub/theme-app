@@ -4,11 +4,7 @@ import SideBar from '@/components/layouts/sideBar/SideBar';
 const PageLayout = () => {
   return (
     <div className='flex'>
-      <Header
-        logoText='Logo'
-        buttonText={['新規登録', 'ログイン']}
-        buttonHref={['/signup', '/login']}
-      />
+      <Header />
       <SideBar posterId='1' isSliderOpen={false} onSliderChange={() => {}} />
     </div>
   );
