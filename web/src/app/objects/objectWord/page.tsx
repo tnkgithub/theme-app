@@ -15,9 +15,9 @@ type ObjectProps = {
   posters: { posterId: string }[];
 };
 
-async function fetchData(posterId: string, word: string) {
+async function fetchData(word: string) {
   const res = await fetch(
-    `http://localhost:8000/api/poster/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${word}`
+    `http://localhost:8000/api/poster/representation/inPosterObjects/objectWord?word=${word}`
   );
   const data = await res.json();
 
@@ -26,13 +26,7 @@ async function fetchData(posterId: string, word: string) {
   return ObjectData;
 }
 
-function MainContent({
-  objectData,
-  posterId,
-}: {
-  objectData: ObjectProps;
-  posterId: string;
-}) {
+function MainContent({ objectData }: { objectData: ObjectProps }) {
   return (
     <div className='flex flex-col'>
       <div className='ml-6 flex flex-row items-center'>
@@ -74,13 +68,12 @@ function MainContent({
 }
 
 export default async function ObjectWordPage({ searchParams }: Props) {
-  const posterId = searchParams.posterId || '';
   const word = searchParams.word || '';
-  const objectData = await fetchData(posterId, word);
+  const objectData = await fetchData(word);
 
   return (
     <main className='container mx-auto mt-8 flex justify-center'>
-      <MainContent objectData={objectData} posterId={posterId} />
+      <MainContent objectData={objectData} />
     </main>
   );
 }
