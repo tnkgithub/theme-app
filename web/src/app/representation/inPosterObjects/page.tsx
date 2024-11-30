@@ -9,25 +9,18 @@ import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 
 type ObjectData = {
-  posterIdsIncludingWords: {
-    id: number;
-    word: string;
-    posters: { posterId: string }[];
-  }[];
+  word: string;
+  posters: { posterId: string }[];
 };
 
-function mainContent({
+function MainContent({
   objectData,
   posterId,
 }: {
-  objectData: ObjectData;
+  objectData: ObjectData[];
   posterId: string;
 }) {
-  if (
-    !objectData ||
-    !Array.isArray(objectData.posterIdsIncludingWords) ||
-    objectData.posterIdsIncludingWords.length === 0
-  ) {
+  if (objectData.length === 0) {
     return (
       <div>
         <p className='mt-5 p-2 text-2xl'>物体なし</p>
@@ -39,43 +32,43 @@ function mainContent({
   } else {
     return (
       <>
-        {objectData.posterIdsIncludingWords.map((item) => (
-          <div key={item.id} className='mt-8 pb-5'>
-            <Link
-              className='mx-6 text-3xl duration-300 hover:text-blue-500'
-              href={``}
-            >
-              {item.word}
-            </Link>
-            <div className='mt-5 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
-              <PosterCard posterId={posterId} link='#' isTarget={true} />
-              {item.posters
-                .slice(0, 22)
-                .map(
-                  (poster) =>
-                    poster.posterId !== posterId && (
+        {objectData.length > 0 &&
+          objectData.map((item) => (
+            <div key={item.word} className='mt-8 pb-5'>
+              <Link
+                className='mx-6 text-3xl duration-300 hover:text-blue-500'
+                href={``}
+              >
+                {item.word}
+              </Link>
+              <div className='mt-5 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
+                <PosterCard posterId={posterId} link='#' isTarget={true} />
+                {item.posters
+                  .slice(0, 22)
+                  .map((poster) =>
+                    poster.posterId !== posterId ? (
                       <PosterCard
                         key={poster.posterId}
                         posterId={poster.posterId}
                         link={`/representation/inPosterObjects?posterId=${poster.posterId}`}
                         isTarget={false}
                       />
-                    )
+                    ) : null
+                  )}
+                {item.posters.length > 22 && (
+                  <Link
+                    href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
+                  >
+                    <div className='flex size-full items-center justify-center px-1 text-base text-blue-500 '>
+                      すべての資料
+                      <br />
+                      を表示 →
+                    </div>
+                  </Link>
                 )}
-              {item.posters.length > 20 && (
-                <Link
-                  href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
-                >
-                  <div className='flex size-full items-center justify-center px-1 text-base text-blue-500 '>
-                    すべての資料
-                    <br />
-                    を表示 →
-                  </div>
-                </Link>
-              )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </>
     );
   }
@@ -100,7 +93,9 @@ export default function ObjectsPage() {
         <SideBar posterId={posterId} isSliderOpen={false} />
       </aside>
       <section className='grow px-5'>
-        <MotionWrapper>{mainContent({ objectData, posterId })}</MotionWrapper>
+        <MotionWrapper>
+          <MainContent objectData={objectData} posterId={posterId} />
+        </MotionWrapper>
       </section>
     </div>
   );

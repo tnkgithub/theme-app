@@ -1,12 +1,17 @@
 import { NextResponse, NextRequest } from 'next/server';
 import prisma from '@/lib/prisma/Prisma';
 
+type objectDataProps = {
+  word: string;
+  posters: { posterId: string }[];
+};
+
 //
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const posterId = searchParams.get('posterId');
+  const queryPosterId = searchParams.get('posterId');
 
-  if (!posterId) {
+  if (!queryPosterId) {
     return NextResponse.json(
       { error: 'Invalid query parameter' },
       { status: 400 }
@@ -16,10 +21,9 @@ export async function GET(req: NextRequest) {
   try {
     const poster = await prisma.poster.findFirst({
       where: {
-        posterId: posterId,
+        posterId: queryPosterId,
       },
       select: {
-        posterId: true,
         objectWords: {
           select: {
             word: true,
@@ -41,7 +45,7 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const posterIdsIncludingWords = [];
+    const objectData: objectDataProps[] = [];
 
     for (const word of words) {
       const objectWord = await prisma.objectWord.findFirst({
@@ -64,19 +68,23 @@ export async function GET(req: NextRequest) {
             id: {
               in: objectWord.posters.map((poster) => poster.posterId),
             },
+            posterId: {
+              // posterIdと同じidを持つポスターを除外
+              not: queryPosterId,
+            },
           },
           select: {
             posterId: true,
           },
         });
-        posterIdsIncludingWords.push({
+        objectData.push({
           word: objectWord.word,
           posters,
         });
       }
     }
 
-    return NextResponse.json({ posterIdsIncludingWords }, { status: 200 });
+    return NextResponse.json({ objectData }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

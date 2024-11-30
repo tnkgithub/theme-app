@@ -1,5 +1,6 @@
 import { LinkButton } from '@/components/elements/button/Button';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
+import { object } from 'zod';
 
 type ObjectProps = {
   word: string;
@@ -10,6 +11,7 @@ async function fetchData() {
   const res = await fetch('http://localhost:8000/api/poster/objects');
   const data = await res.json();
   const objects: ObjectProps[] = data.objects;
+  objects.sort((a, b) => (b.posters.length > a.posters.length ? 1 : -1));
   return objects;
 }
 
