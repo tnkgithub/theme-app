@@ -7,7 +7,7 @@ type ObjectProps = {
 };
 
 async function fetchData() {
-  const res = await fetch('http://localhost:8000/api/poster/objects');
+  const res = await fetch('http://localhost:8000/api/poster/objectData');
   const data = await res.json();
   console.log(data);
   const objects: ObjectProps[] = data.objectData;

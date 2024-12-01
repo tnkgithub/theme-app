@@ -21,11 +21,13 @@ export default function Home() {
               type='titleList'
             />
           </Link>
-          <Card
-            title='物体名一覧'
-            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
-            type='objectList'
-          />
+          <Link href='/objectData'>
+            <Card
+              title='物体名一覧'
+              description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
+              type='objectList'
+            />
+          </Link>
         </div>
       </main>
     </MotionWrapper>

@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 
 type BaseButtonProps = {
   inText: string;
-  intent?: 'primary' | 'secondary' | 'third' | 'fourth' | 'inHrefs' | 'Search';
+  intent?: 'primary' | 'secondary' | 'third' | 'fourth' | 'pressed' | 'Search';
   size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon';
   isDisabled?: boolean;
 };
@@ -35,7 +35,7 @@ const buttonVariants = cva(
           'rounded-md bg-gray-50 text-gray-900 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
         fourth:
           'rounded-md bg-gray-100 text-gray-900 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
-        inHrefs: 'bg-blue-500 text-white',
+        pressed: 'bg-blue-500 text-white',
         Search: 'bg-blue-500 text-white hover:bg-blue-600',
       },
       size: {
@@ -111,7 +111,7 @@ const IconButton = ({
               title: TitleIcon,
               object: ObjectIcon,
             }[icon],
-            { className: intent === 'inHrefs' ? 'text-white' : '' }
+            { className: intent === 'pressed' ? 'text-white' : '' }
           )}
         {inText}
       </button>

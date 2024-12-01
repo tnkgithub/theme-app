@@ -39,12 +39,16 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
   return (
     <div className='grid grid-cols-1 gap-6 lg:grid-cols-2'>
       {cluster.posters.map((poster) => (
-        <a
+        // <a
+        //   key={poster.posterId}
+        //   className='flex size-full items-center rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400'
+        //   href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
+        //   target='_blank'
+        //   rel='noopener noreferrer'
+        // >
+        <div
           key={poster.posterId}
           className='flex size-full items-center rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400'
-          href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
-          target='_blank'
-          rel='noopener noreferrer'
         >
           <Image
             src={`/posters/${poster.posterId}.jpg`}
@@ -62,6 +66,13 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
             </div>
             <div className='mt-auto flex flex-row justify-end gap-5'>
               <LinkButton
+                inText='詳細説明'
+                intent='third'
+                size='medium'
+                href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
+                isTarget
+              />
+              <LinkButton
                 inText='類似画像'
                 intent='third'
                 size='medium'
@@ -75,7 +86,8 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
               />
             </div>
           </div>
-        </a>
+          {/* </a> */}
+        </div>
       ))}
     </div>
   );

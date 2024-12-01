@@ -18,43 +18,41 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
   return (
     <div>
       <div className='fixed top-12 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-16 lg:top-16'>
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center gap-4'>
           <div className='my-3 flex w-52 flex-col items-center border-b py-2 pb-6'>
             <p className='w-full pb-1 ps-2 text-left text-lg font-bold'>
               類似資料で絞り込む
             </p>
             <IconButton
               inText='画像が類似する資料'
-              intent={`${pathname === '/representation/som' ? 'inHrefs' : 'primary'}`}
+              intent={`${pathname === '/representation/som' ? 'pressed' : 'primary'}`}
               size='icon'
               href={`/representation/som?posterId=${posterId}`}
               icon='som'
             />
             <IconButton
               inText='タイトルが類似する資料'
-              intent={`${pathname === '/representation/titleSim' ? 'inHrefs' : 'primary'}`}
+              intent={`${pathname === '/representation/titleSim' ? 'pressed' : 'primary'}`}
               size='icon'
               href={`/representation/titleSim?posterId=${posterId}`}
               icon='title'
             />
             <IconButton
               inText='同名の物体を含む資料'
-              intent={`${pathname === '/representation/objects' ? 'inHrefs' : 'primary'}`}
+              intent={`${pathname === '/representation/objects' ? 'pressed' : 'primary'}`}
               size='icon'
               href={`/representation/inPosterObjects?posterId=${posterId}`}
               icon='object'
             />
           </div>
 
-          <div className='my-1 w-52 border-b pb-6 pt-2'>
-            <LinkButton
-              inText='詳細情報を表示'
-              intent='secondary'
-              size='large'
-              href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
-              isTarget={true}
-            />
-          </div>
+          <LinkButton
+            inText='詳細情報を表示'
+            intent='secondary'
+            size='large'
+            href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
+            isTarget={true}
+          />
           {/* {isSliderOpen && (
             <div className='my-1 flex w-52 flex-col items-center border-b pb-4 pt-1'>
               <p className='w-full pb-2 ps-2 text-left text-lg font-bold'>
@@ -77,7 +75,6 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               size='small'
             />
           </div> */}
-          <div className='my-2 flex w-52 flex-col items-center'></div>
           <LinkButton
             inText='代表資料に戻る'
             intent='secondary'

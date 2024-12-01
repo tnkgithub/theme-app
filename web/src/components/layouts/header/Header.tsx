@@ -28,21 +28,21 @@ const Header = () => {
             <div className='mr-2  flex py-1 lg:py-0'>
               <LinkButton
                 inText='画像一覧'
-                intent={`${pathname === '/representation' ? 'inHrefs' : 'primary'}`}
+                intent={`${pathname === '/representation' ? 'pressed' : 'primary'}`}
                 size='medium'
                 href='/representation/'
               />
               <LinkButton
                 inText='タイトル一覧'
-                intent={`${pathname === '/titles' ? 'inHrefs' : 'primary'}`}
+                intent={`${pathname === '/titles' ? 'pressed' : 'primary'}`}
                 size='medium'
                 href='/titles/'
               />
               <LinkButton
                 inText='物体名一覧'
-                intent={`${pathname === '/objects' ? 'inHrefs' : 'primary'}`}
+                intent={`${pathname === '/objects' ? 'pressed' : 'primary'}`}
                 size='medium'
-                href='/objects/'
+                href='/objectData/'
               />
             </div>
             <SearchBox
