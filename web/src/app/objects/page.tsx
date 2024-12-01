@@ -9,7 +9,9 @@ type ObjectProps = {
 async function fetchData() {
   const res = await fetch('http://localhost:8000/api/poster/objects');
   const data = await res.json();
-  const objects: ObjectProps[] = data.objects;
+  console.log(data);
+  const objects: ObjectProps[] = data.objectData;
+
   return objects;
 }
 
@@ -21,7 +23,7 @@ export default async function ObjectPage() {
       <main className='container mx-auto mt-8 flex justify-center'>
         <div className='flex flex-col'>
           <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
-          <div className='flex flex-wrap gap-1'>
+          {/* <div className='flex flex-wrap gap-1'>
             {objects.map((object) => (
               <LinkButton
                 key={object.word}
@@ -31,7 +33,7 @@ export default async function ObjectPage() {
                 href={`/objects/objectWord?word=${object.word}`}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </main>
     </MotionWrapper>
