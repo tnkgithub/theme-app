@@ -25,7 +25,7 @@ const Header = () => {
             代表資料
           </div> */}
           <div className='container mr-6 hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
-            <div className='mr-2  flex py-1 lg:py-0'>
+            <div className='mr-8  flex py-1 lg:py-0'>
               <LinkButton
                 inText='画像一覧'
                 intent={`${pathname === '/representation' ? 'pressed' : 'primary'}`}

@@ -7,13 +7,15 @@ import { Button } from '@/components/elements/button/Button';
 
 type ObjectDataProps = {
   word: string;
-  posters: { posterId: string }[];
+  posters: { posterId: string; title: string; description: string | null }[];
 };
 
 export default function ObjectPage() {
   const [objects, setObjects] = useState<ObjectDataProps[]>([]);
+  const [words, setWors] = useState<string[]>([]);
   const [selectedObject, setSelectedObject] = useState<ObjectDataProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isShowMore, setIsShowMore] = useState(false);
 
   const wordPosterRef = useRef<HTMLDivElement>(null);
 
@@ -40,13 +42,16 @@ export default function ObjectPage() {
     return selectedObject.includes(object);
   };
 
+  const url = 'http://localhost:8000/api/poster/objectData';
+
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true); // ローディング開始
-        const res = await fetch('http://localhost:8000/api/poster/objectData');
+        const res = await fetch(url);
         const data = await res.json();
         const objects: ObjectDataProps[] = data.objectData;
+        objects.sort((a, b) => b.posters.length - a.posters.length);
         setObjects(objects);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -56,7 +61,7 @@ export default function ObjectPage() {
     }
 
     fetchData();
-  }, []);
+  }, [url]);
 
   return (
     <main className='container mx-auto mt-8 flex justify-center'>
@@ -68,8 +73,8 @@ export default function ObjectPage() {
           </div>
         ) : (
           <>
-            <div className='flex flex-wrap  gap-1'>
-              {objects.map((object) => (
+            <div className='flex flex-wrap justify-center gap-1'>
+              {objects.slice(0, 115).map((object) => (
                 <MotionWrapper key={object.word}>
                   <Button
                     inText={object.word}
@@ -80,6 +85,37 @@ export default function ObjectPage() {
                 </MotionWrapper>
               ))}
             </div>
+            {objects.length > 115 && (
+              <div className='my-3'>
+                <div className='container flex justify-end'>
+                  <Button
+                    inText={
+                      isShowMore ? '✕ 他の物体名を隠す' : '他の物体名を表示'
+                    }
+                    intent='noBorder'
+                    size='fit'
+                    onClick={() => setIsShowMore(!isShowMore)}
+                  />
+                </div>
+                {isShowMore && (
+                  <div className='mt-2 flex flex-wrap justify-center gap-1'>
+                    {objects.slice(115).map((object) => (
+                      <MotionWrapper key={object.word}>
+                        <Button
+                          inText={object.word}
+                          intent={
+                            checkIncludeWord(object) ? 'pressed' : 'third'
+                          }
+                          size='fit'
+                          onClick={() => handlerObject(object)}
+                        />
+                      </MotionWrapper>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
             {selectedObject && (
               <div ref={wordPosterRef}>
                 <WordPoster

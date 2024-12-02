@@ -5,7 +5,13 @@ import { cva } from 'class-variance-authority';
 
 type BaseButtonProps = {
   inText: string;
-  intent?: 'primary' | 'secondary' | 'third' | 'fourth' | 'pressed' | 'Search';
+  intent?:
+    | 'primary'
+    | 'secondary'
+    | 'third'
+    | 'noBorder'
+    | 'pressed'
+    | 'Search';
   size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon';
   isDisabled?: boolean;
 };
@@ -33,8 +39,7 @@ const buttonVariants = cva(
         secondary: 'bg-white text-blue-700 hover:bg-blue-500 hover:text-white',
         third:
           'rounded-md bg-gray-50 text-gray-900 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
-        fourth:
-          'rounded-md bg-gray-100 text-gray-900 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
+        noBorder: 'bg-white text-gray-800 hover:text-blue-500',
         pressed: 'bg-blue-500 text-white',
         Search: 'bg-blue-500 text-white hover:bg-blue-600',
       },

@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma/Prisma';
 
-type objectDataProps = {
+type ObjectDataProps = {
   word: string;
-  posters: { posterId: string }[];
+  posters: { posterId: string; title: string; description: string | null }[];
 };
 
 export async function GET() {
@@ -28,7 +28,7 @@ export async function GET() {
 
     // posterIdをposterテーブルから取得
 
-    const objectData: objectDataProps[] = [];
+    const objectData: ObjectDataProps[] = [];
 
     for (const object of objects) {
       const posters = await prisma.poster.findMany({
@@ -39,6 +39,8 @@ export async function GET() {
         },
         select: {
           posterId: true,
+          title: true,
+          description: true,
         },
       });
 

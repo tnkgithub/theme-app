@@ -75,12 +75,12 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               size='small'
             />
           </div> */}
-          <LinkButton
+          {/* <LinkButton
             inText='代表資料に戻る'
             intent='secondary'
             size='large'
             href='/representation'
-          />
+          /> */}
         </div>
       </div>
       <div className='h-screen w-56' />
