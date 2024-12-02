@@ -15,7 +15,7 @@ type TitleClusterProps = {
 };
 
 async function fetchData() {
-  const res = await fetch('http://localhost:8000/api/poster/titles/');
+  const res = await fetch('http://localhost:8000/api/poster/titleData');
 
   // レスポンスのJSONデータを取得
   const data = await res.json();
@@ -87,7 +87,7 @@ export default async function TitleClusterPage() {
                           <LinkButton
                             key={i}
                             inText={typeof repWord === 'string' ? repWord : ''}
-                            intent='fourth'
+                            intent='third'
                             size='fit'
                             href='#'
                           />

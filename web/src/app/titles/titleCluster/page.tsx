@@ -25,7 +25,7 @@ async function fetchData(searchParams: Props['searchParams']) {
 
   // 外部APIやデータベースへのリクエスト例
   const res = await fetch(
-    `http://localhost:8000/api/poster/titles/titleCluster?clusterId=${clusterId}`
+    `http://localhost:8000/api/poster/titleData/titleCluster?clusterId=${clusterId}`
   );
 
   const data = await res.json();
