@@ -32,11 +32,11 @@ function MainContent({
           <div key={item.word} className='mt-8 pb-5'>
             <Link
               className='mx-6 text-3xl duration-300 hover:text-blue-500'
-              href={``}
+              href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
             >
               {item.word}
             </Link>
-            <div className='mt-5 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
+            <div className='mt-3 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
               <PosterCard posterId={posterId} link='#' isTarget={true} />
               {item.posters
                 .slice(0, 22)
@@ -54,11 +54,11 @@ function MainContent({
                 <Link
                   href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
                 >
-                  <div className='flex size-full items-center justify-center px-1 text-base text-blue-500 '>
+                  <p className='flex size-full items-center justify-center px-1 text-base font-semibold text-blue-500 hover:text-blue-700'>
                     すべての資料
                     <br />
                     を表示 →
-                  </div>
+                  </p>
                 </Link>
               )}
             </div>

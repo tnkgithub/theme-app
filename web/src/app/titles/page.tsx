@@ -70,12 +70,6 @@ export default async function TitleClusterPage() {
                   className='m-2 h-fit rounded-xl border-2 border-gray-200 pb-3  shadow-md duration-300 hover:shadow-gray-400'
                   href={`/titles/titleCluster?clusterId=${cluster.id}`}
                 >
-                  {/* <div className='flex flex-row items-center justify-between'>
-                    <p className='inline-block -translate-y-3 translate-x-4 truncate whitespace-nowrap rounded-md bg-blue-500 px-3 py-1 text-lg  text-white  lg:max-w-[250px] xl:max-w-[480px]'>
-                      {cluster.repWord1} {cluster.repWord2} {cluster.repWord3}
-                      {'  '}
-                      {cluster.repWord4} {cluster.repWord5}
-                    </p> */}
                   <div className='flex flex-row items-center justify-between '>
                     <div className='my-2 ml-0.5 flex flex-row gap-1 px-2'>
                       {Array.from({ length: 5 }, (_, i) => {

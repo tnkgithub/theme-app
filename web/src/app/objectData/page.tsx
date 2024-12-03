@@ -89,9 +89,7 @@ export default function ObjectPage() {
               <div className='my-3'>
                 <div className='container flex justify-end'>
                   <Button
-                    inText={
-                      isShowMore ? '✕ 他の物体名を隠す' : '他の物体名を表示'
-                    }
+                    inText={isShowMore ? '✕ 物体名を隠す' : '他の物体名を表示'}
                     intent='noBorder'
                     size='fit'
                     onClick={() => setIsShowMore(!isShowMore)}

@@ -8,7 +8,7 @@ const renderPoster = (poster: Poster, posterId: string) => {
   if (!poster || !poster.posterId) return null;
 
   return (
-    <div key={poster.posterId} className='bg-gray-500'>
+    <div key={poster.posterId} className='bg-blue-100'>
       <PosterCard
         posterId={poster.posterId}
         link={

@@ -55,7 +55,7 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
             alt={`${cluster.repWord1}`}
             width={100}
             height={141}
-            className='m-2 mr-3 h-[141px] object-contain'
+            className='m-2 mr-3 h-[141px] bg-blue-100 object-contain'
           />
           <div className=' m-1 flex h-full w-4/5 flex-col p-1'>
             <div className='flex-1 flex-col'>
@@ -64,7 +64,7 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
                 {poster.description}
               </p>
             </div>
-            <div className='mt-auto flex flex-row justify-end gap-5'>
+            <div className='mt-auto flex flex-row justify-end gap-2'>
               <LinkButton
                 inText='詳細説明'
                 intent='third'
@@ -126,7 +126,7 @@ export default async function TitleClusterPage({ searchParams }: Props) {
                 })}
               </div>
             </div>
-            <p className='text-lg text-gray-500'>
+            <p className='text-lg text-gray-600'>
               資料数： {cluster.posters.length}件
             </p>
           </div>

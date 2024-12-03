@@ -38,7 +38,7 @@ const buttonVariants = cva(
         primary: 'bg-white text-gray-800  hover:bg-blue-500 hover:text-white',
         secondary: 'bg-white text-blue-700 hover:bg-blue-500 hover:text-white',
         third:
-          'rounded-md bg-gray-50 text-gray-900 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
+          'rounded-md bg-gray-50 text-gray-700 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
         noBorder: 'bg-white text-gray-800 hover:text-blue-500',
         pressed: 'bg-blue-500 text-white',
         Search: 'bg-blue-500 text-white hover:bg-blue-600',
@@ -47,7 +47,7 @@ const buttonVariants = cva(
         small: 'w-12 rounded-md p-1',
         medium: 'w-28 px-3 py-2',
         large: 'w-48 p-2',
-        xlarge: 'w-fit px-4 py-2 text-xl',
+        xlarge: 'w-fit px-4 py-2 text-xl text-gray-700',
         fit: 'w-fit px-3 py-2 text-lg',
         icon: 'group flex w-48 items-center justify-start p-2 text-left ',
       },
