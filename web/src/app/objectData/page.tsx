@@ -46,7 +46,8 @@ export default function ObjectPage() {
   // const url = 'http://localhost:8101/api/poster/objectData';
 
   // 本番環境用のURL
-  const url = 'http://180.43.174.138:8101/api/poster/objectData';
+  const url = 'http://okunolab.c.fun.ac.jp:8101/api/poster/objectData';
+
   useEffect(() => {
     async function fetchData() {
       try {
