@@ -1,4 +1,5 @@
 import { Poster } from '@prisma/client';
+import { PosterCard } from '@/components/elements/card/Card';
 import React from 'react';
 // import { PosterCard } from '@/components/elements/card/Card';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
@@ -31,24 +32,12 @@ export default async function RepresentationPage() {
         <div className='grid-cols-26  m-1 grid gap-1'>
           {posters
             ? posters.map((poster: Poster) => (
-                // <PosterCard
-                //   key={poster.id}
-                //   posterId={poster.posterId}
-                //   link={`/representation/som?posterId=${poster.posterId}`}
-                //   isTarget={false}
-                // />
-                // 何故か、poster.posterIdがundefinedになり、poster.idがnumberのはずなのに、stringになる
-                <div key={poster.id} className='bg-gray-500'>
-                  <Link href={`/representation/som?posterId=${poster.id}`}>
-                    <Image
-                      src={`/posters/${poster.id}.jpg`}
-                      alt={`${poster.representationsCoordinate}`}
-                      width={100}
-                      height={141}
-                      className='h-[141px] object-cover duration-300 hover:scale-105 hover:border hover:border-gray-200 hover:shadow-xl'
-                    />
-                  </Link>
-                </div>
+                <PosterCard
+                  key={poster.id}
+                  posterId={poster.posterId}
+                  link={`/representation/som?posterId=${poster.posterId}`}
+                  isTarget={false}
+                />
               ))
             : null}
         </div>

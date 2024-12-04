@@ -77,10 +77,14 @@ export default async function ObjectsPage({
 
   const fetchObjects = async () => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const response = await fetch(
-      `${apiUrl}/poster/representation/inPosterObjects?posterId=${posterId}`
-    );
-    return response.json();
+    try {
+      const response = await fetch(
+        `${apiUrl}/poster/representation/inPosterObjects?posterId=${posterId}`
+      );
+      return response.json();
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
   const objectData: ObjectDataProps[] = (await fetchObjects()).objectData;
