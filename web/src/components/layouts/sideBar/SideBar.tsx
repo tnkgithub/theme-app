@@ -18,8 +18,8 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
   return (
     <div>
       <div className='fixed top-12 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-16 lg:top-16'>
-        <div className='flex flex-col items-center gap-4'>
-          <div className='my-3 flex w-52 flex-col items-center border-b py-2 pb-6'>
+        <div className='flex flex-col items-center gap-1'>
+          <div className='my-2 flex w-52 flex-col items-center border-b py-2'>
             <p className='w-full pb-1 ps-2 text-left text-lg font-bold'>
               類似資料で絞り込む
             </p>
@@ -45,10 +45,9 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
               icon='object'
             />
           </div>
-
           <LinkButton
             inText='詳細情報を表示'
-            intent='secondary'
+            intent='primary'
             size='large'
             href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
             isTarget={true}

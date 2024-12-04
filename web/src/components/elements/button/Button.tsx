@@ -11,13 +11,14 @@ type BaseButtonProps = {
     | 'third'
     | 'noBorder'
     | 'pressed'
-    | 'Search';
+    | 'Search'
+    | 'none';
   size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon';
   isDisabled?: boolean;
 };
 
 type ButtonProps = BaseButtonProps & {
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 type LinkButtonProps = BaseButtonProps & {
@@ -42,6 +43,7 @@ const buttonVariants = cva(
         noBorder: 'bg-white text-gray-800 hover:text-blue-500',
         pressed: 'bg-blue-500 text-white',
         Search: 'bg-blue-500 text-white hover:bg-blue-600',
+        none: 'rounded-md bg-gray-100 text-gray-700 ',
       },
       size: {
         small: 'w-12 rounded-md p-1',

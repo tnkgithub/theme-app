@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import MotionRapper from '@/lib/framerMotion/MotionWrapper';
 import Image from 'next/image';
-import { LinkButton } from '@/components/elements/button/Button';
+import { LinkButton, Button } from '@/components/elements/button/Button';
 
 type TitleClusterProps = {
   id: number;
@@ -78,12 +78,11 @@ export default async function TitleClusterPage() {
 
                         if (!repWord) return null;
                         return (
-                          <LinkButton
+                          <Button
                             key={i}
                             inText={typeof repWord === 'string' ? repWord : ''}
-                            intent='third'
+                            intent='none'
                             size='fit'
-                            href='#'
                           />
                         );
                       })}

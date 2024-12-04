@@ -21,7 +21,7 @@ function Card({
 
   return (
     <>
-      <div className='my-6 max-w-sm rounded-sm border shadow-xl duration-300 hover:shadow-gray-400'>
+      <div className='my-6 max-w-sm rounded-sm border shadow-md duration-300 hover:shadow-lg hover:shadow-gray-400'>
         <Image
           src={imagePath}
           alt='image'
@@ -50,7 +50,8 @@ function PosterCard({
   isTarget: boolean;
 }) {
   return (
-    <div className='aspect-1/1.41 w-full'>
+    // eslint-disable-next-line tailwindcss/no-custom-classname
+    <div className='aspect-1/1.41 w-full shadow-md duration-300 hover:scale-105'>
       {/* もし、linkがhttps://archives.c.fun.ac.jp/postersを含む場合、targetを_blankにする */}
       <Link
         href={link || '#'}
@@ -65,11 +66,12 @@ function PosterCard({
             alt={title || 'Poster'}
             width={120}
             height={169.2}
-            className={`aspect-1/1.41 w-full object-cover pb-0.5 shadow-md duration-300 hover:scale-110 ${isTarget ? 'outline outline-4 outline-blue-500' : ''}`}
+            // eslint-disable-next-line tailwindcss/no-custom-classname
+            className={`aspect-1/1.41 w-full object-cover ${isTarget ? 'outline outline-4 outline-blue-500' : ''}`}
           />
         )}
         {title ? (
-          <div className='line-clamp-3 h-20 bg-white px-2 py-1'>{title}</div>
+          <div className='line-clamp-3 h-20 border-2 bg-white p-2'>{title}</div>
         ) : null}
       </Link>
     </div>

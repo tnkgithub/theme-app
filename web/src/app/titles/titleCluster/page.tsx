@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
-import { LinkButton } from '@/components/elements/button/Button';
+import { LinkButton, Button } from '@/components/elements/button/Button';
 
 type Props = {
   searchParams: {
@@ -115,12 +115,11 @@ export default async function TitleClusterPage({ searchParams }: Props) {
 
                   if (!repWord) return null;
                   return (
-                    <LinkButton
+                    <Button
                       key={i}
                       inText={typeof repWord === 'string' ? repWord : ''}
-                      intent='third'
+                      intent='none'
                       size='xlarge'
-                      href='#'
                     />
                   );
                 })}

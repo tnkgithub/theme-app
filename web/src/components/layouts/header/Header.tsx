@@ -24,8 +24,8 @@ const Header = () => {
           {/* <div className='text-xl font-biz_udp font-bold text-blue-500'>
             代表資料
           </div> */}
-          <div className='container mr-6 hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
-            <div className='mr-8  flex py-1 lg:py-0'>
+          <div className='container hidden flex-col items-center justify-center pt-2 md:flex md:flex-row lg:justify-end lg:py-0'>
+            <div className='flex py-1 lg:py-0'>
               <LinkButton
                 inText='画像一覧'
                 intent={`${pathname === '/representation' ? 'pressed' : 'primary'}`}
@@ -45,11 +45,11 @@ const Header = () => {
                 href='/objectData/'
               />
             </div>
-            <SearchBox
+            {/* <SearchBox
               placeholder='資料を検索'
               buttonText='検索'
               size='medium'
-            />
+            /> */}
           </div>
         </div>
       </header>

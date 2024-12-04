@@ -1,4 +1,3 @@
-import { useOpenDescription } from '@/hooks/useOpenDescription';
 import { PosterCard } from '@/components/elements/card/Card';
 import Link from 'next/link';
 import SideBar from '@/components/layouts/sideBar/SideBar';
@@ -84,8 +83,6 @@ export default async function ObjectsPage({
   };
 
   const objectData: ObjectDataProps[] = (await fetchObjects()).objectData;
-
-  // useOpenDescription(posterId);
 
   return (
     <div className='flex flex-row'>

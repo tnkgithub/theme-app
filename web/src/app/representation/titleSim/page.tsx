@@ -1,5 +1,3 @@
-import { useFetchTitleData } from '@/hooks/useFetchTitleData';
-import { useOpenDescription } from '@/hooks/useOpenDescription';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import { PosterCard } from '@/components/elements/card/Card';
 import { Poster } from '@prisma/client';
@@ -18,9 +16,6 @@ export default async function TitleSimilarityPage({
     );
     return response.json();
   };
-
-  // ポスターの詳細情報を別ウィンドウで表示する
-  // useOpenDescription(posterId);
 
   // タイトルデータを取得
   const titleData: Poster[] = (await fetchTitles()).titleData;
