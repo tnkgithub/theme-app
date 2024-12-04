@@ -20,4 +20,5 @@ RUN npm i @prisma/client
 
 # EXPOSE 8000
 
+CMD ["npm", "run", "dev"]
 # CMD ["npm", "run", "start", "-p", "8000"]
