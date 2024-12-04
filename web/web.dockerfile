@@ -8,7 +8,6 @@ RUN npm install
 
 COPY . .
 
-# Next.js をビルド
 RUN npm install next react react-dom
 
 # # # prismaの起動に必要なパッケージ
@@ -17,8 +16,8 @@ RUN apt-get update && apt-get install -y openssl
 RUN npm i -g prisma
 RUN npm i @prisma/client
 
-RUN npm run build
+# RUN npm run build
 
 EXPOSE 8000
 
-CMD ["npm", "run", "start", "-p", "8000"]
+# CMD ["npm", "run", "start", "-p", "8000"]
