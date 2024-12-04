@@ -76,8 +76,9 @@ export default async function ObjectsPage({
   const posterId = searchParams.posterId || '';
 
   const fetchObjects = async () => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const response = await fetch(
-      `http://localhost:8000/api/poster/representation/inPosterObjects?posterId=${posterId}`
+      `${apiUrl}/poster/representation/inPosterObjects?posterId=${posterId}`
     );
     return response.json();
   };

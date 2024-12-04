@@ -16,8 +16,9 @@ type ObjectProps = {
 };
 
 async function fetchData(posterId: string, word: string) {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(
-    `http://localhost:8000/api/poster/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${word}`
+    `${apiUrl}/poster/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${word}`
   );
   const data = await res.json();
 
@@ -37,7 +38,7 @@ function MainContent({
     <>
       <div className='ml-6 mt-8 flex flex-row items-center'>
         <Link
-          href={`http://localhost:8000/representation/inPosterObjects?posterId=${posterId}`}
+          href={`/representation/inPosterObjects?posterId=${posterId}`}
           className='h-9 pb-3 text-3xl font-bold text-gray-300 duration-300 hover:text-blue-400'
         >
           〈

@@ -42,7 +42,8 @@ export default function ObjectPage() {
     return selectedObject.includes(object);
   };
 
-  const url = 'http://localhost:8000/api/poster/objectData';
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
+  const url = `${apiURL}/poster/objectData`;
 
   useEffect(() => {
     async function fetchData() {

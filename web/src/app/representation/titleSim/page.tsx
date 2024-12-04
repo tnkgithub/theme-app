@@ -11,8 +11,9 @@ export default async function TitleSimilarityPage({
   const posterId = searchParams.posterId || '';
 
   const fetchTitles = async () => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const response = await fetch(
-      `http://localhost:8000/api/poster/representation/titleSim?posterId=${posterId}`
+      `${apiUrl}/poster/representation/titleSim?posterId=${posterId}`
     );
     return response.json();
   };

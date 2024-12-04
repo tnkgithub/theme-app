@@ -15,7 +15,8 @@ type TitleClusterProps = {
 };
 
 async function fetchData() {
-  const res = await fetch('http://localhost:8000/api/poster/titleData');
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${apiUrl}/api/poster/titleData`);
 
   // レスポンスのJSONデータを取得
   const data = await res.json();

@@ -6,7 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 async function fetchData() {
-  const res = await fetch('http://localhost:8000/api/poster/representation');
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${apiUrl}/poster/representation`);
 
   // レスポンスのJSONデータを取得
   const data = await res.json();
