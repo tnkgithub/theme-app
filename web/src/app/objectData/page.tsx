@@ -42,10 +42,11 @@ export default function ObjectPage() {
     return selectedObject.includes(object);
   };
 
-  // const apiURL = process.env.NEXT_PUBLIC_API_URL;
-  // const url = `${apiURL}/poster/objectData`;
-  const url = 'http://localhost:8101/api/poster/objectData';
+  // 開発環境用のURL
+  // const url = 'http://localhost:8101/api/poster/objectData';
 
+  // 本番環境用のURL
+  const url = 'http://180.43.174.138:8101/api/poster/objectData';
   useEffect(() => {
     async function fetchData() {
       try {
