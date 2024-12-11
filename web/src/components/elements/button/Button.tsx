@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { SomIcon, TitleIcon, ObjectIcon } from '@/components/elements/icon/svg';
@@ -11,8 +13,7 @@ type BaseButtonProps = {
     | 'third'
     | 'noBorder'
     | 'pressed'
-    | 'Search'
-    | 'none';
+    | 'Search';
   size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon';
   isDisabled?: boolean;
   onClick?: () => void;
@@ -42,7 +43,6 @@ const buttonVariants = cva(
         noBorder: 'bg-white text-gray-800 hover:text-blue-500',
         pressed: 'bg-blue-500 text-white',
         Search: 'bg-blue-500 text-white hover:bg-blue-600',
-        none: 'rounded-md bg-gray-100 text-gray-700 ',
       },
       size: {
         small: 'w-12 rounded-md p-1',

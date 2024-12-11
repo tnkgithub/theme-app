@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import MotionRapper from '@/lib/framerMotion/MotionWrapper';
 import Image from 'next/image';
-import { LinkButton, Button } from '@/components/elements/button/Button';
+import { Button } from '@/components/elements/button/Button';
 
 type TitleClusterProps = {
   id: number;
@@ -79,12 +79,12 @@ export default async function TitleClusterPage() {
 
                         if (!repWord) return null;
                         return (
-                          <Button
+                          <a
                             key={i}
-                            inText={typeof repWord === 'string' ? repWord : ''}
-                            intent='none'
-                            size='fit'
-                          />
+                            className='m-0.5 w-fit rounded-lg bg-gray-100 px-3 py-2 text-center text-lg font-semibold text-gray-700 transition-colors duration-300'
+                          >
+                            {typeof repWord === 'string' ? repWord : ''}
+                          </a>
                         );
                       })}
                     </div>
