@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import WordPoster from './wordPoster';
 import { Button } from '@/components/elements/button/Button';
@@ -12,7 +13,6 @@ type ObjectDataProps = {
 
 export default function ObjectPage() {
   const [objects, setObjects] = useState<ObjectDataProps[]>([]);
-  const [words, setWors] = useState<string[]>([]);
   const [selectedObject, setSelectedObject] = useState<ObjectDataProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isShowMore, setIsShowMore] = useState(false);
@@ -43,16 +43,17 @@ export default function ObjectPage() {
   };
 
   // 開発環境用のURL
-  // const url = 'http://localhost:8101/api/poster/objectData';
+  const apiUrl = 'http://localhost:8101/api/poster/objectData';
 
   // 本番環境用のURL
-  const url = 'http://okunolab.c.fun.ac.jp:8101/api/poster/objectData';
+  // const apiUrl = 'http://180.43.174.138:8101/api/poster/objectData';
+  // const apiUrl = 'http://okunolab.c.fun.ac.jp:8101/api/poster/objectData';
 
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true); // ローディング開始
-        const res = await fetch(url);
+        const res = await fetch(apiUrl);
         const data = await res.json();
         const objects: ObjectDataProps[] = data.objectData;
         objects.sort((a, b) => b.posters.length - a.posters.length);
@@ -65,7 +66,7 @@ export default function ObjectPage() {
     }
 
     fetchData();
-  }, [url]);
+  }, [apiUrl]);
 
   return (
     <main className='container mx-auto mt-8 flex justify-center'>
