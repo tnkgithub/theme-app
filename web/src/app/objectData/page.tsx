@@ -43,11 +43,11 @@ export default function ObjectPage() {
   };
 
   // 開発環境用のURL
-  const apiUrl = 'http://localhost:8101/api/poster/objectData';
+  // const apiUrl = 'http://localhost:8101/api/poster/objectData';
 
   // 本番環境用のURL
   // const apiUrl = 'http://180.43.174.138:8101/api/poster/objectData';
-  // const apiUrl = 'http://okunolab.c.fun.ac.jp:8101/api/poster/objectData';
+  const apiUrl = 'http://okunolab.c.fun.ac.jp:8101/api/poster/objectData';
 
   useEffect(() => {
     async function fetchData() {

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <MotionWrapper>
       <main>
-        <div className='container mx-auto flex h-full flex-wrap items-center justify-center p-2'>
+        <div className='container mx-auto flex h-full flex-wrap items-center justify-center gap-x-14 p-2'>
           <Link href='/representation'>
             <Card
               title='画像一覧'
