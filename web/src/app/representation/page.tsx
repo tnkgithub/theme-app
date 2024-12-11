@@ -3,8 +3,6 @@ import { PosterCard } from '@/components/elements/card/Card';
 import React from 'react';
 // import { PosterCard } from '@/components/elements/card/Card';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
-import Link from 'next/link';
-import Image from 'next/image';
 
 async function fetchData() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
