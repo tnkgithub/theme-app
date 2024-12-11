@@ -18,7 +18,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
 
   const handleClick = () => {
     event({
-      action: 'click',
+      action: 'sidebar_to_archive',
       category: 'button',
       label: 'click',
       value: 1,

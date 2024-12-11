@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/elements/button/Button';
 import { LinkButton } from '@/components/elements/button/Button';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
+import { event } from '@/lib/google_analytics/gtag';
 
 type ObjectDataProps = {
   word: string;
@@ -24,12 +25,20 @@ export default function WordPoster({
     { posterId: string; title: string; description: string | null }[]
   >([]);
 
+  const handleClick = () => {
+    event({
+      action: 'object_to_archive',
+      category: 'button',
+      label: 'click',
+      value: 1,
+    });
+  };
+
   useEffect(() => {
     const posterMap = new Map<
       string,
       { title: string; description: string | null }[]
     >();
-
     objectData.forEach((object) => {
       object.posters.forEach((poster) => {
         if (!posterMap.has(poster.posterId)) {
@@ -92,6 +101,7 @@ export default function WordPoster({
                     size='medium'
                     href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
                     isTarget
+                    onClick={handleClick}
                   />
                   <LinkButton
                     inText='類似画像'

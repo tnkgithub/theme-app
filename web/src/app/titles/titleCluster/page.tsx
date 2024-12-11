@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import { LinkButton, Button } from '@/components/elements/button/Button';
+import { event } from '@/lib/google_analytics/gtag';
 
 type Props = {
   searchParams: {
@@ -36,6 +37,15 @@ async function fetchData(searchParams: Props['searchParams']) {
 }
 
 function PosterList({ cluster }: { cluster: TitleClusterProps }) {
+  const handleClick = () => {
+    event({
+      action: 'title_to_archive',
+      category: 'button',
+      label: 'click',
+      value: 1,
+    });
+  };
+
   return (
     <div className='grid grid-cols-1 gap-6 xl:grid-cols-2'>
       {cluster.posters.map((poster) => (
@@ -71,6 +81,7 @@ function PosterList({ cluster }: { cluster: TitleClusterProps }) {
                 size='medium'
                 href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
                 isTarget
+                onClick={handleClick}
               />
               <LinkButton
                 inText='類似画像'
