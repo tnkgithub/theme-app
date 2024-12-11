@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import WordPoster from './wordPoster';
 import { Button } from '@/components/elements/button/Button';
+import { clieckWordEvent } from '@/lib/google_analytics/gtag';
 
 type ObjectDataProps = {
   word: string;
@@ -88,7 +89,10 @@ export default function ObjectPage() {
                         inText={object.word}
                         intent={checkIncludeWord(object) ? 'pressed' : 'third'}
                         size='fit'
-                        onClick={() => handlerObject(object)}
+                        onClick={() => {
+                          handlerObject(object);
+                          clieckWordEvent(object.word);
+                        }}
                       />
                     </MotionWrapper>
                   ))}
@@ -116,7 +120,10 @@ export default function ObjectPage() {
                                 checkIncludeWord(object) ? 'pressed' : 'third'
                               }
                               size='fit'
-                              onClick={() => handlerObject(object)}
+                              onClick={() => {
+                                handlerObject(object);
+                                clieckWordEvent(object.word);
+                              }}
                             />
                           </MotionWrapper>
                         ))}

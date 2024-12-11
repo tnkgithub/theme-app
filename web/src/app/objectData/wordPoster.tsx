@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/elements/button/Button';
 import { LinkButton } from '@/components/elements/button/Button';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
-import { event } from '@/lib/google_analytics/gtag';
+import { openArchiveEvent, clieckWordEvent } from '@/lib/google_analytics/gtag';
 
 type ObjectDataProps = {
   word: string;
@@ -24,15 +24,6 @@ export default function WordPoster({
   const [commonPosters, setCommonPosters] = useState<
     { posterId: string; title: string; description: string | null }[]
   >([]);
-
-  const handleClick = () => {
-    event({
-      action: 'object_to_archive',
-      category: 'button',
-      label: 'click',
-      value: 1,
-    });
-  };
 
   useEffect(() => {
     const posterMap = new Map<
@@ -71,7 +62,10 @@ export default function WordPoster({
               inText={`${object.word} ×`}
               intent={checkIncludeWord(object) ? 'pressed' : 'third'}
               size='fit'
-              onClick={() => handlerObject(object)}
+              onClick={() => {
+                handlerObject(object);
+                clieckWordEvent(object.word);
+              }}
             />
           </MotionWrapper>
         ))}
@@ -101,7 +95,9 @@ export default function WordPoster({
                     size='medium'
                     href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
                     isTarget
-                    onClick={handleClick}
+                    onClick={() =>
+                      openArchiveEvent('object_to_archive', posterId)
+                    }
                   />
                   <LinkButton
                     inText='類似画像'

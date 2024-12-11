@@ -1,6 +1,6 @@
 'use client';
 
-import { event } from '@/lib/google_analytics/gtag';
+import { openArchiveEvent } from '@/lib/google_analytics/gtag';
 import Image from 'next/image';
 import { LinkButton } from '@/components/elements/button/Button';
 
@@ -15,15 +15,6 @@ type TitleClusterProps = {
 };
 
 export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
-  const handleClick = () => {
-    event({
-      action: 'title_to_archive',
-      category: 'button',
-      label: 'click',
-      value: 1,
-    });
-  };
-
   return (
     <div className='grid grid-cols-1 gap-6 xl:grid-cols-2'>
       {cluster.posters.map((poster) => (
@@ -59,7 +50,9 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
                 size='medium'
                 href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
                 isTarget
-                onClick={handleClick}
+                onClick={() =>
+                  openArchiveEvent('title_to_archive', poster.posterId)
+                }
               />
               <LinkButton
                 inText='類似画像'
