@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import SearchBox from '@/components/elements/searchBox/SearchBox';
 import { LinkButton, IconButton } from '@/components/elements/button/Button';
 import Slider from '@/components/elements/slider/Slider';
+import { event } from '@/lib/google_analytics/gtag';
 
 interface SideBarProps {
   posterId: string;
@@ -14,6 +15,15 @@ interface SideBarProps {
 // スライダーの値をpropsで親コンポーネントに渡す
 const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
   const pathname = usePathname();
+
+  const handleClick = () => {
+    event({
+      action: 'click',
+      category: 'button',
+      label: 'click',
+      value: 1,
+    });
+  };
 
   return (
     <div>
@@ -51,6 +61,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
             size='large'
             href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
             isTarget={true}
+            onClick={handleClick}
           />
           {/* {isSliderOpen && (
             <div className='my-1 flex w-52 flex-col items-center border-b pb-4 pt-1'>

@@ -15,11 +15,10 @@ type BaseButtonProps = {
     | 'none';
   size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon';
   isDisabled?: boolean;
-};
-
-type ButtonProps = BaseButtonProps & {
   onClick?: () => void;
 };
+
+type ButtonProps = BaseButtonProps & {};
 
 type LinkButtonProps = BaseButtonProps & {
   href: string;
@@ -85,12 +84,19 @@ const LinkButton = ({
   isDisabled = false,
   href,
   isTarget = false,
+  onClick,
 }: LinkButtonProps) => {
   const buttonClass = buttonVariants({ intent, size });
 
   return (
     <Link href={href} target={isTarget ? '_blank' : undefined}>
-      <button type='button' className={buttonClass} disabled={isDisabled}>
+      <button
+        type='button'
+        className={buttonClass}
+        disabled={isDisabled}
+        //もしonClickがあれば実行
+        onClick={onClick}
+      >
         {inText}
       </button>
     </Link>
@@ -105,12 +111,18 @@ const IconButton = ({
   isDisabled = false,
   href,
   icon = 'som',
+  onClick,
 }: IconButtonProps) => {
   const buttonClass = buttonVariants({ intent, size });
 
   return (
     <Link href={href}>
-      <button type='button' className={buttonClass} disabled={isDisabled}>
+      <button
+        type='button'
+        className={buttonClass}
+        disabled={isDisabled}
+        onClick={onClick}
+      >
         {icon &&
           React.createElement(
             {
