@@ -78,54 +78,66 @@ export default function ObjectPage() {
           </div>
         ) : (
           <>
-            <div className='flex flex-wrap justify-center gap-1'>
-              {objects.slice(0, 115).map((object) => (
-                <MotionWrapper key={object.word}>
-                  <Button
-                    inText={object.word}
-                    intent={checkIncludeWord(object) ? 'pressed' : 'third'}
-                    size='fit'
-                    onClick={() => handlerObject(object)}
-                  />
-                </MotionWrapper>
-              ))}
-            </div>
-            {objects.length > 115 && (
-              <div className='my-3'>
-                <div className='container flex justify-end'>
-                  <Button
-                    inText={isShowMore ? '✕ 物体名を隠す' : '他の物体名を表示'}
-                    intent='noBorder'
-                    size='fit'
-                    onClick={() => setIsShowMore(!isShowMore)}
-                  />
+            {/* データが取得できた場合、物体名一覧を表示 */}
+            {objects.length > 0 ? (
+              <>
+                <div className='flex flex-wrap justify-center gap-1'>
+                  {objects.slice(0, 115).map((object) => (
+                    <MotionWrapper key={object.word}>
+                      <Button
+                        inText={object.word}
+                        intent={checkIncludeWord(object) ? 'pressed' : 'third'}
+                        size='fit'
+                        onClick={() => handlerObject(object)}
+                      />
+                    </MotionWrapper>
+                  ))}
                 </div>
-                {isShowMore && (
-                  <div className='mt-2 flex flex-wrap justify-center gap-1'>
-                    {objects.slice(115).map((object) => (
-                      <MotionWrapper key={object.word}>
-                        <Button
-                          inText={object.word}
-                          intent={
-                            checkIncludeWord(object) ? 'pressed' : 'third'
-                          }
-                          size='fit'
-                          onClick={() => handlerObject(object)}
-                        />
-                      </MotionWrapper>
-                    ))}
+
+                {objects.length > 115 && (
+                  <div className='my-3'>
+                    <div className='container flex justify-end'>
+                      <Button
+                        inText={
+                          isShowMore ? '✕ 物体名を隠す' : '他の物体名を表示'
+                        }
+                        intent='noBorder'
+                        size='fit'
+                        onClick={() => setIsShowMore(!isShowMore)}
+                      />
+                    </div>
+                    {isShowMore && (
+                      <div className='mt-2 flex flex-wrap justify-center gap-1'>
+                        {objects.slice(115).map((object) => (
+                          <MotionWrapper key={object.word}>
+                            <Button
+                              inText={object.word}
+                              intent={
+                                checkIncludeWord(object) ? 'pressed' : 'third'
+                              }
+                              size='fit'
+                              onClick={() => handlerObject(object)}
+                            />
+                          </MotionWrapper>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
-              </div>
-            )}
 
-            {selectedObject && (
-              <div ref={wordPosterRef}>
-                <WordPoster
-                  objectData={selectedObject}
-                  handlerObject={handlerObject}
-                  checkIncludeWord={checkIncludeWord}
-                />
+                {selectedObject && (
+                  <div ref={wordPosterRef}>
+                    <WordPoster
+                      objectData={selectedObject}
+                      handlerObject={handlerObject}
+                      checkIncludeWord={checkIncludeWord}
+                    />
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className='flex items-center justify-center font-semibold'>
+                <p>データの取得に失敗しました</p>
               </div>
             )}
           </>
