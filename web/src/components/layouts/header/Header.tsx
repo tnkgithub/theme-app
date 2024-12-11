@@ -53,7 +53,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <div className='h-16 md:h-32 lg:h-16 '></div>
+      <div className='h-28 lg:h-16 '></div>
     </>
   );
 };
