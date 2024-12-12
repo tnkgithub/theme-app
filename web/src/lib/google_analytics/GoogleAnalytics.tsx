@@ -17,6 +17,7 @@ export const GoogleAnalytics = () => {
 
   return (
     <>
+      {/* google analytics */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
         strategy='afterInteractive'
@@ -32,6 +33,7 @@ export const GoogleAnalytics = () => {
               gtag('config', '${gaId}');
             `}
       </Script>
+
     </>
   );
 };
