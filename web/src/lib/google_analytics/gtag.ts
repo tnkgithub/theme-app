@@ -40,3 +40,12 @@ export const clieckWordEvent = (label_name: string) => {
     value: 1,
   });
 };
+
+export const openTitleClusterEvent = (label_name: string) => {
+  event({
+    action: 'title_cluster_click',
+    category: 'button',
+    label: label_name,
+    value: 1,
+  });
+};
