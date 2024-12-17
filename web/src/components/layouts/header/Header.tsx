@@ -40,7 +40,7 @@ const Header = () => {
               />
               <LinkButton
                 inText='物体名一覧'
-                intent={`${pathname === '/objects' ? 'pressed' : 'primary'}`}
+                intent={`${pathname === '/objectData' ? 'pressed' : 'primary'}`}
                 size='medium'
                 href='/objectData/'
               />
