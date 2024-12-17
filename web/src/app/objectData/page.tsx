@@ -82,7 +82,7 @@ export default function ObjectPage() {
             {/* データが取得できた場合、物体名一覧を表示 */}
             {objects.length > 0 ? (
               <>
-                <div className='mx-auto flex w-5/6 flex-wrap justify-center gap-1'>
+                <div className='flex flex-wrap justify-center gap-1'>
                   {objects.slice(0, 115).map((object) => (
                     <MotionWrapper key={object.word}>
                       <Button
