@@ -54,7 +54,7 @@ function MainContent({
                   href={`/representation/inPosterObjects/objectWord?posterId=${posterId}&word=${item.word}`}
                 >
                   <p className='flex size-full items-center justify-center px-1 text-base font-semibold text-blue-500 hover:text-blue-700'>
-                    すべての資料
+                    残りの資料
                     <br />
                     を表示 →
                   </p>
