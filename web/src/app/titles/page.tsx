@@ -36,7 +36,7 @@ export default async function TitleClusterPage() {
   const clusters = (await fetchData()).props.clusters;
   return (
     <MotionRapper>
-      <main className='mx-10 mt-8 flex justify-center'>
+      <main className='m-8 flex justify-center'>
         <div className='grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2'>
           {clusters
             ? clusters.map((cluster: TitleClusterProps) => (

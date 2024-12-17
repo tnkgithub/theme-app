@@ -70,7 +70,7 @@ export default function ObjectPage() {
   }, [apiUrl]);
 
   return (
-    <main className='mx-auto mt-8 flex w-5/6 justify-center'>
+    <main className='m-8 flex justify-center'>
       <div className='flex flex-col'>
         <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
         {isLoading ? ( // ローディングサークルを表示
