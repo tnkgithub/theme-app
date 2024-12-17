@@ -70,7 +70,7 @@ export default function ObjectPage() {
   }, [apiUrl]);
 
   return (
-    <main className='container mx-auto mt-8 flex justify-center'>
+    <main className='mx-auto mt-8 flex w-5/6 justify-center'>
       <div className='flex flex-col'>
         <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
         {isLoading ? ( // ローディングサークルを表示
@@ -83,7 +83,7 @@ export default function ObjectPage() {
             {objects.length > 0 ? (
               <>
                 <div className='flex flex-wrap justify-center gap-1'>
-                  {objects.slice(0, 115).map((object) => (
+                  {objects.slice(0, 114).map((object) => (
                     <MotionWrapper key={object.word}>
                       <Button
                         inText={object.word}
@@ -98,7 +98,7 @@ export default function ObjectPage() {
                   ))}
                 </div>
 
-                {objects.length > 115 && (
+                {objects.length > 114 && (
                   <div className='my-3'>
                     <div className='container flex justify-end'>
                       <Button
@@ -112,7 +112,7 @@ export default function ObjectPage() {
                     </div>
                     {isShowMore && (
                       <div className='mt-2 flex flex-wrap justify-center gap-1'>
-                        {objects.slice(115).map((object) => (
+                        {objects.slice(114).map((object) => (
                           <MotionWrapper key={object.word}>
                             <Button
                               inText={object.word}

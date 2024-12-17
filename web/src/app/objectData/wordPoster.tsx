@@ -70,10 +70,10 @@ export default function WordPoster({
           </MotionWrapper>
         ))}
       </div>
-      <div className='mb-8 grid grid-cols-1 gap-6 xl:grid-cols-2'>
+      <div className='mb-8 grid grid-cols-1 gap-6 2xl:grid-cols-2'>
         {commonPosters.map(({ posterId, title, description }) => (
           <MotionWrapper key={posterId}>
-            <div className='flex h-full w-2/3 items-center rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400'>
+            <div className='flex size-full items-center  rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400 2xl:w-full'>
               <Image
                 src={`/posters/${posterId}.jpg`}
                 alt={`${posterId}`}
@@ -81,14 +81,14 @@ export default function WordPoster({
                 height={141}
                 className='m-2 mr-3 h-[141px] object-contain'
               />
-              <div className='m-1 flex h-full w-4/6 flex-col p-1'>
+              <div className='m-1 flex size-full flex-col p-1'>
                 <div className='flex-1 flex-col'>
                   <p className='mb-2 text-lg font-bold'>{title}</p>
                   <p className='line-clamp-2 w-full break-all text-base text-gray-800'>
                     {description}
                   </p>
                 </div>
-                <div className='mt-auto flex flex-row justify-end gap-1 '>
+                <div className='mt-auto flex flex-row justify-end gap-1'>
                   <LinkButton
                     inText='詳細説明'
                     intent='third'
