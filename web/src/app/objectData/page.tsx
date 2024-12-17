@@ -82,8 +82,8 @@ export default function ObjectPage() {
             {/* データが取得できた場合、物体名一覧を表示 */}
             {objects.length > 0 ? (
               <>
-                <div className='flex flex-wrap justify-center gap-1'>
-                  {objects.slice(0, 114).map((object) => (
+                <div className='flex w-5/6 flex-wrap justify-center gap-1'>
+                  {objects.slice(0, 115).map((object) => (
                     <MotionWrapper key={object.word}>
                       <Button
                         inText={object.word}
@@ -98,7 +98,7 @@ export default function ObjectPage() {
                   ))}
                 </div>
 
-                {objects.length > 114 && (
+                {objects.length > 115 && (
                   <div className='my-3'>
                     <div className='container flex justify-end'>
                       <Button
