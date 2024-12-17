@@ -41,7 +41,8 @@ const buttonVariants = cva(
         secondary: 'bg-white text-blue-700 hover:bg-blue-500 hover:text-white',
         third:
           'rounded-md bg-gray-50 text-gray-700 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
-        fourth: 'bg-orange-300 text-white hover:bg-orange-500',
+        fourth:
+          'bg-orange-300 text-gray-700 hover:bg-orange-500 hover:text-white',
         noBorder: 'bg-white text-gray-800 hover:text-blue-500',
         pressed: 'bg-blue-500 text-white',
         Search: 'bg-blue-500 text-white hover:bg-blue-600',
