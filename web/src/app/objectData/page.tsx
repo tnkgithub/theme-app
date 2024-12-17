@@ -36,8 +36,15 @@ async function fetchData() {
 export default async function ObjectPage() {
   const objects = (await fetchData()).props.objects;
   return (
-    <>
-      {objects ? <WordList objects={objects} /> : <div>データがありません</div>}
-    </>
+    <main className='m-8 flex justify-center'>
+      <div className='flex flex-col'>
+        <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
+        {objects ? (
+          <WordList objects={objects} />
+        ) : (
+          <div>データがありません</div>
+        )}
+      </div>
+    </main>
   );
 }
