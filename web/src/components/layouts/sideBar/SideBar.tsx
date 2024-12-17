@@ -48,7 +48,7 @@ const SideBar = ({ posterId, isSliderOpen, onSliderChange }: SideBarProps) => {
           </div>
           <LinkButton
             inText='詳細情報を表示'
-            intent='primary'
+            intent='fourth'
             size='large'
             href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
             isTarget={true}
