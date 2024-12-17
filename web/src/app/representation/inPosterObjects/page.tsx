@@ -97,9 +97,7 @@ export default async function ObjectsPage({
       </aside>
       <section className='grow px-5'>
         <MotionWrapper>
-          <Suspense fallback={<div>Loading...</div>}>
-            <MainContent objectData={objectData} posterId={posterId} />
-          </Suspense>
+          <MainContent objectData={objectData} posterId={posterId} />
         </MotionWrapper>
       </section>
     </div>

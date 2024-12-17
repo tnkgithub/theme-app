@@ -51,17 +51,13 @@ export default async function ImagesListPage({
       </div>
       <div className='grow px-1'>
         <MotionWrapper>
-          <Suspense fallback={<div>Loading...</div>}>
-            <main className='m-3'>
-              <div className='m-2 grid grid-cols-11 gap-2'>
-                {Array.isArray(aroundPosters) && aroundPosters.length > 0
-                  ? aroundPosters.map((poster) =>
-                      renderPoster(poster, posterId)
-                    )
-                  : null}
-              </div>
-            </main>
-          </Suspense>
+          <main className='m-3'>
+            <div className='m-2 grid grid-cols-11 gap-2'>
+              {Array.isArray(aroundPosters) && aroundPosters.length > 0
+                ? aroundPosters.map((poster) => renderPoster(poster, posterId))
+                : null}
+            </div>
+          </main>
         </MotionWrapper>
       </div>
     </div>

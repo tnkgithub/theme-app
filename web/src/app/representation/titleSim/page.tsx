@@ -31,32 +31,30 @@ export default async function TitleSimilarityPage({
         <main className='m-3'>
           <MotionWrapper>
             {titleData ? (
-              <Suspense fallback={<div>Loading...</div>}>
-                <div className='m-2 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
-                  <PosterCard
-                    title={
-                      titleData.find(
-                        (poster: Poster) => poster.posterId === posterId
-                      )?.title || ''
-                    }
-                    posterId={posterId}
-                    link='#'
-                    isTarget={true}
-                  />
-                  {titleData.map(
-                    (poster: Poster) =>
-                      poster.posterId !== posterId && (
-                        <PosterCard
-                          key={poster.posterId}
-                          title={poster.title}
-                          posterId={poster.posterId}
-                          link={`/representation/titleSim?posterId=${poster.posterId}`}
-                          isTarget={false}
-                        />
-                      )
-                  )}
-                </div>
-              </Suspense>
+              <div className='m-2 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
+                <PosterCard
+                  title={
+                    titleData.find(
+                      (poster: Poster) => poster.posterId === posterId
+                    )?.title || ''
+                  }
+                  posterId={posterId}
+                  link='#'
+                  isTarget={true}
+                />
+                {titleData.map(
+                  (poster: Poster) =>
+                    poster.posterId !== posterId && (
+                      <PosterCard
+                        key={poster.posterId}
+                        title={poster.title}
+                        posterId={poster.posterId}
+                        link={`/representation/titleSim?posterId=${poster.posterId}`}
+                        isTarget={false}
+                      />
+                    )
+                )}
+              </div>
             ) : (
               <div>データがありません。</div>
             )}

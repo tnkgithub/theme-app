@@ -30,13 +30,12 @@ export default async function RepresentationPage() {
         <div className='grid-cols-26  m-1 grid gap-1'>
           {posters
             ? posters.map((poster: Poster) => (
-                <Suspense fallback={<div>Loading...</div>} key={poster.id}>
-                  <PosterCard
-                    posterId={poster.posterId}
-                    link={`/representation/som?posterId=${poster.posterId}`}
-                    isTarget={false}
-                  />
-                </Suspense>
+                <PosterCard
+                  key={poster.posterId}
+                  posterId={poster.posterId}
+                  link={`/representation/som?posterId=${poster.posterId}`}
+                  isTarget={false}
+                />
               ))
             : null}
         </div>

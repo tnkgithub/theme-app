@@ -40,9 +40,7 @@ export default async function TitleClusterPage() {
         <div className='grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2'>
           {clusters
             ? clusters.map((cluster: TitleClusterProps) => (
-                <Suspense fallback={<div>Loading...</div>} key={cluster.id}>
-                  <RenderCluster key={cluster.id} cluster={cluster} />
-                </Suspense>
+                <RenderCluster key={cluster.id} cluster={cluster} />
               ))
             : null}
         </div>
