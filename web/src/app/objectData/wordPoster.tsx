@@ -81,7 +81,7 @@ export default function WordPoster({
                 height={141}
                 className='m-2 mr-3 h-[141px] object-contain'
               />
-              <div className='m-1 flex h-full w-4/5 flex-col p-1'>
+              <div className='m-1 flex h-full w-4/6 flex-col p-1'>
                 <div className='flex-1 flex-col'>
                   <p className='mb-2 text-lg font-bold'>{title}</p>
                   <p className='line-clamp-2 w-full break-all text-base text-gray-800'>
