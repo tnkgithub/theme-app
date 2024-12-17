@@ -1,6 +1,6 @@
 import { Poster } from '@prisma/client';
 import { PosterCard } from '@/components/elements/card/Card';
-import React from 'react';
+import React, { Suspense } from 'react';
 // import { PosterCard } from '@/components/elements/card/Card';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 
@@ -30,12 +30,13 @@ export default async function RepresentationPage() {
         <div className='grid-cols-26  m-1 grid gap-1'>
           {posters
             ? posters.map((poster: Poster) => (
-                <PosterCard
-                  key={poster.id}
-                  posterId={poster.posterId}
-                  link={`/representation/som?posterId=${poster.posterId}`}
-                  isTarget={false}
-                />
+                <Suspense fallback={<div>Loading...</div>} key={poster.id}>
+                  <PosterCard
+                    posterId={poster.posterId}
+                    link={`/representation/som?posterId=${poster.posterId}`}
+                    isTarget={false}
+                  />
+                </Suspense>
               ))
             : null}
         </div>

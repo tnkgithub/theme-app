@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import MotionRapper from '@/lib/framerMotion/MotionWrapper';
 import RenderCluster from './renderClusters';
 
@@ -40,7 +40,9 @@ export default async function TitleClusterPage() {
         <div className='grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2'>
           {clusters
             ? clusters.map((cluster: TitleClusterProps) => (
-                <RenderCluster key={cluster.id} cluster={cluster} />
+                <Suspense fallback={<div>Loading...</div>} key={cluster.id}>
+                  <RenderCluster key={cluster.id} cluster={cluster} />
+                </Suspense>
               ))
             : null}
         </div>

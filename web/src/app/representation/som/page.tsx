@@ -3,6 +3,7 @@ import { PosterCard } from '@/components/elements/card/Card';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import { Poster } from '@prisma/client';
+import { Suspense } from 'react';
 
 const renderPoster = (poster: Poster, posterId: string) => {
   if (!poster || !poster.posterId) return null;
@@ -50,13 +51,17 @@ export default async function ImagesListPage({
       </div>
       <div className='grow px-1'>
         <MotionWrapper>
-          <main className='m-3'>
-            <div className='m-2 grid grid-cols-11 gap-2'>
-              {Array.isArray(aroundPosters) && aroundPosters.length > 0
-                ? aroundPosters.map((poster) => renderPoster(poster, posterId))
-                : null}
-            </div>
-          </main>
+          <Suspense fallback={<div>Loading...</div>}>
+            <main className='m-3'>
+              <div className='m-2 grid grid-cols-11 gap-2'>
+                {Array.isArray(aroundPosters) && aroundPosters.length > 0
+                  ? aroundPosters.map((poster) =>
+                      renderPoster(poster, posterId)
+                    )
+                  : null}
+              </div>
+            </main>
+          </Suspense>
         </MotionWrapper>
       </div>
     </div>

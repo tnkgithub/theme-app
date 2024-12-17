@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { openTitleClusterEvent } from '@/lib/google_analytics/gtag';
+import { Suspense } from 'react';
 
 type TitleClusterProps = {
   id: number;
@@ -43,6 +44,7 @@ export default function RenderCluster({
   cluster: TitleClusterProps;
 }) {
   return (
+    
     <Link
       key={cluster.id}
       className='m-2 h-fit rounded-xl border-2 border-gray-200 pb-3  shadow-md duration-300 hover:shadow-gray-400'

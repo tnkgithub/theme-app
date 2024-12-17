@@ -2,6 +2,7 @@ import { PosterCard } from '@/components/elements/card/Card';
 import Link from 'next/link';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
+import { Suspense } from 'react';
 
 type ObjectDataProps = {
   word: string;
@@ -96,7 +97,9 @@ export default async function ObjectsPage({
       </aside>
       <section className='grow px-5'>
         <MotionWrapper>
-          <MainContent objectData={objectData} posterId={posterId} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <MainContent objectData={objectData} posterId={posterId} />
+          </Suspense>
         </MotionWrapper>
       </section>
     </div>

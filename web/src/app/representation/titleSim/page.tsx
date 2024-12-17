@@ -2,6 +2,7 @@ import SideBar from '@/components/layouts/sideBar/SideBar';
 import { PosterCard } from '@/components/elements/card/Card';
 import { Poster } from '@prisma/client';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
+import { Suspense } from 'react';
 
 export default async function TitleSimilarityPage({
   searchParams,
@@ -30,30 +31,32 @@ export default async function TitleSimilarityPage({
         <main className='m-3'>
           <MotionWrapper>
             {titleData ? (
-              <div className='m-2 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
-                <PosterCard
-                  title={
-                    titleData.find(
-                      (poster: Poster) => poster.posterId === posterId
-                    )?.title || ''
-                  }
-                  posterId={posterId}
-                  link='#'
-                  isTarget={true}
-                />
-                {titleData.map(
-                  (poster: Poster) =>
-                    poster.posterId !== posterId && (
-                      <PosterCard
-                        key={poster.posterId}
-                        title={poster.title}
-                        posterId={poster.posterId}
-                        link={`/representation/titleSim?posterId=${poster.posterId}`}
-                        isTarget={false}
-                      />
-                    )
-                )}
-              </div>
+              <Suspense fallback={<div>Loading...</div>}>
+                <div className='m-2 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
+                  <PosterCard
+                    title={
+                      titleData.find(
+                        (poster: Poster) => poster.posterId === posterId
+                      )?.title || ''
+                    }
+                    posterId={posterId}
+                    link='#'
+                    isTarget={true}
+                  />
+                  {titleData.map(
+                    (poster: Poster) =>
+                      poster.posterId !== posterId && (
+                        <PosterCard
+                          key={poster.posterId}
+                          title={poster.title}
+                          posterId={poster.posterId}
+                          link={`/representation/titleSim?posterId=${poster.posterId}`}
+                          isTarget={false}
+                        />
+                      )
+                  )}
+                </div>
+              </Suspense>
             ) : (
               <div>データがありません。</div>
             )}
