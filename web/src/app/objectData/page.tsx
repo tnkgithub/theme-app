@@ -21,11 +21,6 @@ async function fetchData() {
   const objects: ObjectDataProps[] = data.objectData;
   objects.sort((a, b) => b.posters.length - a.posters.length);
 
-  console.log(objects);
-
-  // postersのlengthで降順ソート
-  // clusters.sort((a, b) => b.posters.length - a.posters.length);
-
   return {
     props: {
       objects,

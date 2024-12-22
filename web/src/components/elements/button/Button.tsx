@@ -38,7 +38,7 @@ const buttonVariants = cva(
     variants: {
       intent: {
         primary: 'bg-white text-gray-800  hover:bg-blue-500 hover:text-white',
-        secondary: 'bg-white text-blue-700 hover:bg-blue-500 hover:text-white',
+        secondary: 'bg-white text-blue-500 hover:bg-blue-500 hover:text-white',
         third:
           'rounded-md bg-gray-50 text-gray-700 shadow-sm shadow-gray-400 hover:bg-blue-500 hover:text-white',
         fourth: 'bg-orange-400 text-white hover:bg-orange-500 hover:text-white',

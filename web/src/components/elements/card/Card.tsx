@@ -21,7 +21,7 @@ function Card({
 
   return (
     <>
-      <div className='my-6 max-w-sm rounded-sm border shadow-md duration-300 hover:shadow-lg hover:shadow-gray-400'>
+      <div className='max-w-sm rounded-sm border shadow-md duration-300 hover:shadow-lg hover:shadow-gray-400'>
         <Image
           src={imagePath}
           alt='image'
@@ -30,7 +30,7 @@ function Card({
           className='h-72 w-full object-cover'
         />
         <div className='px-6 py-4'>
-          <div className='mb-2 text-xl font-bold'>{title}</div>
+          <div className='mb-2 text-xl font-bold text-gray-800'>{title}</div>
           {/* <p className='text-base text-gray-700'>{description}</p> */}
         </div>
       </div>

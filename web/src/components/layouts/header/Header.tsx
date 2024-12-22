@@ -50,6 +50,13 @@ const Header = () => {
               buttonText='検索'
               size='medium'
             /> */}
+            <LinkButton
+              inText='アンケートに回答する'
+              intent='secondary'
+              size='fit'
+              href='https://forms.gle/sevGhTNmjSviy1Lc8'
+              isTarget={true}
+            />
           </div>
         </div>
       </header>
