@@ -17,7 +17,7 @@ export default function Home() {
               そのため、結果が必ずしも正確であるとは限りません。この点をご理解の上、ご利用ください。
             </p>
             <p className='mt-1 w-full text-base text-gray-700'>
-              また、本システムに関するアンケートにご協力いただける方は、以下のリンクまたは画面右上のリンクからご回答をお願いいたします。
+              また、本システムに関するアンケートにご協力いただける方は、システムの利用後に以下のリンクまたは画面右上のリンクからご回答をお願いいたします。
             </p>
             <Link
               href='https://forms.gle/sevGhTNmjSviy1Lc8'
@@ -31,21 +31,21 @@ export default function Home() {
         <div className='container mx-auto flex h-full flex-wrap items-center justify-center gap-x-14 p-2'>
           <Link href='/representation'>
             <Card
-              title='画像一覧'
+              title='画像一覧から探す'
               // description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
               type='imagesList'
             />
           </Link>
           <Link href='/titles'>
             <Card
-              title='タイトル一覧'
+              title='タイトル一覧から探す'
               // description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
               type='titleList'
             />
           </Link>
           <Link href='/objectData'>
             <Card
-              title='物体名一覧'
+              title='物体名一覧から探す'
               // description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet odit facere quia modi laborum enim velit assumenda aspernatur aliquam est perferendis cupiditate, eius vel officia eligendi ex nisi esse.'
               type='objectList'
             />
