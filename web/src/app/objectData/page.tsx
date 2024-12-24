@@ -6,8 +6,8 @@ type ObjectDataProps = {
 };
 
 async function fetchData() {
-  const apiUrl = 'https://okunolab.c.fun.ac.jp/api/poster/objectData';
-  const res = await fetch(`${apiUrl}`);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${apiUrl}/poster/representation`);
 
   // レスポンスのJSONデータを取得
   const data = await res.json();
