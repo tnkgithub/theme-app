@@ -8,13 +8,13 @@ RUN npm install
 
 COPY . .
 
-RUN npm install next react react-dom
+# RUN npm install next react react-dom
 
-# # # prismaの起動に必要なパッケージ
-RUN apt-get update && apt-get install -y openssl
+# # # # prismaの起動に必要なパッケージ
+# RUN apt-get update && apt-get install -y openssl
 
-RUN npm i -g prisma
-RUN npm i @prisma/client
+# RUN npm i -g prisma
+# RUN npm i @prisma/client
 
 # RUN npm run build
 
