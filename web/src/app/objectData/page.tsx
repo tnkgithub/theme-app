@@ -7,7 +7,7 @@ type ObjectDataProps = {
 
 async function fetchData() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${apiUrl}/poster/representation`);
+  const res = await fetch(`${apiUrl}/poster/objectData`);
 
   // レスポンスのJSONデータを取得
   const data = await res.json();
