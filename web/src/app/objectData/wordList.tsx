@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, Suspense } from 'react';
+import { useState, useRef } from 'react';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import WordPoster from './wordPoster';
 import { Button } from '@/components/elements/button/Button';
@@ -41,7 +41,7 @@ export default function WordList({ objects }: { objects: ObjectDataProps[] }) {
   };
 
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <>
       {/* データが取得できた場合、物体名一覧を表示 */}
       {objects.length > 0 ? (
         <>
@@ -106,6 +106,6 @@ export default function WordList({ objects }: { objects: ObjectDataProps[] }) {
           <p>データの取得に失敗しました</p>
         </div>
       )}
-    </Suspense>
+    </>
   );
 }

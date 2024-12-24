@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import WordList from './wordList';
 
 type ObjectDataProps = {
@@ -30,7 +31,9 @@ export default async function ObjectPage() {
       <div className='flex flex-col'>
         <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
         {objects ? (
-          <WordList objects={objects} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <WordList objects={objects} />
+          </Suspense>
         ) : (
           <div>データがありません</div>
         )}
