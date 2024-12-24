@@ -6,7 +6,7 @@ services:
     volumes:
       - ./web:/app
     ports:
-      - '80:80'
+      - '443:443'
       - '6006:6006'
       - '5555:5555'
     depends_on:
