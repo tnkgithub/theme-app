@@ -28,7 +28,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className='container mx-auto flex h-full flex-wrap items-center justify-center gap-x-14 p-2'>
+        <div className='container mx-auto flex h-full flex-wrap items-center justify-center gap-x-14 gap-y-4 p-2'>
           <Link href='/representation'>
             <Card
               title='画像一覧から探す'
