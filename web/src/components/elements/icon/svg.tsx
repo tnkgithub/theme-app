@@ -100,4 +100,49 @@ const ObjectIcon = ({ className }: IconProps) => (
   </Icon>
 );
 
-export { SomIcon, TitleIcon, ObjectIcon };
+const SideBarIcon = ({ className }: IconProps) => (
+  <Icon className={className}>
+    {/* <path
+      d='M 3 7 A 1.0001 1.0001 0 1 0 3 9 L 27 9 A 1.0001 1.0001 0 1 0 27 7 L 3 7 z M 3 14 A 1.0001 1.0001 0 1 0 3 16 L 27 16 A 1.0001 1.0001 0 1 0 27 14 L 3 14 z M 3 21 A 1.0001 1.0001 0 1 0 3 23 L 27 23 A 1.0001 1.0001 0 1 0 27 21 L 3 21 z'
+      stroke='currentColor'
+      strokeWidth='2.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    /> */}
+    <path
+      d='M3 6h18'
+      stroke='currentColor'
+      strokeWidth='2.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M3 12h18'
+      stroke='currentColor'
+      strokeWidth='2.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M3 18h18'
+      stroke='currentColor'
+      strokeWidth='2.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </Icon>
+);
+
+const CloseIcon = ({ className }: IconProps) => (
+  <Icon className={className}>
+    <path
+      d='M 6 6 L 18 18 M 6 18 L 18 6'
+      stroke='currentColor'
+      strokeWidth='2.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </Icon>
+);
+
+export { SomIcon, TitleIcon, ObjectIcon, SideBarIcon, CloseIcon };

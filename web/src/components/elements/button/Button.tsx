@@ -2,8 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { SomIcon, TitleIcon, ObjectIcon } from '@/components/elements/icon/svg';
+import {
+  SomIcon,
+  TitleIcon,
+  ObjectIcon,
+  SideBarIcon,
+  CloseIcon,
+} from '@/components/elements/icon/svg';
 import { cva } from 'class-variance-authority';
+import SideBar from '@/components/layouts/sideBar/SideBar';
 
 type BaseButtonProps = {
   inText: string;
@@ -14,8 +21,16 @@ type BaseButtonProps = {
     | 'fourth'
     | 'noBorder'
     | 'pressed'
-    | 'Search';
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon';
+    | 'Search'
+    | 'none';
+  size?:
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | 'fit'
+    | 'icon'
+    | 'sidebaricon';
   isDisabled?: boolean;
   onClick?: () => void;
 };
@@ -29,7 +44,7 @@ type LinkButtonProps = BaseButtonProps & {
 
 type IconButtonProps = BaseButtonProps & {
   href: string;
-  icon?: 'som' | 'title' | 'object';
+  icon?: 'som' | 'title' | 'object' | 'sidebar' | 'close';
 };
 
 const buttonVariants = cva(
@@ -45,6 +60,7 @@ const buttonVariants = cva(
         noBorder: 'bg-white text-gray-800 hover:text-blue-500',
         pressed: 'bg-blue-500 text-white',
         Search: 'bg-blue-500 text-white hover:bg-blue-600',
+        none: 'bg-white text-gray-800',
       },
       size: {
         small: 'w-12 rounded-md p-1',
@@ -53,6 +69,7 @@ const buttonVariants = cva(
         xlarge: 'w-fit px-4 py-2 text-xl text-gray-700',
         fit: 'w-fit px-3 py-2 text-lg',
         icon: 'group flex w-48 items-center justify-start p-2 text-left ',
+        sidebaricon: 'mr-1 w-5 p-0.5',
       },
     },
   }
@@ -131,6 +148,8 @@ const IconButton = ({
               som: SomIcon,
               title: TitleIcon,
               object: ObjectIcon,
+              sidebar: SideBarIcon,
+              close: CloseIcon,
             }[icon],
             { className: intent === 'pressed' ? 'text-white' : '' }
           )}
