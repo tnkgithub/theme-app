@@ -50,7 +50,7 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
                 {poster.description}
               </p>
             </div>
-            <div className='mt-auto flex flex-wrap justify-end gap-1'>
+            <div className={`mt-auto flex flex-wrap  gap-1 ${isMobile ? '' : 'justify-end'}`}>
               <LinkButton
                 inText='詳細説明'
                 intent='third'
