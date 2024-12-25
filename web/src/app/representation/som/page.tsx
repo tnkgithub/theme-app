@@ -46,7 +46,7 @@ export default async function ImagesListPage({
 
   return (
     <div className='flex'>
-      <div className='h-screen w-52'>
+      <div className='h-screen'>
         <SideBar posterId={posterId} isSliderOpen={false} />
       </div>
       <div className='grow px-1'>

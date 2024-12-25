@@ -24,7 +24,7 @@ export default async function TitleSimilarityPage({
 
   return (
     <div className='flex flex-row'>
-      <aside className='h-screen w-52'>
+      <aside className='h-screen'>
         <SideBar posterId={posterId} isSliderOpen={true} />
       </aside>
       <section className='grow px-1'>

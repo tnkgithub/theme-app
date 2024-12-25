@@ -2,7 +2,6 @@ import { PosterCard } from '@/components/elements/card/Card';
 import Link from 'next/link';
 import SideBar from '@/components/layouts/sideBar/SideBar';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
-import { Suspense } from 'react';
 
 type ObjectDataProps = {
   word: string;
@@ -92,7 +91,7 @@ export default async function ObjectsPage({
 
   return (
     <div className='flex flex-row'>
-      <aside className='h-screen w-52'>
+      <aside className='h-screen'>
         <SideBar posterId={posterId} isSliderOpen={false} />
       </aside>
       <section className='grow px-5'>

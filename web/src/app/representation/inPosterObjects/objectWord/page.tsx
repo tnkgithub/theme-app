@@ -75,7 +75,7 @@ export default async function ObjectWordPage({ searchParams }: Props) {
 
   return (
     <main className='flex flex-row'>
-      <aside className='h-screen w-52'>
+      <aside className='h-screen'>
         <SideBar posterId={posterId} isSliderOpen={false} />
       </aside>
       <section className='grow px-5'>
