@@ -88,7 +88,7 @@ export default function WordPoster({
                     {description}
                   </p>
                 </div>
-                <div className='mt-auto flex flex-row justify-end gap-1'>
+                <div className='mt-auto flex flex-wrap justify-end gap-1'>
                   <LinkButton
                     inText='詳細説明'
                     intent='third'

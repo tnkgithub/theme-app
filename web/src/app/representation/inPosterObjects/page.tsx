@@ -36,10 +36,10 @@ function MainContent({
             >
               {item.word}
             </Link>
-            <div className='mt-3 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12'>
+            <div className='mt-3 grid grid-cols-2 gap-2 pl-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10'>
               <PosterCard posterId={posterId} link='#' isTarget={true} />
               {item.posters
-                .slice(0, 22)
+                .slice(0, 18)
                 .map((poster) =>
                   poster.posterId !== posterId ? (
                     <PosterCard
