@@ -49,7 +49,7 @@ export default async function TitleClusterPage({ searchParams }: Props) {
               >
                 〈
               </Link>
-              <div className='flex flex-row gap-2 px-5 py-2'>
+              <div className='flex flex-wrap gap-2 px-5 py-2'>
                 {Array.from({ length: 5 }, (_, i) => {
                   const repWord =
                     cluster[`repWord${i + 1}` as keyof TitleClusterProps];

@@ -3,6 +3,7 @@
 import { openArchiveEvent } from '@/lib/google_analytics/gtag';
 import Image from 'next/image';
 import { LinkButton } from '@/components/elements/button/Button';
+import { useEffect, useState } from 'react';
 
 type TitleClusterProps = {
   id: number;
@@ -15,6 +16,12 @@ type TitleClusterProps = {
 };
 
 export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 640);
+  }, []);
+
   return (
     <div className='grid grid-cols-1 gap-6 xl:grid-cols-2'>
       {cluster.posters.map((poster) => (
@@ -34,7 +41,7 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
             alt={`${cluster.repWord1}`}
             width={100}
             height={141}
-            className='m-2 mr-3 h-[141px] bg-blue-100 object-contain'
+            className={`m-2 mr-3 object-contain ${isMobile ? `w-[90px]` : `w-[141px]`}`}
           />
           <div className=' m-1 flex h-full w-4/5 flex-col p-1'>
             <div className='flex-1 flex-col'>
@@ -43,11 +50,11 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
                 {poster.description}
               </p>
             </div>
-            <div className='mt-auto flex flex-row justify-end gap-2'>
+            <div className='mt-auto flex flex-wrap justify-end gap-1'>
               <LinkButton
                 inText='詳細説明'
                 intent='third'
-                size='medium'
+                size={isMobile ? 'small' : 'medium'}
                 href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
                 isTarget
                 onClick={() =>
@@ -57,13 +64,13 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
               <LinkButton
                 inText='類似画像'
                 intent='third'
-                size='medium'
+                size={isMobile ? 'small' : 'medium'}
                 href={`/representation/som?posterId=${poster.posterId}`}
               />
               <LinkButton
                 inText='画像内物体'
                 intent='third'
-                size='medium'
+                size={isMobile ? 'small' : 'medium'}
                 href={`/representation/inPosterObjects?posterId=${poster.posterId}`}
               />
             </div>
