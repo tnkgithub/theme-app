@@ -77,13 +77,7 @@ const FullSideBar = ({
   );
 };
 
-const SmallSideBar = ({
-  posterId,
-  handleSidebar,
-}: {
-  posterId: string;
-  handleSidebar: () => void;
-}) => {
+const SmallSideBar = ({ handleSidebar }: { handleSidebar: () => void }) => {
   return (
     <>
       <div className='fixed top-36 z-10 h-screen w-12 border-r border-gray-300 bg-white md:top-24 lg:top-16'>
@@ -116,7 +110,7 @@ const SideBar = ({ posterId }: SideBarProps) => {
       {isSidebarOpen ? (
         <FullSideBar posterId={posterId} handleSidebar={handleSidebar} />
       ) : (
-        <SmallSideBar posterId={posterId} handleSidebar={handleSidebar} />
+        <SmallSideBar handleSidebar={handleSidebar} />
       )}
     </Suspense>
   );
