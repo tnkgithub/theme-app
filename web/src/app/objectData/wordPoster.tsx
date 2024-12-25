@@ -83,7 +83,7 @@ export default function WordPoster({
                 alt={`${posterId}`}
                 width={100}
                 height={141}
-                className={`m-2 mr-3 object-contain ${isMobile ? `w-[100px]` : `w-[141px]`}`}
+                className={`m-2 mr-3 object-contain ${isMobile ? `w-[95px]` : `w-[141px]`}`}
               />
               <div className='m-1 flex size-full flex-col p-1'>
                 <div className='flex-1 flex-col'>
