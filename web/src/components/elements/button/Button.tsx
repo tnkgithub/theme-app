@@ -56,7 +56,7 @@ const buttonVariants = cva(
         none: 'bg-white text-gray-800',
       },
       size: {
-        small: 'w-12 rounded-md p-1',
+        small: 'w-20 rounded-md p-1 text-xs',
         medium: 'w-28 px-3 py-2',
         large: 'w-48 p-2',
         xlarge: 'w-fit px-4 py-2 text-xl text-gray-700',

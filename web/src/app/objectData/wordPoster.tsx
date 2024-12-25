@@ -25,6 +25,8 @@ export default function WordPoster({
     { posterId: string; title: string; description: string | null }[]
   >([]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const posterMap = new Map<
       string,
@@ -51,6 +53,8 @@ export default function WordPoster({
       }));
 
     setCommonPosters(common);
+
+    setIsMobile(window.innerWidth <= 640);
   }, [objectData]);
 
   return (
@@ -92,7 +96,7 @@ export default function WordPoster({
                   <LinkButton
                     inText='詳細説明'
                     intent='third'
-                    size='medium'
+                    size={isMobile ? 'small' : 'medium'}
                     href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
                     isTarget
                     onClick={() =>
@@ -102,19 +106,19 @@ export default function WordPoster({
                   <LinkButton
                     inText='類似画像'
                     intent='third'
-                    size='medium'
+                    size={isMobile ? 'small' : 'medium'}
                     href={`/representation/som?posterId=${posterId}`}
                   />
                   <LinkButton
                     inText='類似タイトル'
                     intent='third'
-                    size='medium'
+                    size={isMobile ? 'small' : 'medium'}
                     href={`/representation/titleSim?posterId=${posterId}`}
                   />
                   <LinkButton
                     inText='画像内物体'
                     intent='third'
-                    size='medium'
+                    size={isMobile ? 'small' : 'medium'}
                     href={`/representation/inPosterObjects?posterId=${posterId}`}
                   />
                 </div>
