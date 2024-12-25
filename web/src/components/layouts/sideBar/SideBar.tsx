@@ -22,7 +22,7 @@ const FullSideBar = ({
 
   return (
     <>
-      <div className='fixed top-11 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-28 lg:top-16'>
+      <div className='fixed top-11 z-10 min-h-screen w-56 border-r border-gray-300 bg-white md:top-28 lg:top-16'>
         <div className='flex flex-col items-center gap-1'>
           <div className='my-2 flex w-52 flex-col items-center border-b py-2'>
             <div className='flex w-full justify-between'>
@@ -72,7 +72,7 @@ const FullSideBar = ({
           />
         </div>
       </div>
-      <div className='h-screen w-8 md:w-56' />
+      <div className='min-h-screen w-8 md:w-56' />
     </>
   );
 };
@@ -80,7 +80,7 @@ const FullSideBar = ({
 const SmallSideBar = ({ handleSidebar }: { handleSidebar: () => void }) => {
   return (
     <>
-      <div className='fixed top-11 z-10 h-screen w-12 border-r border-gray-300 bg-white md:top-28 lg:top-16'>
+      <div className='fixed top-11 z-10 min-h-screen w-12 border-r border-gray-300 bg-white md:top-28 lg:top-16'>
         <div className='mt-4 flex flex-col items-center justify-center gap-1 md:mt-6 lg:mt-4'>
           <IconButton
             inText=''
@@ -92,7 +92,7 @@ const SmallSideBar = ({ handleSidebar }: { handleSidebar: () => void }) => {
           />
         </div>
       </div>
-      <div className='h-screen w-8' />
+      <div className='min-h-screen w-8' />
     </>
   );
 };
