@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { openTitleClusterEvent } from '@/lib/google_analytics/gtag';
-import { Suspense } from 'react';
+import { useEffect, useState } from 'react';
 
 type TitleClusterProps = {
   id: number;
@@ -14,10 +14,18 @@ type TitleClusterProps = {
   posters: { posterId: string; title: string }[];
 };
 
-function RenderInCluster({ cluster }: { cluster: TitleClusterProps }) {
+function RenderPoster({
+  cluster,
+  length,
+}: {
+  cluster: TitleClusterProps;
+  length: number;
+}) {
+  if (!cluster || !cluster.posters) return null;
+
   return (
-    <div className='mx-3 grid grid-cols-2 gap-3'>
-      {cluster.posters.slice(0, 6).map((poster) => (
+    <>
+      {cluster.posters.slice(0, length).map((poster) => (
         <div
           key={poster.posterId}
           className='flex items-center rounded-md bg-blue-50 shadow-sm shadow-gray-300'
@@ -34,6 +42,24 @@ function RenderInCluster({ cluster }: { cluster: TitleClusterProps }) {
           </div>
         </div>
       ))}
+    </>
+  );
+}
+
+function RenderInCluster({ cluster }: { cluster: TitleClusterProps }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 640);
+  }, []);
+
+  return (
+    <div className='mx-3  grid grid-cols-1 gap-3 sm:grid-cols-2'>
+      {isMobile ? (
+        <RenderPoster cluster={cluster} length={3} />
+      ) : (
+        <RenderPoster cluster={cluster} length={6} />
+      )}
     </div>
   );
 }
@@ -44,7 +70,6 @@ export default function RenderCluster({
   cluster: TitleClusterProps;
 }) {
   return (
-    
     <Link
       key={cluster.id}
       className='m-2 h-fit rounded-xl border-2 border-gray-200 pb-3  shadow-md duration-300 hover:shadow-gray-400'
@@ -54,7 +79,7 @@ export default function RenderCluster({
       }}
     >
       <div className='flex flex-row items-center justify-between '>
-        <div className='my-2 ml-0.5 flex flex-row gap-1 px-2'>
+        <div className='my-2 ml-0.5 flex flex-wrap gap-1 px-2'>
           {Array.from({ length: 5 }, (_, i) => {
             const repWord =
               cluster[`repWord${i + 1}` as keyof TitleClusterProps];
