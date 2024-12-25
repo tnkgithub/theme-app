@@ -8,9 +8,9 @@ import {
   ObjectIcon,
   MenuIcon,
   CloseIcon,
+  SideBarIcon,
 } from '@/components/elements/icon/svg';
 import { cva } from 'class-variance-authority';
-import SideBar from '@/components/layouts/sideBar/SideBar';
 
 type BaseButtonProps = {
   inText: string;
@@ -37,7 +37,7 @@ type LinkButtonProps = BaseButtonProps & {
 
 type IconButtonProps = BaseButtonProps & {
   href: string;
-  icon?: 'som' | 'title' | 'object' | 'menu' | 'close';
+  icon?: 'som' | 'title' | 'object' | 'menu' | 'close' | 'sideBar';
 };
 
 const buttonVariants = cva(
@@ -143,6 +143,7 @@ const IconButton = ({
               object: ObjectIcon,
               menu: MenuIcon,
               close: CloseIcon,
+              sideBar: SideBarIcon,
             }[icon],
             { className: intent === 'pressed' ? 'text-white' : '' }
           )}

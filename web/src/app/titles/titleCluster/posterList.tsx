@@ -39,9 +39,9 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
           <Image
             src={`/posters/${poster.posterId}.jpg`}
             alt={`${cluster.repWord1}`}
-            width={100}
-            height={141}
-            className={`m-2 mr-3 object-contain ${isMobile ? `w-[90px]` : `w-[141px]`}`}
+            width={isMobile ? 71 : 100}
+            height={isMobile ? 100 : 141}
+            className={`m-2 mr-3 object-contain  ${isMobile ? `h-[100px]` : `h-[141px]`}`}
           />
           <div className=' m-1 flex h-full w-4/5 flex-col p-1'>
             <div className='flex-1 flex-col'>
@@ -50,7 +50,9 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
                 {poster.description}
               </p>
             </div>
-            <div className={`mt-auto flex flex-wrap  gap-1 ${isMobile ? '' : 'justify-end'}`}>
+            <div
+              className={`mt-auto flex flex-wrap  gap-1 ${isMobile ? '' : 'justify-end'}`}
+            >
               <LinkButton
                 inText='詳細説明'
                 intent='third'

@@ -86,7 +86,7 @@ const SmallSideBar = ({ handleSidebar }: { handleSidebar: () => void }) => {
             inText=''
             intent='none'
             size='menuicon'
-            icon='menu'
+            icon='sideBar'
             onClick={handleSidebar}
             href={''}
           />

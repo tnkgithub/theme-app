@@ -145,4 +145,30 @@ const CloseIcon = ({ className }: IconProps) => (
   </Icon>
 );
 
-export { SomIcon, TitleIcon, ObjectIcon, MenuIcon, CloseIcon };
+const SideBarIcon = ({ className }: IconProps) => (
+  <Icon className={className}>
+    <path
+      d='M20 50 L70 50'
+      stroke='currentColor'
+      strokeWidth='2.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d="M70 50 L60 40"
+      stroke='currentColor'
+      strokeWidth='10.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d="M70 50 L60 60"
+      stroke='currentColor'
+      strokeWidth='10.0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </Icon>
+);
+
+export { SomIcon, TitleIcon, ObjectIcon, MenuIcon, CloseIcon, SideBarIcon };
