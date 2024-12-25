@@ -1,7 +1,6 @@
 import { Card } from '@/components/elements/card/Card';
 import Link from 'next/link';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
-import { Suspense } from 'react';
 
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
               そのため、結果が必ずしも正確であるとは限りません。この点をご理解の上、ご利用ください。
             </p>
             <p className='mt-1 w-full text-base text-gray-700'>
-              また、本システムに関するアンケートにご協力いただける方は、システムの利用後に以下のリンクまたは画面右上のリンクからご回答をお願いいたします。
+              また、本システムに関するアンケートにご協力いただける方は、システムの利用後に以下のリンクまたは画面右上のメニューにあるリンクからご回答をお願いいたします。
             </p>
             <Link
               href='https://forms.gle/sevGhTNmjSviy1Lc8'

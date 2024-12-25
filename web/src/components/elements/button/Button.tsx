@@ -6,7 +6,7 @@ import {
   SomIcon,
   TitleIcon,
   ObjectIcon,
-  SideBarIcon,
+  MenuIcon,
   CloseIcon,
 } from '@/components/elements/icon/svg';
 import { cva } from 'class-variance-authority';
@@ -23,14 +23,7 @@ type BaseButtonProps = {
     | 'pressed'
     | 'Search'
     | 'none';
-  size?:
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'xlarge'
-    | 'fit'
-    | 'icon'
-    | 'sidebaricon';
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'fit' | 'icon' | 'menuicon';
   isDisabled?: boolean;
   onClick?: () => void;
 };
@@ -44,7 +37,7 @@ type LinkButtonProps = BaseButtonProps & {
 
 type IconButtonProps = BaseButtonProps & {
   href: string;
-  icon?: 'som' | 'title' | 'object' | 'sidebar' | 'close';
+  icon?: 'som' | 'title' | 'object' | 'menu' | 'close';
 };
 
 const buttonVariants = cva(
@@ -69,7 +62,7 @@ const buttonVariants = cva(
         xlarge: 'w-fit px-4 py-2 text-xl text-gray-700',
         fit: 'w-fit px-3 py-2 text-lg',
         icon: 'group flex w-48 items-center justify-start p-2 text-left ',
-        sidebaricon: 'mr-1 w-5 p-0.5',
+        menuicon: 'mr-1 w-5 p-0.5',
       },
     },
   }
@@ -148,7 +141,7 @@ const IconButton = ({
               som: SomIcon,
               title: TitleIcon,
               object: ObjectIcon,
-              sidebar: SideBarIcon,
+              menu: MenuIcon,
               close: CloseIcon,
             }[icon],
             { className: intent === 'pressed' ? 'text-white' : '' }

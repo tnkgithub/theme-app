@@ -22,7 +22,7 @@ const FullSideBar = ({
 
   return (
     <>
-      <div className='fixed top-36 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-24 lg:top-16'>
+      <div className='fixed top-11 z-10 h-screen w-56 border-r border-gray-300 bg-white md:top-28 lg:top-16'>
         <div className='flex flex-col items-center gap-1'>
           <div className='my-2 flex w-52 flex-col items-center border-b py-2'>
             <div className='flex w-full justify-between'>
@@ -33,7 +33,7 @@ const FullSideBar = ({
                 <IconButton
                   inText=''
                   intent='none'
-                  size='sidebaricon'
+                  size='menuicon'
                   icon='close'
                   onClick={handleSidebar}
                   href={''}
@@ -80,13 +80,13 @@ const FullSideBar = ({
 const SmallSideBar = ({ handleSidebar }: { handleSidebar: () => void }) => {
   return (
     <>
-      <div className='fixed top-36 z-10 h-screen w-12 border-r border-gray-300 bg-white md:top-24 lg:top-16'>
+      <div className='fixed top-11 z-10 h-screen w-12 border-r border-gray-300 bg-white md:top-28 lg:top-16'>
         <div className='mt-4 flex flex-col items-center justify-center gap-1 md:mt-6 lg:mt-4'>
           <IconButton
             inText=''
             intent='none'
-            size='sidebaricon'
-            icon='sidebar'
+            size='menuicon'
+            icon='menu'
             onClick={handleSidebar}
             href={''}
           />
