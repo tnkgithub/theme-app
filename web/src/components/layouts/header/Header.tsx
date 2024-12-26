@@ -32,14 +32,12 @@ const Header = () => {
       <header className='fixed z-20 w-full border-b border-gray-300 bg-white'>
         <div className='flex flex-col items-center justify-between pb-2 pt-4 lg:flex-row'>
           <div className='flex min-w-fit'>
-            <div className='w-full'>
-              <Link
-                href='/'
-                className='text-xl font-medium text-gray-800 lg:ml-6 lg:justify-start'
-              >
-                ポスター資料探索支援システム
-              </Link>
-            </div>
+            <Link
+              href='/'
+              className='text-xl font-medium text-gray-800 lg:ml-6 lg:justify-start'
+            >
+              ポスター資料探索支援システム
+            </Link>
             {isOpen ? (
               <div className='fixed right-4 block pt-0.5 md:hidden'>
                 <IconButton
