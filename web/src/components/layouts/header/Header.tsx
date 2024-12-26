@@ -31,13 +31,13 @@ const Header = () => {
     <>
       <header className='fixed z-20 w-full border-b border-gray-300 bg-white'>
         <div className='flex flex-col items-center justify-between pb-2 pt-4 lg:flex-row'>
-          <div className='flex w-fit lg:w-44'>
-            <div className='w-full lg:w-fit'>
+          <div className='flex min-w-fit'>
+            <div className='w-full'>
               <Link
                 href='/'
-                className='font-serif text-xl font-medium text-gray-800 lg:ml-6 lg:justify-start'
+                className='text-xl font-medium text-gray-800 lg:ml-6 lg:justify-start'
               >
-                Archive App
+                ポスター資料探索支援システム
               </Link>
             </div>
             {isOpen ? (
