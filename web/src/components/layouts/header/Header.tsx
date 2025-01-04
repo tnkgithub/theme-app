@@ -84,6 +84,12 @@ const Header = () => {
                   href='/objectData/'
                 />
                 <LinkButton
+                  inText='デジタル資料館に戻る'
+                  intent='secondary'
+                  size='fit'
+                  href='https://archives.c.fun.ac.jp'
+                />
+                <LinkButton
                   inText='アンケートに回答する'
                   intent='secondary'
                   size='fit'
