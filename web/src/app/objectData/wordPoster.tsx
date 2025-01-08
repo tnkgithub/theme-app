@@ -77,7 +77,7 @@ export default function WordPoster({
       <div className='mb-8 grid grid-cols-1 gap-6 xl:grid-cols-2'>
         {commonPosters.map(({ posterId, title, description }) => (
           <MotionWrapper key={posterId}>
-            <div className='flex size-full items-center  rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400 2xl:w-full'>
+            <div className='flex size-full items-center  rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400'>
               <Link
                 href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
                 target='_blank'

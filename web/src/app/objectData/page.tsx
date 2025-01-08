@@ -27,16 +27,18 @@ async function fetchData() {
 export default async function ObjectPage() {
   const objects = (await fetchData()).props.objects;
   return (
-    <main className='container m-8 mx-auto flex items-center justify-center'>
-      <div className='flex flex-col'>
-        <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
-        {objects ? (
-          <Suspense fallback={<div>Loading...</div>}>
-            <WordList objects={objects} />
-          </Suspense>
-        ) : (
-          <div>データがありません</div>
-        )}
+    <main className='m-8 px-8'>
+      <div className='container mx-auto flex items-center justify-center px-10'>
+        <div className='flex flex-col'>
+          <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
+          {objects ? (
+            <Suspense fallback={<div>Loading...</div>}>
+              <WordList objects={objects} />
+            </Suspense>
+          ) : (
+            <div>データがありません</div>
+          )}
+        </div>
       </div>
     </main>
   );

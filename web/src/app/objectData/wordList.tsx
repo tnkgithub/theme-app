@@ -26,12 +26,27 @@ export default function WordList({ objects }: { objects: ObjectDataProps[] }) {
       // 含まれていない場合、selectedObjectにobjectを追加
       setSelectedObject([...selectedObject, object]);
       // 子コンポーネントがある場所までスクロール
+      // setTimeout(() => {
+      //   wordPosterRef.current?.scrollIntoView({
+      //     behavior: 'smooth',
+      //     block: 'start',
+      //   });
+      // }, 100); // 状態が更新されるタイミングを考慮して遅延を追加
+
       setTimeout(() => {
-        wordPosterRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }, 100); // 状態が更新されるタイミングを考慮して遅延を追加
+        if (wordPosterRef.current) {
+          const headerOffset = 80; // 固定ヘッダーの高さ（px）
+          const rect = wordPosterRef.current.getBoundingClientRect();
+          console.log('rect:', rect);
+          const offsetPosition = rect.top + window.scrollY - headerOffset;
+
+          // スクロール位置を再計算して適用
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      }, 100); // 状態の反映タイミングを考慮
     }
   };
 
