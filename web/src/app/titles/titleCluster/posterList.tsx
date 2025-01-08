@@ -4,7 +4,7 @@ import { openArchiveEvent } from '@/lib/google_analytics/gtag';
 import Image from 'next/image';
 import { LinkButton } from '@/components/elements/button/Button';
 import { useEffect, useState } from 'react';
-
+import Link from 'next/link';
 type TitleClusterProps = {
   id: number;
   repWord1?: string;
@@ -36,13 +36,18 @@ export function PosterList({ cluster }: { cluster: TitleClusterProps }) {
           key={poster.posterId}
           className='flex size-full items-center rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400'
         >
-          <Image
-            src={`/posters/${poster.posterId}.jpg`}
-            alt={`${cluster.repWord1}`}
-            width={isMobile ? 71 : 100}
-            height={isMobile ? 100 : 141}
-            className={`m-2 mr-3 object-contain  ${isMobile ? `h-[100px]` : `h-[141px]`}`}
-          />
+          <Link
+            href={`https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`}
+            target='_blank'
+          >
+            <Image
+              src={`/posters/${poster.posterId}.jpg`}
+              alt={`${cluster.repWord1}`}
+              width={isMobile ? 71 : 100}
+              height={isMobile ? 100 : 141}
+              className={`m-2 mr-3 object-contain  ${isMobile ? `h-[100px]` : `h-[141px]`}`}
+            />
+          </Link>
           <div className=' m-1 flex h-full w-4/5 flex-col p-1'>
             <div className='flex-1 flex-col'>
               <p className='mb-2 text-lg font-bold'>{poster.title}</p>

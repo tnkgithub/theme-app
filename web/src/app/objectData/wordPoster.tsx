@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Button } from '@/components/elements/button/Button';
-import { LinkButton } from '@/components/elements/button/Button';
+import { Button, LinkButton } from '@/components/elements/button/Button';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 import { openArchiveEvent, clieckWordEvent } from '@/lib/google_analytics/gtag';
+import Link from 'next/link';
 
 type ObjectDataProps = {
   word: string;
@@ -78,13 +78,18 @@ export default function WordPoster({
         {commonPosters.map(({ posterId, title, description }) => (
           <MotionWrapper key={posterId}>
             <div className='flex size-full items-center  rounded-md bg-blue-50 p-2 shadow-md duration-300 hover:shadow-gray-400 2xl:w-full'>
-              <Image
-                src={`/posters/${posterId}.jpg`}
-                alt={`${posterId}`}
-                width={isMobile ? 71 : 100}
-                height={isMobile ? 100 : 141}
-                className={`m-2 mr-3 object-contain ${isMobile ? `h-[100px]` : `h-[141px]`}`}
-              />
+              <Link
+                href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
+                target='_blank'
+              >
+                <Image
+                  src={`/posters/${posterId}.jpg`}
+                  alt={`${posterId}`}
+                  width={isMobile ? 71 : 100}
+                  height={isMobile ? 100 : 141}
+                  className={`m-2 mr-3 object-contain ${isMobile ? `h-[100px]` : `h-[141px]`}`}
+                />
+              </Link>
               <div className='m-1 flex size-full flex-col p-1'>
                 <div className='flex-1 flex-col'>
                   <p className='mb-2 text-lg font-bold'>{title}</p>
