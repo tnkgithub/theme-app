@@ -25,14 +25,7 @@ export default function WordList({ objects }: { objects: ObjectDataProps[] }) {
     } else {
       // 含まれていない場合、selectedObjectにobjectを追加
       setSelectedObject([...selectedObject, object]);
-      // 子コンポーネントがある場所までスクロール
-      // setTimeout(() => {
-      //   wordPosterRef.current?.scrollIntoView({
-      //     behavior: 'smooth',
-      //     block: 'start',
-      //   });
-      // }, 100); // 状態が更新されるタイミングを考慮して遅延を追加
-
+      // 物体名をクリックした際に、物体名のポスターまでスクロールする
       setTimeout(() => {
         if (wordPosterRef.current) {
           const headerOffset = 80; // 固定ヘッダーの高さ（px）
