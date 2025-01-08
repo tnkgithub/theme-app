@@ -27,7 +27,7 @@ async function fetchData() {
 export default async function ObjectPage() {
   const objects = (await fetchData()).props.objects;
   return (
-    <main className='m-8 flex justify-center'>
+    <main className='container m-8 mx-auto flex items-center justify-center'>
       <div className='flex flex-col'>
         <p className='mb-6 text-center text-lg font-semibold'>物体名一覧</p>
         {objects ? (
