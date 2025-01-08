@@ -14,7 +14,7 @@ const renderPoster = (poster: Poster, posterId: string) => {
         posterId={poster.posterId}
         link={
           posterId === poster.posterId
-            ? '#'
+            ? `https://archives.c.fun.ac.jp/posters/${poster.posterId}/0001`
             : `/representation/som?posterId=${poster.posterId}`
         }
         isTarget={posterId === poster.posterId}

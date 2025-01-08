@@ -95,7 +95,7 @@ export default function RenderCluster({
             );
           })}
         </div>
-        <p className='mx-1 inline-block min-w-fit p-2 text-sm text-gray-500'>
+        <p className='mx-1 inline-block min-w-fit p-2 text-base font-semibold text-gray-700'>
           資料数： {cluster.posters.length}件
         </p>
       </div>
