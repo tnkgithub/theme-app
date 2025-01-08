@@ -92,7 +92,10 @@ export default function WordList({ objects }: { objects: ObjectDataProps[] }) {
           )}
 
           {selectedObject && (
-            <div ref={wordPosterRef}>
+            <div
+              ref={wordPosterRef}
+              className='container mx-auto items-center justify-between'
+            >
               <WordPoster
                 objectData={selectedObject}
                 handlerObject={handlerObject}

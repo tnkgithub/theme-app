@@ -90,7 +90,7 @@ export default function WordPoster({
                   className={`m-2 mr-3 object-contain ${isMobile ? `h-[100px]` : `h-[141px]`}`}
                 />
               </Link>
-              <div className='m-1 flex size-full flex-col p-1'>
+              <div className='m-1 flex h-full w-4/5 flex-col p-1'>
                 <div className='flex-1 flex-col'>
                   <p className='mb-2 text-lg font-bold'>{title}</p>
                   <p className='line-clamp-2 w-full break-all text-base text-gray-800'>
