@@ -83,7 +83,7 @@ const Header = () => {
                   size='medium'
                   href='/objectData/'
                 />
-                <LinkButton
+                {/* <LinkButton
                   inText='アンケートに回答する'
                   intent='secondary'
                   size='fit'
@@ -95,7 +95,7 @@ const Header = () => {
                   intent='secondary'
                   size='fit'
                   href='https://archives.c.fun.ac.jp'
-                />
+                /> */}
               </div>
             </div>
           )}

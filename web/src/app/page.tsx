@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <MotionWrapper>
       <main>
-        <div className='container mx-auto my-3 flex size-fit items-center justify-center'>
+        {/* <div className='container mx-auto my-3 flex size-fit items-center justify-center'>
           <div className='flex size-fit flex-col rounded-lg bg-red-100 px-8 py-2'>
             <h1 className='py-1 text-xl text-red-500'>
               ※本システムの利用に関する注意事項
@@ -26,7 +26,7 @@ export default function Home() {
               アンケートに回答する
             </Link>
           </div>
-        </div>
+        </div> */}
         <div className='container mx-auto flex h-full flex-wrap items-center justify-center gap-x-14 gap-y-4 p-2'>
           <Link href='/representation'>
             <Card

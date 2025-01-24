@@ -63,7 +63,7 @@ const FullSideBar = ({
             />
           </div>
           <LinkButton
-            inText='詳細情報を表示'
+            inText='詳細説明を表示'
             intent='fourth'
             size='large'
             href={`https://archives.c.fun.ac.jp/posters/${posterId}/0001`}
