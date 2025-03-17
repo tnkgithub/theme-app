@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     tty: true
-    command: sh -c "npx prisma migrate dev --name init &&
+    command: sh -c "npx prisma migrate deploy &&
                     node src/lib/prisma/pushData.js &&
                     node src/lib/prisma/pushObjectWord.js &&
                     node src/lib/prisma/pushPosterToWord.js &&
