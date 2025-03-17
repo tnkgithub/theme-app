@@ -19,6 +19,8 @@ Docker環境なので、自力で頑張って
 ## データベース構築
 #### prismaによるマイグレーション
 
+※ スキーマ設定はprisma/schema.prismaに記述
+
 マイグレーションファイルの生成
 ```bash
 // docker内で実行
