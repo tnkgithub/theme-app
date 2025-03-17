@@ -6,8 +6,8 @@
 * バックエンド：Next.js，prisma(ORM)
 * データベース：PostgreSQL
 * その他：storybook，nginx(サーバー)
-
-h3 画像やメタデータなどの保管場所（サイズが大きいので注意）
+  
+画像やメタデータなどの保管場所（サイズが大きいので注意）
 * public/posters: 全ポスター画像
 * public/tmp/data: メタデータや画像内物体名などのデータベース保存用csvファイル
 
