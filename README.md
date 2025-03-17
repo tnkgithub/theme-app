@@ -23,8 +23,9 @@ Docker環境なので、自力で頑張って
 
 ### データベース構築
 #### prismaによるマイグレーション
-
-テーブル生成
+マイグレーションファイルの生成
 ```bash
+//docker内で実行
+//--name *** でファイル名指定
 npx prisma migrate dev --name init
 ```
