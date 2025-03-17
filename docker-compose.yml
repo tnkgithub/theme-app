@@ -13,10 +13,10 @@ services:
       - db
     tty: true
     command: sh -c "npx prisma migrate deploy &&
+                    node src/lib/prisma/pushClusterData.js &&
                     node src/lib/prisma/pushData.js &&
                     node src/lib/prisma/pushObjectWord.js &&
                     node src/lib/prisma/pushPosterToWord.js &&
-                    node src/lib/prisma/pushClusterData.js &&
                     node src/lib/prisma/pushTitleSim.js &&
                     npm run dev"
 
