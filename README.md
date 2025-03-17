@@ -7,17 +7,18 @@
 データベース：PostgreSQL  
 その他：storybook，nginx(サーバー) 
 
-
 #### 画像やメタデータなどの保管場所（サイズが大きいので注意）
 * public/posters: 全ポスター画像
 * public/tmp/data: メタデータや画像内物体名などのデータベース保存用csvファイル
 
 #### スキーマ設定
-* prisma/schema.prismaにテーブル定義
+* prisma/schema.prisma
 
 ## 手順
+基本的に自分で調べながら進めてください
+
 ### 環境構築
-Docker環境なので、自力で調べろ
+Docker環境なので、自力で
 
 ### データベース構築
 #### prismaによるマイグレーション
