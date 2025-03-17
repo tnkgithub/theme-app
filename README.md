@@ -14,6 +14,7 @@
 #### スキーマ設定
 * prisma/schema.prisma
 
+  
 ## 手順
 基本的に自分で調べながら進めてください
 
@@ -22,4 +23,9 @@ Docker環境なので、自力で
 
 ### データベース構築
 #### prismaによるマイグレーション
+
+テーブル生成
 * docker compose内で
+```bash
+npx prisma migrate dev --name init
+```
