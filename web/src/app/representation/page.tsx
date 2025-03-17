@@ -1,19 +1,19 @@
 import { Poster } from '@prisma/client';
 import { PosterCard } from '@/components/elements/card/Card';
-import React, { Suspense } from 'react';
-// import { PosterCard } from '@/components/elements/card/Card';
+import React from 'react';
 import MotionWrapper from '@/lib/framerMotion/MotionWrapper';
 
 async function fetchData() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${apiUrl}/poster/representation`);
+  const res = await fetch(`${apiUrl}/poster/representation`, {
+    cache: 'no-store',
+  });
 
   // レスポンスのJSONデータを取得
   const data = await res.json();
-  console.log(data);
+
   const posters: Poster[] = data.posters;
 
-  console.log(posters);
   return {
     props: {
       posters,
