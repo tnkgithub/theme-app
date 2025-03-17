@@ -10,15 +10,22 @@ COPY . .
 
 RUN npm install next react react-dom
 
-# # # # prismaの起動に必要なパッケージ
+# storybook
+# RUN npm install -D @storybook/react @storybook/addon-actions @storybook/addon-links @storybook/addons
+
+# prismaの起動に必要なパッケージ
 RUN apt-get update && apt-get install -y openssl
 
+# prismaのインストール
 # RUN npm i -g prisma
 # RUN npm i @prisma/client
 
-# RUN npm run build
+# prismaのマイグレーションファイルを生成
+RUN npx prisma migrate dev --name init
 
-# EXPOSE 8000
-
-# CMD ["npm", "run", "dev"]
-# CMD ["npm", "run", "start", "-p", "8000"]
+# prismaのスキーマをDBに反映
+RUN node src/lib/prisma/pushData.js
+RUN node src/lib/prisma/pushObjectWord.js
+RUN node src/lib/prisma/pushPosterToWord.js
+RUN node src/lib/prisma/pushClusterData.js
+RUN node src/lib/prisma/pushTitleSim.js
