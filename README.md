@@ -19,7 +19,7 @@ Docker環境なので、自力で頑張って
 ## データベース構築
 #### prismaによるマイグレーション
 
-※ スキーマ設定はprisma/schema.prismaに記述
+※ スキーマ設定は prisma/schema.prisma に記述
 
 マイグレーションファイルの生成（テーブルを更新した場合はファイル名を変更してね）
 ```bash
@@ -27,4 +27,12 @@ Docker環境なので、自力で頑張って
 // --name *** でファイル名指定
 npx prisma migrate dev --name init
 ```
+
+#### データベースへのデータの追加
+
+以下の順番でコマンドを実行
+
+※ データ追加用ソースコードは src/lib/prisma/
+
+1. node src/lib/prisma/
 
