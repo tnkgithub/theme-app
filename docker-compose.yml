@@ -12,18 +12,8 @@ services:
     depends_on:
       - db
     tty: true
-    # 初回のみ実行
-    # command: sh -c "npx prisma migrate deploy &&
-    #                 npx prisma migrate reset &&
-    #                 node src/lib/prisma/pushClusterData.js &&
-    #                 node src/lib/prisma/pushData.js &&
-    #                 node src/lib/prisma/pushObjectWord.js &&
-    #                 node src/lib/prisma/pushPosterToWord.js &&
-    #                 node src/lib/prisma/pushTitleSim.js &&
-    #                 npm run dev"
-
-    # 2回目以降
-    command: sh -c "npx prisma migrate reset &&
+    command: sh -c "npx prisma migrate deploy &&
+                    npx prisma migrate reset --force &&
                     node src/lib/prisma/pushClusterData.js &&
                     node src/lib/prisma/pushData.js &&
                     node src/lib/prisma/pushObjectWord.js &&
