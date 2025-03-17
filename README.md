@@ -11,9 +11,6 @@
 * public/posters: 全ポスター画像
 * public/tmp/data: メタデータや画像内物体名などのデータベース保存用csvファイル
 
-#### スキーマ設定（テーブル定義）
-* prisma/schema.prisma
-
   
 ## 手順
 基本的に自分で調べながら進めてください
@@ -23,9 +20,11 @@ Docker環境なので、自力で頑張って
 
 ### データベース構築
 #### prismaによるマイグレーション
+
 マイグレーションファイルの生成
 ```bash
-//docker内で実行
-//--name *** でファイル名指定
+// docker内で実行
+// --name *** でファイル名指定
 npx prisma migrate dev --name init
 ```
+
