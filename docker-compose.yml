@@ -12,13 +12,17 @@ services:
     depends_on:
       - db
     tty: true
-    command: sh -c "npx prisma migrate deploy &&
-                    node src/lib/prisma/pushClusterData.js &&
-                    node src/lib/prisma/pushData.js &&
-                    node src/lib/prisma/pushObjectWord.js &&
-                    node src/lib/prisma/pushPosterToWord.js &&
-                    node src/lib/prisma/pushTitleSim.js &&
-                    npm run dev"
+    # 初回のみ実行
+    # command: sh -c "npx prisma migrate deploy &&
+    #                 node src/lib/prisma/pushClusterData.js &&
+    #                 node src/lib/prisma/pushData.js &&
+    #                 node src/lib/prisma/pushObjectWord.js &&
+    #                 node src/lib/prisma/pushPosterToWord.js &&
+    #                 node src/lib/prisma/pushTitleSim.js &&
+    #                 npm run dev"
+
+    # 2回目以降
+    command: sh -c "npm run dev"
 
   db:
     image: postgres:15.3
