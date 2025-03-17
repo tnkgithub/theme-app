@@ -14,6 +14,7 @@ services:
     tty: true
     # 初回のみ実行
     # command: sh -c "npx prisma migrate deploy &&
+    #                 npx prisma migrate reset &&
     #                 node src/lib/prisma/pushClusterData.js &&
     #                 node src/lib/prisma/pushData.js &&
     #                 node src/lib/prisma/pushObjectWord.js &&
@@ -22,7 +23,13 @@ services:
     #                 npm run dev"
 
     # 2回目以降
-    command: sh -c "npm run dev"
+    command: sh -c "npx prisma migrate reset &&
+                    node src/lib/prisma/pushClusterData.js &&
+                    node src/lib/prisma/pushData.js &&
+                    node src/lib/prisma/pushObjectWord.js &&
+                    node src/lib/prisma/pushPosterToWord.js &&
+                    node src/lib/prisma/pushTitleSim.js &&
+                    npm run dev"
 
   db:
     image: postgres:15.3
