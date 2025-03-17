@@ -13,6 +13,8 @@ async function fetchData() {
 
   // postersがオブジェクトの中にあるため、正しく取り出す
   const posters: Poster[] = data.posters;
+
+  console.log(posters);
   return {
     props: {
       posters,
