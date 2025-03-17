@@ -10,8 +10,7 @@ async function fetchData() {
 
   // レスポンスのJSONデータを取得
   const data = await res.json();
-
-  // postersがオブジェクトの中にあるため、正しく取り出す
+  console.log(data);
   const posters: Poster[] = data.posters;
 
   console.log(posters);
