@@ -79,7 +79,9 @@ export default async function ObjectsPage({
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     try {
       const response = await fetch(
-        `${apiUrl}/poster/representation/inPosterObjects?posterId=${posterId}`
+        `${apiUrl}/poster/representation/inPosterObjects?posterId=${posterId}`, {
+          cache: 'no-store',
+        }
       );
       return response.json();
     } catch (error) {

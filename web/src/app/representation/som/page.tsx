@@ -33,7 +33,9 @@ export default async function ImagesListPage({
   // ポスターのデータを取得
   const fetchPosters = async () => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const response = await fetch(`${apiUrl}/poster/representation/som`);
+    const response = await fetch(`${apiUrl}/poster/representation/som`, {
+      cache: 'no-store',
+    });
     return response.json();
   };
 
