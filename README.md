@@ -2,9 +2,13 @@
 
 ## 仕様
 構築環境：Docker compose
+
 フロントエンド：Next.js，tailwindcss
+
 バックエンド：Next.js，prisma(ORM)
+
 データベース：PostgreSQL
+
 その他：storybook，nginx(サーバー)
 
 
