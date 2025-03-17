@@ -20,12 +20,3 @@ RUN apt-get update && apt-get install -y openssl
 # RUN npm i -g prisma
 # RUN npm i @prisma/client
 
-# prismaのマイグレーションファイルを生成
-RUN npx prisma migrate dev --name init
-
-# prismaのスキーマをDBに反映
-RUN node src/lib/prisma/pushData.js
-RUN node src/lib/prisma/pushObjectWord.js
-RUN node src/lib/prisma/pushPosterToWord.js
-RUN node src/lib/prisma/pushClusterData.js
-RUN node src/lib/prisma/pushTitleSim.js
