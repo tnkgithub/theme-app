@@ -18,6 +18,7 @@ export async function GET() {
         representationsCoordinate: 'asc', // 'desc' にすれば降順
       },
     });
+    console.log(posters);
     return NextResponse.json({ posters }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
