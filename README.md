@@ -13,26 +13,16 @@
 * public/tmp/data: メタデータや画像内物体名などのデータベース保存用csvファイル
 
 
-## 環境構築
-Docker環境なので、自力で頑張って
+## システム起動手順
+※ Docker環境は自分で調べて構築してください
 
-## データベース構築
-#### prismaによるマイグレーション
-
-※ スキーマ設定は prisma/schema.prisma に記述
-
-マイグレーションファイルの生成（テーブルを更新した場合はファイル名を変更してね）
+theme-app/ で以下コマンドを実行
 ```bash
-// docker内で実行
-// --name *** でファイル名指定
-npx prisma migrate dev --name init
+docker compose build
+
+docker compose up -d
 ```
 
-#### データベースへのデータの追加
-
-以下の順番でコマンドを実行
-
-※ データ追加用ソースコードは src/lib/prisma/
-
-1. node src/lib/prisma/
-
+  
+webブラウザで以下URLを開く
+* https://localhost:3000
