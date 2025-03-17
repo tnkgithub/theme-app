@@ -14,6 +14,8 @@
 
 
 ## システム起動手順
+※ Docker環境は自分で調べて構築してください
+
 theme-app/ で以下コマンドを実行
 ```bash
 docker compose build
