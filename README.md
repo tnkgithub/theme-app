@@ -20,9 +20,8 @@ theme-app/ で以下コマンドを実行
 ```bash
 docker compose build
 
-docker compose up -d
+docker compose up
 ```
-
   
-webブラウザで以下URLを開く
+logに Done と表示されたら、webブラウザで以下URLを開く
 * https://localhost:3000
